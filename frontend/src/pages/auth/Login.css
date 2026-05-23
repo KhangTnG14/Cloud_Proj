@@ -96,6 +96,7 @@
     align-items: center;
     gap: 8px;
     color: #333;
+    white-space: nowrap; 
 }
 
 .forgot-link {
