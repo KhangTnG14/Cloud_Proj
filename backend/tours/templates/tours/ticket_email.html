@@ -1,0 +1,400 @@
+<!-- backend/tours/templates/tours/ticket_email.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vé Điện Tử TourGo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: #f0f4f8;
+      color: #1a202c;
+    }
+
+    .wrapper {
+      max-width: 620px;
+      margin: 32px auto;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 40px 32px 32px;
+      text-align: center;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 32px;
+      background: #ffffff;
+      border-radius: 50% 50% 0 0 / 32px 32px 0 0;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+    .logo span { color: #ffd700; }
+    .header-subtitle {
+      color: rgba(255,255,255,0.85);
+      font-size: 14px;
+      margin-top: 6px;
+      letter-spacing: 1px;
+    }
+    .success-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-top: 16px;
+      letter-spacing: 0.5px;
+    }
+    .checkmark {
+      font-size: 48px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ── BODY ── */
+    .body { padding: 32px; }
+
+    .greeting {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 8px;
+    }
+    .greeting-sub {
+      font-size: 14px;
+      color: #718096;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* ── TICKET CARD ── */
+    .ticket-card {
+      background: linear-gradient(135deg, #f8faff 0%, #eef2ff 100%);
+      border: 2px solid #c3dafe;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .ticket-header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .ticket-icon { font-size: 24px; }
+    .ticket-title { font-size: 16px; font-weight: 700; }
+    .ticket-subtitle { font-size: 12px; opacity: 0.8; }
+    .ticket-body { padding: 24px; }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid #e2e8f0;
+      gap: 12px;
+    }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-label {
+      font-size: 12px;
+      color: #a0aec0;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+      flex-shrink: 0;
+      min-width: 120px;
+    }
+    .info-value {
+      font-size: 14px;
+      color: #2d3748;
+      font-weight: 600;
+      text-align: right;
+      line-height: 1.5;
+    }
+    .info-value.highlight {
+      color: #667eea;
+      font-size: 16px;
+    }
+    .info-value.price {
+      color: #38a169;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* ── BOOKING CODE ── */
+    .booking-code-section {
+      text-align: center;
+      background: #fff;
+      border: 2px dashed #c3dafe;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .booking-code-label {
+      font-size: 12px;
+      color: #718096;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .booking-code {
+      font-size: 28px;
+      font-weight: 700;
+      color: #667eea;
+      letter-spacing: 4px;
+      font-family: 'Courier New', monospace;
+    }
+    .booking-code-hint {
+      font-size: 11px;
+      color: #a0aec0;
+      margin-top: 6px;
+    }
+
+    /* ── NOTICE BOX ── */
+    .notice-box {
+      background: #fffbeb;
+      border: 1px solid #fbd38d;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .notice-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #b7791f;
+      margin-bottom: 8px;
+    }
+    .notice-list {
+      list-style: none;
+      padding: 0;
+    }
+    .notice-list li {
+      font-size: 13px;
+      color: #744210;
+      padding: 3px 0;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .notice-list li::before {
+      content: '•';
+      position: absolute;
+      left: 4px;
+      color: #d69e2e;
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-section { text-align: center; margin-bottom: 28px; }
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 30px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 24px 0;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      text-align: center;
+      padding: 0 0 8px;
+    }
+    .contact-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #4a5568;
+      margin-bottom: 12px;
+    }
+    .contact-items {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .contact-item {
+      font-size: 13px;
+      color: #718096;
+    }
+    .contact-item span { font-weight: 600; color: #4a5568; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #2d3748;
+      padding: 24px 32px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .footer-logo span { color: #ffd700; }
+    .footer-text {
+      font-size: 12px;
+      color: #a0aec0;
+      line-height: 1.6;
+    }
+    .footer-links {
+      margin-top: 12px;
+    }
+    .footer-links a {
+      color: #90cdf4;
+      text-decoration: none;
+      font-size: 12px;
+      margin: 0 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- HEADER -->
+    <div class="header">
+      <span class="checkmark">✅</span>
+      <div class="logo">TOUR<span>GO</span></div>
+      <div class="header-subtitle">VÉ ĐIỆN TỬ · E-TICKET</div>
+      <div class="success-badge">🎉 Thanh toán thành công</div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+
+      <div class="greeting">Xin chào, {{ customer_name }}!</div>
+      <div class="greeting-sub">
+        Cảm ơn bạn đã đặt tour tại <strong>TourGo</strong>. Đơn hàng của bạn đã được xác nhận và thanh toán thành công.
+        Dưới đây là vé điện tử của bạn — hãy lưu lại và xuất trình khi cần.
+      </div>
+
+      <!-- BOOKING CODE -->
+      <div class="booking-code-section">
+        <div class="booking-code-label">🎫 Mã đặt tour</div>
+        <div class="booking-code">{{ booking_code }}</div>
+        <div class="booking-code-hint">Xuất trình mã này khi check-in tại điểm tập kết</div>
+      </div>
+
+      <!-- TICKET CARD -->
+      <div class="ticket-card">
+        <div class="ticket-header">
+          <div class="ticket-icon">🗺️</div>
+          <div>
+            <div class="ticket-title">{{ tour_name }}</div>
+            <div class="ticket-subtitle">Chi tiết chuyến đi</div>
+          </div>
+        </div>
+        <div class="ticket-body">
+          <div class="info-row">
+            <div class="info-label">Ngày khởi hành</div>
+            <div class="info-value highlight">{{ departure_date }}</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Thời gian</div>
+            <div class="info-value">{{ duration }}</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Điểm khởi hành</div>
+            <div class="info-value">{{ departure_location }}</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Số khách</div>
+            <div class="info-value">{{ num_people }} người</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Hướng dẫn viên</div>
+            <div class="info-value">{{ guide_name }}</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Phương thức TT</div>
+            <div class="info-value">{{ payment_method }}</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Tổng tiền</div>
+            <div class="info-value price">{{ total_price }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTICE -->
+      <div class="notice-box">
+        <div class="notice-title">⚠️ Lưu ý quan trọng</div>
+        <ul class="notice-list">
+          <li>Vui lòng có mặt tại điểm tập kết trước <strong>30 phút</strong>.</li>
+          <li>Mang theo CMND/CCCD hoặc hộ chiếu bản gốc.</li>
+          <li>Vé này chỉ có giá trị một lần, không được chuyển nhượng.</li>
+          <li>Liên hệ hotline nếu cần hỗ trợ trước ngày khởi hành.</li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-section">
+        <a href="{{ frontend_url }}/my-orders" class="cta-button">
+          📋 Xem chi tiết đơn hàng
+        </a>
+      </div>
+
+      <hr class="divider"/>
+
+      <!-- CONTACT -->
+      <div class="contact-section">
+        <div class="contact-title">Cần hỗ trợ? Liên hệ với chúng tôi</div>
+        <div class="contact-items">
+          <div class="contact-item">📞 <span>1900 6789</span></div>
+          <div class="contact-item">✉️ <span>support@tourgo.vn</span></div>
+          <div class="contact-item">🌐 <span>tourgo.vn</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-logo">TOUR<span>GO</span></div>
+      <div class="footer-text">
+        © 2025 TourGo. Tất cả quyền được bảo lưu.<br/>
+        Email này được gửi tự động, vui lòng không trả lời.
+      </div>
+      <div class="footer-links">
+        <a href="#">Điều khoản</a>
+        <a href="#">Chính sách</a>
+        <a href="#">Liên hệ</a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
