@@ -1,110 +1,370 @@
-html,
-body {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: Inter, sans-serif;
+    background: #f8fafc;
+    color: #111827;
+}
+
+
+/* ==========================================================================
+   HERO BANNER
+   ========================================================================== */
+
 .hero-section {
     position: relative;
-    height: 100vh;
-    width: 100%;
-    /* Các thuộc tính quan trọng cho ảnh nền */
+    height: 85vh;
+    /* Thay vì 100vh để tránh banner quá dài chiếm hết màn hình */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    padding: 0 20px;
 }
 
 .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    /* Bạn có thể tăng giảm độ tối ở đây */
-    z-index: 1;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    /* Đảm bảo chữ nằm trên lớp phủ */
     text-align: center;
+    max-width: 850px;
+    color: white;
+    padding-bottom: 60px;
+    /* Tạo khoảng trống vừa phải phía dưới text */
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 18px;
 }
 
 .hero-title {
-    color: #fff;
-    font-size: 4rem;
+    color: #ffffff;
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.1;
     margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    animation: floatingText 4s ease-in-out infinite;
 }
 
+@keyframes floatingText {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.hero-description {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.92;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    padding: 14px 35px;
+    border: none;
+    border-radius: 999px;
+    background: white;
+    color: #111827;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero-button:hover {
+    transform: translateY(-2px);
+    background: #f3f4f6;
+}
+
+
+/* ==========================================================================
+   QUICK SEARCH BAR (Định vị chính giữa đường chân trời)
+   ========================================================================== */
+
+.quick-search-bar {
+    position: absolute;
+    bottom: 0;
+    /* Đẩy xuống sát đáy của Hero Section */
+    left: 50%;
+    transform: translate(-50%, 50%);
+    /* Dịch chuyển xuống đúng 50% chiều cao của chính nó */
+    width: 90%;
+    max-width: 1150px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr auto;
+    gap: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.search-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(73, 174, 27);
+    margin-bottom: 8px;
+}
+
+.search-group input,
+.search-group select {
+    height: 50px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 0 16px;
+    font-size: 15px;
+    background: #ffffff;
+    color: #1e293b;
+    transition: all 0.2s ease;
+}
+
+.search-group input:focus,
+.search-group select:focus {
+    outline: none;
+    border-color: rgb(91, 212, 35);
+    box-shadow: 0 0 0 4px rgba(91, 212, 35, 0.15);
+}
+
+.search-button {
+    border: none;
+    padding: 0 32px;
+    border-radius: 12px;
+    background: rgb(73, 174, 27);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    height: 50px;
+    align-self: flex-end;
+}
+
+.search-button:hover {
+    background: rgb(77, 185, 28);
+    box-shadow: 0 8px 20px rgba(91, 212, 35, 0.25);
+}
+
+
+/* ==========================================================================
+   CONTENT CONTAINER
+   ========================================================================== */
+
 .tour-list-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 1300px;
+    margin: auto;
+    padding: 100px 20px 80px;
+    /* padding-top tạo khoảng trống vừa đủ cho Search Bar đè lên */
+}
+
+.section-header {
+    margin-bottom: 40px;
 }
 
 .section-title {
-    margin-bottom: 30px;
-    font-size: 28px;
-    color: #333;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
-
-/* Chia lưới: 3 hoặc 4 tour trên 1 hàng */
+.section-description {
+    color: #6b7280;
+    font-size: 16px;
+}
 
 .tour-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
+    gap: 30px;
 }
 
+
+/* ==========================================================================
+   TOUR CARDS
+   ========================================================================== */
+
 .tour-card {
-    border: 1px solid #eee;
-    border-radius: 10px;
+    background: white;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tour-card:hover {
-    transform: translateY(-5px);
-    /* Hiệu ứng bay lên khi di chuột vào */
-}
-
-.tour-image img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.tour-info {
-    padding: 15px;
-}
-
-.tour-info h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.tour-price {
-    color: #ff8a00;
-    font-weight: bold;
-    font-size: 16px;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .tour-card-link {
     text-decoration: none;
-    /* Xóa gạch chân */
     color: inherit;
-    /* Giữ nguyên màu chữ gốc */
-    display: block;
 }
 
-.tour-card-link:hover {
-    cursor: pointer;
+.tour-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.tour-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.tour-card:hover .tour-image img {
+    transform: scale(1.04);
+}
+
+.tour-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #111827;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.tour-info {
+    padding: 20px;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.category-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: #475569;
+    font-weight: 500;
+}
+
+.tour-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.tour-price {
+    color: rgb(91, 212, 35);
+    /* Đồng bộ tone màu thương hiệu */
+    font-size: 22px !important;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.tour-slots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.tour-slots img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(7000%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+.tour-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 12px;
+}
+
+.detail-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    transition: color 0.2s;
+}
+
+.tour-card:hover .detail-link {
+    color: rgb(91, 212, 35);
+}
+
+.loading-text {
+    text-align: center;
+    padding: 60px;
+    color: #64748b;
+    font-size: 16px;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    .quick-search-bar {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        bottom: 0;
+        transform: translate(-50%, 75%);
+        /* Đẩy dịch thêm một chút khi hiển thị hàng dọc dọc */
+    }
+    .tour-list-container {
+        padding-top: 260px;
+        /* Tăng padding để bù khoảng trống cho cột search dọc */
+    }
+    .search-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 70vh;
+    }
+    .hero-title {
+        font-size: 40px;
+    }
+    .hero-description {
+        font-size: 15px;
+    }
+    .section-title {
+        font-size: 26px;
+    }
 }

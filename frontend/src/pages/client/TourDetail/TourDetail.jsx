@@ -10,7 +10,6 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
 import './TourDetail.css';
 import ImageUploadModal from '../../../components/tour/ImageUploadModal';
 
@@ -161,7 +160,7 @@ else if (serverErrors?.date_error) {
 
     return (
         <div className="tour-detail-page">
-            <Navbar />
+       
             <div className="tour-detail-container">
                 {/* Phần 1: Carousel Ảnh (Giữ nguyên giao diện) */}
                 <div className="tour-carousel-wrapper">

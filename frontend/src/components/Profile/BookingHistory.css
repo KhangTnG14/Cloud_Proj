@@ -1,45 +1,46 @@
 .booking-history-card {
-  background: white;
-  padding: 24px;
-  border-radius: 20px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    margin-top: 110px;
 }
 
 .booking-section {
-  margin-bottom: 24px;
+    margin-bottom: 24px;
 }
 
 .booking-section h3 {
-  margin-bottom: 14px;
+    margin-bottom: 14px;
 }
 
 .booking-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  border: 1px solid #eef1f4;
-  border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    border: 1px solid #eef1f4;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 14px;
 }
 
 .booking-left {
-  display: flex;
-  gap: 14px;
-  align-items: center;
+    display: flex;
+    gap: 14px;
+    align-items: center;
 }
 
 .booking-left img {
-  width: 110px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 14px;
+    width: 110px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 14px;
 }
 
 .booking-right p {
-  margin: 6px 0;
+    margin: 6px 0;
 }
 
 .empty-text {
-  color: #666;
+    color: #666;
 }

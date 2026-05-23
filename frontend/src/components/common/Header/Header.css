@@ -1,20 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, sans-serif;
+}
+
+
+/* ==========================================================================
+   HEADER CONTAINER (Đã dọn dẹp padding thừa và làm trong suốt mượt mà)
+   ========================================================================== */
+
 .header-container {
     position: fixed;
+    /* Giữ fixed để đè mượt lên ảnh nền trang Home */
     top: 0;
     left: 0;
     width: 100%;
-    padding: 0;
+    padding: 12px 0;
+    /* padding thống nhất, gọn gàng */
     z-index: 1000;
-    background: linear-gradient( to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0) 100%);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.2);
+    /* Trong suốt nhẹ sang trọng, không lo vệt trắng đục */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     transition: all 0.4s ease;
 }
 
 .navbar {
-    /* max-width: 1200px;
-    margin: 0 auto; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,7 +53,7 @@
 }
 
 
-/* --- CHỈNH SỬA PHẦN NAV LINKS --- */
+/* --- NAV LINKS --- */
 
 .navbar-links {
     list-style: none;
@@ -51,7 +66,6 @@
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 40px;
     white-space: nowrap;
-    /* ❗ chặn xuống dòng */
 }
 
 .navbar-links li {
@@ -66,34 +80,14 @@
     font-size: 14px;
     font-weight: 500;
     padding: 8px 16px;
-    /* giảm padding để không bị dài */
     border-radius: 30px;
     transition: all 0.3s ease;
     white-space: nowrap;
-    /* ❗ đảm bảo chữ không xuống dòng */
 }
-
-
-/* --- HIỆU ỨNG VÒNG TRÒN XANH KHI HOVER --- */
-
-
-/* .navbar-links li a:hover,
-
-.navbar-links li.active a {
-
-    color: #ffffff;
-
-    background-color: rgba(91, 212, 35, 0.2);
-
-    box-shadow: inset 0 0 0 1px rgba(91, 212, 35, 0.5);
-
-} */
 
 .navbar-links li.active a {
     background-color: #5bd423;
-    /* Màu xanh đậm cho trang đang chọn */
     color: #1a1a1a;
-    /* Chữ đen cho nổi trên nền xanh */
 }
 
 .navbar-links:hover {
@@ -102,13 +96,12 @@
 }
 
 
-/* --- CÁC PHẦN CÒN LẠI --- */
+/* --- ACTIONS --- */
 
 .navbar-actions {
     display: flex;
     align-items: center;
     gap: 15px;
-    /* giảm để cân đối */
 }
 
 .btn-search {
@@ -140,85 +133,13 @@
     box-shadow: 0 4px 15px rgba(38, 222, 5, 0.3);
 }
 
-
-/* .btn-book:hover {
-
-    background-color: #ffffff;
-
-    color: #5bd423;
-
-    transform: translateY(-2px);
-
-} */
-
-
-/* --- AUTH SECTION --- */
-
-.auth-section {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.auth-icon {
-    width: 22px;
-    filter: invert(1);
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.auth-icon:hover {
-    transform: scale(1.1);
-}
-
-.auth-buttons {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    font-size: 14px;
-    color: #ffffff;
-}
-
-.auth-link,
-.auth-btn-text {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    padding: 0;
-    font-family: inherit;
-}
-
-.auth-link:hover,
-.auth-btn-text:hover {
-    color: #5bd423;
-}
-
-.username-link {
-    color: #5bd423;
-    font-weight: 600;
-}
-
-.auth-divider {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 12px;
-}
-
-
-/* --------------------------------------------------------------- */
-
 .search-wrapper {
     display: flex;
     align-items: center;
-    background: #f1f1f1;
+    background: #f5f5f5;
     border-radius: 20px;
     padding: 4px 10px;
     width: 160px;
-    /* ❗ thu nhỏ lại */
 }
 
 .input-search {
@@ -230,15 +151,168 @@
     font-size: 13px;
 }
 
-.btn-search {
+
+/* ==========================================================================
+   AUTH SECTION REFACTOR (Dropdown mượt mà, phân cấp màu chuẩn CSS)
+   ========================================================================== */
+
+.auth-section {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.user-dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 5px 0;
+}
+
+.user-profile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+.user-profile-trigger:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(102, 247, 35, 0.4);
+}
+
+.auth-icon {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+}
+
+.nav-username {
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 600;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dropdown-arrow {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
+    transition: transform 0.2s ease;
+}
+
+.user-dropdown-wrapper:hover .dropdown-arrow {
+    transform: rotate(180deg);
+    color: #5bd423;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 190px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    padding: 6px 0;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1100;
+    border: 1px solid #e2e8f0;
+}
+
+.user-dropdown-wrapper:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    padding: 10px 16px;
+    font-size: 13.5px;
+    color: #334155;
+    text-decoration: none;
+    text-align: left;
     background: none;
     border: none;
+    width: 100%;
+    font-family: inherit;
     cursor: pointer;
     display: flex;
     align-items: center;
+    gap: 10px;
+    transition: all 0.15s ease;
 }
 
-.btn-search img {
-    width: 18px;
-    height: 18px;
+.menu-item-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(24%) sepia(16%) saturate(1391%) hue-rotate(180deg) brightness(93%) contrast(89%);
+    transition: filter 0.15s ease;
+}
+
+
+/* Hover hàng thông thường (Trang cá nhân, Đơn đặt) -> Đổi chữ và icon sang màu XANH LÁ */
+
+.dropdown-item:hover {
+    background-color: #f1f5f9;
+    color: #5bd423;
+}
+
+.dropdown-item:hover .menu-item-icon {
+    filter: brightness(0) saturate(100%) invert(67%) sepia(87%) saturate(373%) hue-rotate(58deg) brightness(97%) contrast(87%);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #e2e8f0;
+    margin: 4px 0;
+}
+
+
+/* Hover hàng Đăng xuất -> Đổi chữ và icon sang màu ĐỎ (Đã bổ sung tính kế thừa để đè màu xanh) */
+
+.logout-item {
+    color: #ef4444;
+    font-weight: 500;
+}
+
+.logout-item:hover {
+    background-color: #fef2f2;
+    color: #dc2626;
+    /* Chữ đỏ */
+}
+
+
+/* Thêm selector chỉ định đích danh class logout-icon để ép đè màu xanh ở trên */
+
+.dropdown-item:hover .menu-item-icon.logout-icon {
+    filter: brightness(0) saturate(100%) invert(22%) sepia(85%) saturate(4594%) hue-rotate(352deg) brightness(88%) contrast(97%);
+    /* Icon đỏ */
+}
+
+.login-btn-nav {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: color 0.2s ease;
+}
+
+.login-btn-nav:hover {
+    color: #5bd423;
 }

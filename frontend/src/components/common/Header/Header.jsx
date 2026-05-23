@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Logo from '../../../assets/logo.png'; 
 import Search from '../../../assets/search.png';
 import User from '../../../assets/user.png';
+import Order from '../../../assets/order.png';
+import Logout from '../../../assets/logout.png';
 import './Header.css';
 
 export default function Header() {
@@ -12,8 +14,6 @@ export default function Header() {
 
   const token = localStorage.getItem('access_token');
   const username = localStorage.getItem('username');
-  
-  // Ép chuỗi về chữ thường .toLowerCase() để chống sai lệch chữ hoa/chữ thường từ backend
   const role = localStorage.getItem('role') ? localStorage.getItem('role').toLowerCase() : '';
 
   const isActive = (path) => location.pathname === path;
@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <header className="header-container">
       <nav className="navbar">
-        <div className="navbar-logo">
+        <div className="navbar-logo" onClick={() => navigate('/')}>
           <img src={Logo} alt="Travela Logo" />
           <span>H2KT</span>
         </div>
@@ -44,17 +44,13 @@ export default function Header() {
           <li className={isActive('/tours') ? 'active' : ''}>
             <Link to="/tours">Tours</Link>
           </li>
-          <li className={isActive('/destinations') ? 'active' : ''}>
-            <Link to="/destinations">Điểm Đến</Link>
-          </li>
           <li className={isActive('/contact') ? 'active' : ''}>
             <Link to="/contact">Liên Hệ</Link>
           </li>
           
-          {/* Sửa lại điều kiện khớp chuẩn chữ thường của bạn */}
           {role === 'provider' && (
             <li className={isActive('/provider/dashboard') ? 'active' : ''}>
-              <Link to="/provider/dashboard" style={{ color: '#fff', fontWeight: 'bold' }}>Kênh Nhà Cung Cấp</Link>
+              <Link to="/provider/dashboard" >Nhà Cung Cấp</Link>
             </li>
           )}
 
@@ -79,29 +75,53 @@ export default function Header() {
             </button>
           </form>
 
-          <Link to="/bookings" className="btn-book">Book Now ↗</Link>
+          <Link to="/tours" className="btn-book">Book Now ↗</Link>
           
+          {/* ==========================================================================
+             AUTH SECTION REFACTOR (Hộp tài khoản Dropdown cao cấp tích hợp Icon)
+             ========================================================================== */}
           <div className="auth-section">
-            <Link to={token ? "/profile" : "/login"}>
-              <img src={User} alt="user" className="auth-icon" />
-            </Link>
-            <div className="auth-buttons">
-              {token ? (
-                <>
-                  <Link to="/profile" className="auth-link username-link" title="Trang cá nhân">{username}</Link>
-                  <span className="auth-divider">|</span>
-                  <button onClick={() => {
-                    localStorage.clear(); // Xóa sạch bộ nhớ tránh lưu đè quyền cũ
-                    window.location.href = '/login';
-                  }} className="auth-btn-text">Đăng xuất</button>
-                </>
-              ) : (
-                <>
-                  <Link to="/login" className="auth-link">Đăng nhập</Link>
-                </>
-              )}
-            </div>
+            {token ? (
+              <div className="user-dropdown-wrapper">
+                {/* Khu vực kích hoạt khi hover vào */}
+                <div className="user-profile-trigger">
+                  <img src={User} alt="user" className="auth-icon" />
+                  <span className="nav-username">{username}</span>
+                  <span className="dropdown-arrow">▾</span>
+                </div>
+
+                {/* Hộp menu thả xuống ẩn */}
+                <div className="dropdown-menu">
+                  <Link to="/profile" className="dropdown-item">
+                    <img src={User} alt="profile icon" className="menu-item-icon" />
+                    Trang cá nhân
+                  </Link>
+                  
+                  <Link to="/booking-history" className="dropdown-item">
+                    <img src={Order} alt="order icon" className="menu-item-icon" />
+                    Đơn đặt của tôi
+                  </Link>
+                  
+                  <div className="dropdown-divider"></div>
+                  
+                  <button 
+                    onClick={() => {
+                      localStorage.clear();
+                      window.location.href = '/login';
+                    }} 
+                    className="dropdown-item logout-item"
+                  >
+                    <img src={Logout} alt="logout icon" className="menu-item-icon logout-icon" />
+                    Đăng xuất
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <Link to="/login" className="auth-link login-btn-nav">Đăng nhập</Link>
+            )}
           </div>
+          {/* ========================================================================== */}
+
         </div>
       </nav>
     </header>

@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, sans-serif;
+    background: #F8FAFC;
+}
+
+
+/* ==========================================================================
+   PAGE LAYOUT
+   ========================================================================== */
+
+.tours-page {
+    min-height: 100vh;
+    padding-top: 140px;
+    /* Thêm khoảng đệm hợp lý để tránh bị Navbar che khuất */
+    padding-bottom: 60px;
+    background: #F8FAFC;
+}
+
+.tours-container {
+    max-width: 1440px;
+    /* Thu hẹp nhẹ từ 1600px để nội dung tập trung hơn */
+    margin: auto;
+    display: flex;
+    gap: 32px;
+    padding: 0 24px;
+    align-items: flex-start;
+}
+
+
+/* ==========================================================================
+   SIDEBAR FILTER (Đã làm gọn & tinh tế hơn)
+   ========================================================================== */
+
+.filter-sidebar {
+    width: 280px;
+    /* Thu nhỏ chiều rộng từ 320px xuống 280px */
+    position: sticky;
+    top: 120px;
+    /* Ghim vị trí mượt mà khi cuộn trang */
+}
+
+.filter-box {
+    background: white;
+    border-radius: 16px;
+    /* Giảm độ bo góc thô từ 28px xuống 16px */
+    padding: 22px;
+    /* Thu gọn không gian đệm bên trong */
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+}
+
+.filter-title {
+    font-size: 20px;
+    /* Hạ size chữ xuống giúp thanh thoát hơn */
+    font-weight: 700;
+    color: #1E293B;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.filter-group {
+    margin-bottom: 16px;
+    /* Thu hẹp khoảng cách giữa các ô nhập */
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    /* Nhỏ nhắn và sắc nét hơn */
+    font-weight: 600;
+    color: #475569;
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    height: 44px;
+    /* Giảm chiều cao từ 52px xuống 44px tinh tế hơn */
+    border-radius: 10px;
+    /* Bo góc nhẹ nhàng gọn gàng */
+    border: 1px solid #CBD5E1;
+    padding: 0 14px;
+    background: #ffffff;
+    font-size: 14px;
+    /* Chữ nhập vừa mắt */
+    color: #1E293B;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    border-color: #5BD423;
+    box-shadow: 0 0 0 3px rgba(91, 212, 35, 0.15);
+}
+
+
+/* Nút bấm đồng bộ màu độc quyền */
+
+.search-btn {
+    width: 100%;
+    height: 46px;
+    /* Tỉ lệ cân bằng với các input */
+    border: none;
+    border-radius: 10px;
+    background: rgb(68, 135, 5);
+    /* Chuyển sang màu xanh độc quyền thương hiệu */
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+}
+
+.search-btn:hover {
+    background: rgb(77, 185, 28);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(91, 212, 35, 0.2);
+}
+
+
+/* ==========================================================================
+   TOURS GRID
+   ========================================================================== */
+
+.tours-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+
+/* ==========================================================================
+   TOUR CARD
+   ========================================================================== */
+
+.tour-card {
+    overflow: hidden;
+    border-radius: 16px;
+    /* Đồng bộ bo góc mỏng với sidebar */
+    background: white;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tour-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.tour-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.tour-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.tour-card:hover .tour-image {
+    transform: scale(1.04);
+}
+
+.tour-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    font-size: 11px;
+    font-weight: 700;
+    color: #334155;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.tour-content {
+    padding: 20px;
+}
+
+.tour-title {
+    font-size: 18px;
+    /* Giảm nhẹ để tên tour nhìn gọn, không bị chiếm quá nhiều dòng */
+    font-weight: 700;
+    line-height: 1.4;
+    color: #1E293B;
+    margin-bottom: 12px;
+}
+
+.tour-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.category-tag {
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: #F1F5F9;
+    color: #475569;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.tour-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    border-top: 1px solid #F1F5F9;
+    padding-top: 12px;
+}
+
+.tour-price-label {
+    font-size: 12px;
+    color: #94A3B8;
+    margin-bottom: 2px;
+}
+
+.tour-price {
+    font-size: 22px;
+    /* Chỉnh kích thước giá tiền tinh tế, không bị quá to bành trướng */
+    font-weight: 800;
+    color: rgb(59, 153, 16);
+    /* Đồng bộ màu thương hiệu sang trọng */
+}
+
+.tour-slots {
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: #F8FAFC;
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.book-btn {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 10px;
+    background: green;
+    /* Đồng bộ màu nút đặt tour khắp hệ thống */
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.book-btn:hover {
+    background: rgb(77, 185, 28);
+    box-shadow: 0 6px 15px rgba(91, 212, 35, 0.2);
+}
+
+
+/* ==========================================================================
+   RESPONSIVE (Đảm bảo hiển thị mượt mà đa thiết bị)
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+    .tours-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .tours-container {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .filter-sidebar {
+        width: 100%;
+        position: static;
+    }
+    .tours-grid {
+        grid-template-columns: 1fr;
+    }
+}

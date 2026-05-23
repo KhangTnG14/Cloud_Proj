@@ -5,6 +5,18 @@ import axios from 'axios';
 // --- THƯ VIỆN BIỂU ĐỒ RECHARTS CHO DAY 24 ---
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import './ProviderDashboard.css';
+import add from '../../assets/add.png';
+import adress from '../../assets/adress.png';
+import income from '../../assets/income.png';
+import date from '../../assets/calendar.png';
+import ticket from '../../assets/ticket.png';
+import shoppingcart from '../../assets/shopping-cart.png';
+import calendar from '../../assets/calendar.png';
+import camera from '../../assets/camera.png';
+import image from '../../assets/image.png';
+import pencil from '../../assets/pencil.png';
+import trash from '../../assets/trash.png';
+
 
 export default function ProviderDashboard() {
   const [tours, setTours] = useState([]);
@@ -339,29 +351,52 @@ export default function ProviderDashboard() {
           <h1 className="dashboard-title">Kênh Nhà Cung Cấp</h1>
           <p className="dashboard-subtitle">Quản lý, theo dõi doanh thu và cấu hình các sản phẩm du lịch độc quyền</p>
         </div>
-        <button className="btn-add-tour" onClick={() => {
-          setEditMode(false);
-          setCurrentTourId(null);
-          setFormData({
-            title: '', address: '', price: '', departure_date: '', slots: '', latitude: '', longitude: '', description: '', image_url: ''
-          });
-          setSelectedCategoryIds([]);
-          setSelectedFiles([]);
-          setFilePreviews([]);
-          setShowCreateModal(true);
-        }}>
-          <span className="plus-icon">+</span> Đăng Tour Mới
-        </button>
+        <button 
+  className="btn-add-tour" 
+  onClick={() => {
+    setEditMode(false);
+    setCurrentTourId(null);
+    setFormData({
+      title: '', address: '', price: '', departure_date: '', slots: '', latitude: '', longitude: '', description: '', image_url: ''
+    });
+    setSelectedCategoryIds([]);
+    setSelectedFiles([]);
+    setFilePreviews([]);
+    setShowCreateModal(true);
+  }}
+  style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+>
+  <img 
+    src={add} 
+    alt="add icon" 
+    className="plus-icon"
+    style={{ 
+    
+      width: '18px', 
+      height: '18px', 
+      objectFit: 'contain',
+      /* Ép icon sang sắc trắng để nổi bật trên nền nút xanh ngọc */
+      filter: 'brightness(0) invert(1)' 
+    }} 
+  />
+  <span>Đăng Tour Mới</span>
+</button>
       </div>
 
       <div className="stats-grid">
         <div className="stat-card" style={{ background: '#e3f2fd', borderLeft: '5px solid #1e88e5' }}>
           <div className="stat-value" style={{ color: '#1e88e5' }}>{stats.newOrders}</div>
-          <div className="stat-label" style={{ color: '#555' }}>🛒 Đơn hàng mới cần xử lý</div>
+          <div className="stat-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#555' }}>
+            <img src={shoppingcart} alt="shopping cart" style={{ width: '17px', height: '17px', objectFit: 'contain' }} />
+            <span>Đơn hàng mới cần xử lý</span>
+          </div>
         </div>
         <div className="stat-card" style={{ background: '#e8f5e9', borderLeft: '5px solid #43a047' }}>
           <div className="stat-value" style={{ color: '#43a047' }}>{formatPrice(stats.totalRevenue)}</div>
-          <div className="stat-label" style={{ color: '#555' }}>Doanh thu tích lũy hệ thống</div>
+          <div className="stat-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#555' }}>
+            <img src={income} alt="income" style={{ width: '17px', height: '17px', objectFit: 'contain' }} />
+            <span>Doanh thu tích lũy hệ thống</span>
+          </div>
         </div>
         <div className="stat-card info">
           <div className="stat-value">{tours.length}</div>
@@ -406,7 +441,8 @@ export default function ProviderDashboard() {
         </div>
 
         <div style={{ flex: 1, minWidth: '300px', backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <h3 style={{ marginTop: 0, marginBottom: '20px', color: '#2c3e50', width: '100%', textAlign: 'left' }}>🍕 Tỷ trọng phân bổ thu nhập</h3>
+          <h3 style={{ marginTop: 0, marginBottom: '20px', color: '#2c3e50', width: '100%', textAlign: 'left' }}>Tỷ trọng phân bổ thu nhập</h3>
+
           <div style={{ width: '100%', height: 220 }}>
             <ResponsiveContainer>
               <PieChart>
@@ -431,8 +467,19 @@ export default function ProviderDashboard() {
       </div>
 
       <div className="dashboard-section-wrapper" style={{ backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', marginBottom: '35px' }}>
-        <h2 className="section-title" style={{ marginTop: 0, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          📅 Danh sách hành khách sắp khởi hành
+        <h2 className="section-title" style={{ marginTop: 0, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <img 
+            src={calendar} 
+            alt="calendar icon" 
+            style={{ 
+              width: '28px', 
+              height: '28px', 
+              objectFit: 'contain',
+          
+              filter: 'invert(37%) sepia(93%) saturate(1463%) hue-rotate(192deg) brightness(97%) contrast(101%)'
+            }} 
+          />
+          <span>Danh sách hành khách sắp khởi hành</span>
         </h2>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
@@ -477,70 +524,251 @@ export default function ProviderDashboard() {
         </div>
       ) : (
         <div className="tours-grid">
-          {tours.map(tour => (
-            <div key={tour.id} className="provider-tour-card">
-              <Link to={`/tours/${tour.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-                <div className="tour-card-image-wrapper">
-                  <img
-                    src={getTourDisplayImage(tour)}
-                    alt={tour.title}
-                    className="tour-card-image"
-                  />
-                  <span className="tour-card-price-badge">{formatPrice(tour.price)}</span>
-                </div>
-                <div className="tour-card-body" style={{ paddingBottom: '0px' }}>
-                  <h3 className="tour-card-title">{tour.title}</h3>
-                  {tour.category_names?.length > 0 && (
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '8px' }}>
-                      {tour.category_names.map((name) => (
-                        <span key={name} style={{ fontSize: '11px', background: '#3498db', color: '#fff', padding: '3px 8px', borderRadius: '4px' }}>
-                          {name}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  <div className="tour-card-details">
-                    <p><strong>📍 Địa điểm:</strong> {tour.address}</p>
-                    <p><strong>📅 Ngày đi:</strong> {tour.departure_date}</p>
-                    <p><strong>🎟️ Còn trống:</strong> {tour.slots} chỗ đăng ký</p>
-                    {tour.latitude && tour.longitude && (
-                      <p className="coordinates-tag">📌 Vĩ độ/Kinh độ: {tour.latitude}, {tour.longitude}</p>
-                    )}
-                  </div>
-                  <div className="tour-card-footer">
-                    {/* LOGIC CHECK TRẠNG THÁI ĐỘNG 3 MỨC QUY ĐỊNH */}
-                    {tour.status === 'approved' && (
-                      <span className="status-badge state-approved" style={{ backgroundColor: '#2ecc71', color: '#fff', padding: '4px 10px', borderRadius: '4px', fontWeight: 'bold', fontSize: '12px' }}>
-                        Đang hoạt động
-                      </span>
-                    )}
-                    {tour.status === 'rejected' && (
-                      <span className="status-badge state-rejected" style={{ backgroundColor: '#e74c3c', color: '#fff', padding: '4px 10px', borderRadius: '4px', fontWeight: 'bold', fontSize: '12px' }}>
-                        Bị từ chối
-                      </span>
-                    )}
-                    {(tour.status === 'pending' || !tour.status) && (
-                      <span className="status-badge state-pending" style={{ backgroundColor: '#f1c40f', color: '#333', padding: '4px 10px', borderRadius: '4px', fontWeight: 'bold', fontSize: '12px' }}>
-                        Chờ duyệt
-                      </span>
-                    )}
-
-                    {tour.tour_images && tour.tour_images.length > 0 && (
-                      <span className="images-count-badge">📸 {tour.tour_images.length} hình ảnh</span>
-                    )}
-                  </div>
-                </div>
-              </Link>
-              <div className="tour-card-body" style={{ paddingTop: '5px' }}>
-                <div className="tour-card-actions" style={{ display: 'flex', gap: '8px', marginTop: '15px' }}>
-                  <button onClick={() => openEditModal(tour)} style={{ flex: 1, padding: '8px', border: 'none', borderRadius: '4px', backgroundColor: '#f39c12', color: 'white', cursor: 'pointer', fontWeight: 'bold' }}>Sửa</button>
-                  <button onClick={() => openImageManager(tour)} style={{ flex: 1, padding: '8px', border: 'none', borderRadius: '4px', backgroundColor: '#3498db', color: 'white', cursor: 'pointer', fontWeight: 'bold' }}>Ảnh</button>
-                  <button onClick={() => handleDeleteTour(tour.id)} style={{ flex: 1, padding: '8px', border: 'none', borderRadius: '4px', backgroundColor: '#e74c3c', color: 'white', cursor: 'pointer', fontWeight: 'bold' }}>Xóa</button>
-                </div>
-              </div>
-            </div>
-          ))}
+  {tours.map(tour => (
+    <div key={tour.id} className="provider-tour-card">
+      <Link to={`/tours/${tour.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+        <div className="tour-card-image-wrapper">
+          <img
+            src={getTourDisplayImage(tour)}
+            alt={tour.title}
+            className="tour-card-image"
+          />
+          <span className="tour-card-price-badge">{formatPrice(tour.price)}</span>
         </div>
+        
+        <div className="tour-card-body" style={{ paddingBottom: '0px' }}>
+          <h3 className="tour-card-title">{tour.title}</h3>
+          
+          {tour.category_names?.length > 0 && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '8px' }}>
+              {tour.category_names.map((name) => (
+                <span key={name} style={{ fontSize: '11px', background: '#e0f2fe', color: '#0369a1', padding: '3px 8px', borderRadius: '4px', fontWeight: '500' }}>
+                  {name}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div className="tour-card-details">
+            <p style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <img src={adress} alt="address" style={{ width: '16px', height: '16px', objectFit: 'contain' ,filter: 'invert(37%) sepia(93%) saturate(1463%) hue-rotate(338deg) brightness(97%) contrast(101%)'}} />
+              <span><strong>Địa điểm:</strong> {tour.address}</span>
+            </p>
+
+            <p style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <img src={date} alt="date" style={{ width: '16px', height: '16px', objectFit: 'contain',filter: 'invert(37%) sepia(93%) saturate(1463%) hue-rotate(192deg) brightness(97%) contrast(101%)' }} />
+              <span><strong>Ngày đi:</strong> {tour.departure_date}</span>
+            </p>
+
+            <p style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <img src={ticket} alt="ticket" style={{ width: '16px', height: '16px', objectFit: 'contain', filter: 'invert(37%) sepia(93%) saturate(1463%) hue-rotate(338deg) brightness(97%) contrast(101%)' }} />
+              <span><strong>Còn trống:</strong> {tour.slots} chỗ đăng ký</span>
+            </p>
+
+            {tour.latitude && tour.longitude && (
+              <p className="coordinates-tag" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '12px' }}>
+                <img 
+                  src={adress} 
+                  alt="coordinates" 
+                  style={{ 
+                    width: '16px', 
+                    height: '16px', 
+                    objectFit: 'contain',
+                    filter: 'invert(27%) sepia(91%) saturate(5453%) hue-rotate(354deg) brightness(94%) contrast(94%)' 
+                  }} 
+                />
+                <span><strong>Vĩ độ/Kinh độ:</strong> {tour.latitude}, {tour.longitude}</span>
+              </p>
+            )}
+          </div>
+
+          {/* ==========================================================================
+             REFACTOR: KHU VỰC TRẠNG THÁI & SỐ LƯỢNG ẢNH TRÊN MỘT HÀNG
+             ========================================================================== */}
+          <div className="tour-card-footer" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '14px', paddingBottom: '12px', borderBottom: '1px solid #f1f5f9' }}>
+            
+            {/* Logic trạng thái Soft Mượt mà */}
+            {tour.status === 'approved' && (
+              <span className="status-badge state-approved" style={{ display: 'flex', alignItems: 'center', gap: '5px', backgroundColor: 'rgba(46, 204, 113, 0.12)', color: '#1e7e34', padding: '5px 10px', borderRadius: '6px', fontWeight: '700', fontSize: '11.5px' }}>
+                <span style={{ width: '6px', height: '6px', background: '#2ecc71', borderRadius: '50%' }}></span>
+                Đang hoạt động
+              </span>
+            )}
+            
+            {tour.status === 'rejected' && (
+              <span className="status-badge state-rejected" style={{ display: 'flex', alignItems: 'center', gap: '5px', backgroundColor: 'rgba(231, 76, 60, 0.12)', color: '#b21f1f', padding: '5px 10px', borderRadius: '6px', fontWeight: '700', fontSize: '11.5px' }}>
+                <span style={{ width: '6px', height: '6px', background: '#e74c3c', borderRadius: '50%' }}></span>
+                Bị từ chối
+              </span>
+            )}
+            
+            {(tour.status === 'pending' || !tour.status) && (
+              <span className="status-badge state-pending" style={{ display: 'flex', alignItems: 'center', gap: '5px', backgroundColor: 'rgba(241, 196, 15, 0.15)', color: '#856404', padding: '5px 10px', borderRadius: '6px', fontWeight: '700', fontSize: '11.5px' }}>
+                <span style={{ width: '6px', height: '6px', background: '#f1c40f', borderRadius: '50%' }}></span>
+                Chờ duyệt
+              </span>
+            )}
+
+            {/* Khung số lượng hình ảnh tối giản */}
+            {tour.tour_images && tour.tour_images.length > 0 && (
+              <span className="images-count-badge" style={{ display: 'flex', alignItems: 'center', gap: '5px', background: '#f1f5f9', color: '#64748b', padding: '5px 10px', borderRadius: '6px', fontSize: '11.5px', fontWeight: '600' }}>
+                <img 
+                  src={camera} 
+                  alt="camera icon" 
+                  style={{ width: '13px', height: '13px', objectFit: 'contain', filter: 'invert(45%) sepia(10%) saturate(300%) hue-rotate(180deg)' }} 
+                />
+                <span>{tour.tour_images.length} hình ảnh</span>
+              </span>
+            )}
+
+          </div>
+        </div>
+      </Link>
+
+      {/* ==========================================================================
+         REFACTOR: KHU VỰC 3 NÚT CHỨC NĂNG HÀNH ĐỘNG CAO CẤP
+         ========================================================================== */}
+      <div className="tour-card-body" style={{ paddingTop: '0px', paddingBottom: '16px' }}>
+        <div className="tour-card-actions" style={{ display: 'flex', gap: '10px', marginTop: '12px', padding: '0 20px' }}>
+  
+  {/* NÚT SỬA */}
+  <button 
+    onClick={() => openEditModal(tour)} 
+    style={{ 
+      flex: 1, 
+      height: '36px', 
+      border: '1px solid #cbd5e1', 
+      borderRadius: '8px', 
+      backgroundColor: '#ffffff', 
+      color: '#334155', 
+      cursor: 'pointer', 
+      fontWeight: '600', 
+      fontSize: '13px', 
+      transition: 'all 0.2s ease',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '6px'
+    }}
+    onMouseEnter={(e) => { 
+      e.currentTarget.style.background = '#f8fafc'; 
+      e.currentTarget.style.borderColor = '#94a3b8';
+      // Đổi màu icon sang xanh thương hiệu khi hover nút
+      e.currentTarget.querySelector('.btn-icon').style.filter = 'invert(67%) sepia(87%) saturate(373%) hue-rotate(58deg) brightness(97%) contrast(87%)';
+    }}
+    onMouseLeave={(e) => { 
+      e.currentTarget.style.background = '#ffffff'; 
+      e.currentTarget.style.borderColor = '#cbd5e1';
+      // Trả icon về màu xám đen mặc định
+      e.currentTarget.querySelector('.btn-icon').style.filter = 'invert(24%) sepia(16%) saturate(1391%) hue-rotate(180deg) brightness(93%) contrast(89%)';
+    }}
+  >
+    <img 
+      src={pencil} 
+      alt="edit" 
+      className="btn-icon"
+      style={{ 
+        width: '14px', 
+        height: '14px', 
+        objectFit: 'contain',
+        filter: 'invert(24%) sepia(16%) saturate(1391%) hue-rotate(180deg) brightness(93%) contrast(89%)',
+        transition: 'filter 0.2s ease'
+      }} 
+    />
+    <span>Sửa</span>
+  </button>
+  
+  {/* NÚT ẢNH */}
+  <button 
+    onClick={() => openImageManager(tour)} 
+    style={{ 
+      flex: 1, 
+      height: '36px', 
+      border: '1px solid #cbd5e1', 
+      borderRadius: '8px', 
+      backgroundColor: '#ffffff', 
+      color: '#334155', 
+      cursor: 'pointer', 
+      fontWeight: '600', 
+      fontSize: '13px', 
+      transition: 'all 0.2s ease',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '6px'
+    }}
+    onMouseEnter={(e) => { 
+      e.currentTarget.style.background = '#f8fcf8'; 
+      e.currentTarget.style.borderColor = '#94a3b8';
+      // Đổi màu icon sang xanh thương hiệu khi hover nút
+      e.currentTarget.querySelector('.btn-icon').style.filter = 'invert(37%) sepia(99%) saturate(1989%) hue-rotate(97deg) brightness(95%) contrast(104%)';
+    }}
+    onMouseLeave={(e) => { 
+      e.currentTarget.style.background = '#ffffff'; 
+      e.currentTarget.style.borderColor = '#cbd5e1';
+      // Trả icon về màu xám đen mặc định
+      e.currentTarget.querySelector('.btn-icon').style.filter = 'invert(24%) sepia(16%) saturate(1391%) hue-rotate(180deg) brightness(93%) contrast(89%)';
+    }}
+  >
+    <img 
+      src={image} 
+      alt="images" 
+      className="btn-icon"
+      style={{ 
+        width: '14px', 
+        height: '14px', 
+        objectFit: 'contain',
+        filter: 'invert(24%) sepia(16%) saturate(1391%) hue-rotate(180deg) brightness(93%) contrast(89%)',
+        transition: 'filter 0.2s ease'
+      }} 
+    />
+    <span>Ảnh</span>
+  </button>
+  
+  {/* NÚT XÓA */}
+  <button 
+    onClick={() => handleDeleteTour(tour.id)} 
+    style={{ 
+      flex: 1, 
+      height: '36px', 
+      border: 'none', 
+      borderRadius: '8px', 
+      backgroundColor: '#ef4444', 
+      color: 'white', 
+      cursor: 'pointer', 
+      fontWeight: '600', 
+      fontSize: '13px', 
+      transition: 'all 0.2s ease', 
+      boxShadow: '0 2px 8px rgba(239, 68, 68, 0.15)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '6px'
+    }}
+    onMouseEnter={(e) => { e.currentTarget.style.background = '#dc2626'; }}
+    onMouseLeave={(e) => { e.currentTarget.style.background = '#ef4444'; }}
+  >
+    <img 
+      src={trash} 
+      alt="delete" 
+      style={{ 
+        width: '14px', 
+        height: '14px', 
+        objectFit: 'contain',
+        filter: 'brightness(0) invert(1)' /* Luôn giữ trắng nguyên bản trên nền đỏ */
+      }} 
+    />
+    <span>Xóa</span>
+  </button>
+
+</div>
+      </div>
+
+    </div>
+  ))}
+</div>
+      
+      
       )}
 
       {/* --- TOÀN BỘ CÁC MODAL CREATE VÀ IMAGE MANAGER BÊN DƯỚI GIỮ NGUYÊN --- */}

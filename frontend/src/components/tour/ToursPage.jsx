@@ -1,151 +1,231 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { getCategories } from '../../api/tourApi';
+import { useNavigate, useLocation } from 'react-router-dom'; // Thêm useLocation
+import { getCategories, getTourById } from '../../api/tourApi';
+import './ToursPage.css';
+
+const fallbackImage = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e';
 
 const ToursPage = () => {
-    const [tours, setTours] = useState([]);
-    const [minPrice, setMinPrice] = useState('');
-    const [maxPrice, setMaxPrice] = useState('');
-    const [search, setSearch] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [categoryId, setCategoryId] = useState('');
-    const [allCategories, setAllCategories] = useState([]);
-    
-    const [currentUser, setCurrentUser] = useState(null);
-    const [errors, setErrors] = useState({}); 
-    const [numPeople, setNumPeople] = useState(1);
-    const [bookingTourId, setBookingTourId] = useState(null); 
+  const [tours, setTours] = useState([]);
+  const [allCategories, setAllCategories] = useState([]);
 
-    const navigate = useNavigate();
+  const [search, setSearch] = useState('');
+  const [categoryId, setCategoryId] = useState('');
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [startDate, setStartDate] = useState('');
 
-    const fetchTours = async () => {
-        try {
-            const response = await axios.get('http://127.0.0.1:8000/api/tours/', {
-                params: {
-                    search: search,
-                    min_price: minPrice,
-                    max_price: maxPrice,
-                    start_date: startDate,
-                    category: categoryId || undefined,
-                }
-            });
-            const data = response.data;
-            setTours(Array.isArray(data) ? data : []);
-        } catch (error) {
-            console.error("Lỗi kết nối API:", error);
-            setTours([]);
-        }
-    };
+  const [currentUser, setCurrentUser] = useState(null);
 
-    const fetchCurrentUser = async () => {
-        try {
-            const token = localStorage.getItem('access_token');
-            if (!token) return;
+  const navigate = useNavigate();
+  const location = useLocation(); // Khởi tạo location để lấy query parameters
 
-            const response = await axios.get('http://127.0.0.1:8000/api/me/', {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            setCurrentUser(response.data); 
-        } catch (error) {
-            console.error("Không lấy được dữ liệu profile người dùng:", error);
-        }
-    };
+  // Đổi hàm thành nhận tham số tùy chọn (để phục vụ nạp dữ liệu ban đầu từ URL)
+  const fetchTours = async (searchParams = {}) => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/tours/', {
+        params: {
+          search: searchParams.search !== undefined ? searchParams.search : search,
+          category: searchParams.category !== undefined ? (searchParams.category || undefined) : (categoryId || undefined),
+          min_price: searchParams.min_price !== undefined ? searchParams.min_price : minPrice,
+          max_price: searchParams.max_price !== undefined ? searchParams.max_price : maxPrice,
+          start_date: searchParams.start_date !== undefined ? searchParams.start_date : startDate,
+        },
+      });
 
-    useEffect(() => {
-        fetchTours();
-        fetchCurrentUser();
-        getCategories().then(setAllCategories).catch(() => setAllCategories([]));
-    }, []);
+      const toursData = Array.isArray(response.data) ? response.data : [];
 
-    const getStatusBadgeStyles = (status) => {
-        switch (status) {
-            case 'approved': return { text: 'Đã duyệt', color: '#2ecc71', bg: '#e8f8f5' };
-            case 'pending': return { text: 'Chờ duyệt', color: '#f39c12', bg: '#fef5e7' };
-            case 'rejected': return { text: 'Từ chối', color: '#e74c3c', bg: '#fdedec' };
-            default: return { text: status, color: '#7f8c8d', bg: '#f2f4f4' };
-        }
-    };
+      const toursWithImages = await Promise.all(
+        toursData.map(async (tour) => {
+          try {
+            const detail = await getTourById(tour.id);
+            return {
+              ...tour,
+              image: detail.image_url || fallbackImage,
+            };
+          } catch (error) {
+            return {
+              ...tour,
+              image: fallbackImage,
+            };
+          }
+        })
+      );
 
-    const styles = {
-        wrapper: { backgroundColor: '#f0f2f5', minHeight: '100vh', padding: '90px 0 30px 0' },
-        container: { maxWidth: '1200px', margin: '0 auto', display: 'flex', gap: '25px', padding: '0 15px', alignItems: 'flex-start' },
-        sidebar: { width: '300px', backgroundColor: 'white', padding: '20px', borderRadius: '15px', boxShadow: '0 4px 12px rgba(0,0,0,0.08)', position: 'sticky', top: '90px' },
-        main: { flex: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' },
-        label: { display: 'block', fontWeight: '600', marginBottom: '5px', fontSize: '13px', color: '#444' },
-        input: { width: '100%', padding: '10px', marginBottom: '15px', borderRadius: '8px', border: '1px solid #ddd', boxSizing: 'border-box' },
-        button: { width: '100%', padding: '12px', backgroundColor: '#1a73e8', color: 'white', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' },
-        card: { backgroundColor: 'white', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' },
-        cardImg: { width: '100%', height: '180px', objectFit: 'cover' },
-        cardBody: { padding: '15px' },
-        price: { color: '#d93025', fontSize: '1.25rem', fontWeight: 'bold' }
-    };
+      setTours(toursWithImages);
+    } catch (error) {
+      console.error(error);
+      setTours([]);
+    }
+  };
 
-    return (
-        <div style={styles.wrapper}>
-            <div style={styles.container}>
-                <div style={styles.sidebar}>
-                    <h3 style={{ marginBottom: '20px', borderBottom: '1px solid #eee', paddingBottom: '10px' }}>Bộ lọc</h3>
-                    <label style={styles.label}>Loại tour:</label>
-                    <select style={styles.input} value={categoryId} onChange={(e) => setCategoryId(e.target.value)}>
-                        <option value="">Tất cả loại</option>
-                        {allCategories.map((c) => (
-                            <option key={c.id} value={c.id}>{c.name}</option>
-                        ))}
-                    </select>
-                    <label style={styles.label}>Tìm tên tour:</label>
-                    <input style={styles.input} type="text" placeholder="Ví dụ: Tour Đà Lạt..." value={search} onChange={(e) => setSearch(e.target.value)} />
-                    <label style={styles.label}>Ngày khởi hành:</label>
-                    <input style={styles.input} type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-                    <label style={styles.label}>Giá từ:</label>
-                    <input style={styles.input} type="number" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
-                    <label style={styles.label}>Đến giá:</label>
-                    <input style={styles.input} type="number" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} />
-                    <button style={styles.button} onClick={fetchTours}>Tìm kiếm ngay</button>
-                </div>
+  const fetchCurrentUser = async () => {
+    try {
+      const token = localStorage.getItem('access_token');
+      if (!token) return;
 
-                <div style={styles.main}>
-                    {tours.length === 0 && (
-                        <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#666', padding: '40px' }}>
-                            Không có tour nào phù hợp. Hãy thử đổi bộ lọc hoặc đảm bảo backend đang chạy.
-                        </p>
-                    )}
-                    {tours
-                        .filter(tour => {
-                            const isStaffOrProvider = currentUser && (currentUser.is_staff || currentUser.role === 'PROVIDER' || currentUser.role === 'ADMIN');
-                            return isStaffOrProvider ? true : tour.status === 'approved';
-                        })
-                        .map((tour) => {
-                            const isOwner = currentUser && (String(currentUser.id) === String(tour.creator) || currentUser.is_staff || currentUser.role === 'ADMIN');
-                            const badge = getStatusBadgeStyles(tour.status);
-                            return (
-                                <div key={tour.id} style={styles.card}>
-                                    <img src={tour.image || "https://via.placeholder.com/300x180"} alt={tour.title} style={styles.cardImg} />
-                                    <div style={styles.cardBody}>
-                                        {isOwner && (
-                                            <div style={{ display: 'inline-block', padding: '4px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: 'bold', color: badge.color, backgroundColor: badge.bg, marginBottom: '10px', border: `1px solid ${badge.color}` }}>
-                                                Status: {badge.text}
-                                            </div>
-                                        )}
-                                        <h4 style={{ margin: '0 0 8px 0', color: '#1a1f36' }}>{tour.title}</h4>
-                                        {tour.category_names?.length > 0 && (
-                                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '8px' }}>
-                                                {tour.category_names.map((name) => (
-                                                    <span key={name} style={{ fontSize: '11px', background: '#eef2ff', color: '#1a73e8', padding: '2px 8px', borderRadius: '4px' }}>{name}</span>
-                                                ))}
-                                            </div>
-                                        )}
-                                        <span style={styles.price}>{Number(tour.price).toLocaleString()}đ</span>
-                                        <button onClick={() => navigate(`/tours/${tour.id}`)} style={{ ...styles.button, marginTop: '10px', backgroundColor: '#34a853' }}>Đặt Tour</button>
-                                    </div>
-                                </div>
-                            );
-                        })
-                    }
-                </div>
+      const response = await axios.get('http://127.0.0.1:8000/api/me/', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCurrentUser(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrentUser();
+    getCategories()
+      .then(setAllCategories)
+      .catch(() => setAllCategories([]));
+
+    // Đọc tham số từ URL nếu người dùng tìm kiếm từ trang Home chuyển qua
+    const queryParams = new URLSearchParams(location.search);
+    const urlSearch = queryParams.get('search') || '';
+    const urlStartDate = queryParams.get('startDate') || '';
+    const urlMinPrice = queryParams.get('minPrice') || '';
+    const urlMaxPrice = queryParams.get('maxPrice') || '';
+
+    // Cập nhật lại giao diện bộ lọc hiển thị ở Sidebar
+    if (urlSearch) setSearch(urlSearch);
+    if (urlStartDate) setStartDate(urlStartDate);
+    if (urlMinPrice) setMinPrice(urlMinPrice);
+    if (urlMaxPrice) setMaxPrice(urlMaxPrice);
+
+    // Kích hoạt gọi API tìm kiếm dựa trên các dữ liệu nhận từ Home
+    fetchTours({
+      search: urlSearch,
+      start_date: urlStartDate,
+      min_price: urlMinPrice,
+      max_price: urlMaxPrice,
+    });
+  }, [location.search]); // Thực thi lại nếu URL thay đổi
+
+  return (
+    <div className="tours-page">
+      <div className="tours-container">
+        {/* SIDEBAR */}
+        <aside className="filter-sidebar">
+          <div className="filter-box">
+            <h2 className="filter-title">Bộ lọc</h2>
+
+            <div className="filter-group">
+              <label>Loại tour</label>
+              <select value={categoryId} onChange={(e) => setCategoryId(e.target.value)}>
+                <option value="">Tất cả loại</option>
+                {allCategories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
             </div>
-        </div>
-    );
+
+            <div className="filter-group">
+              <label>Tìm tour</label>
+              <input
+                type="text"
+                placeholder="Ví dụ: Tour Đà Lạt..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+
+            <div className="filter-group">
+              <label>Ngày khởi hành</label>
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              />
+            </div>
+
+            <div className="filter-group">
+              <label>Giá từ</label>
+              <input
+                type="number"
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+              />
+            </div>
+
+            <div className="filter-group">
+              <label>Đến giá</label>
+              <input
+                type="number"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+              />
+            </div>
+
+            <button className="search-btn" onClick={() => fetchTours()}>
+              Tìm kiếm ngay
+            </button>
+          </div>
+        </aside>
+
+        {/* TOURS GRID */}
+        <section className="tours-grid">
+          {tours
+            .filter((tour) => {
+              const isStaffOrProvider =
+                currentUser &&
+                (currentUser.is_staff ||
+                  currentUser.role === 'PROVIDER' ||
+                  currentUser.role === 'ADMIN');
+
+              return isStaffOrProvider ? true : tour.status === 'approved';
+            })
+            .map((tour) => (
+              <div key={tour.id} className="tour-card">
+                {/* IMAGE */}
+                <div className="tour-image-wrapper">
+                  <img
+                    src={tour.image || fallbackImage}
+                    alt={tour.title}
+                    onError={(e) => { e.target.src = fallbackImage; }}
+                    className="tour-image"
+                  />
+                  <div className="tour-badge">Popular</div>
+                </div>
+
+                {/* CONTENT */}
+                <div className="tour-content">
+                  <h3 className="tour-title">{tour.title}</h3>
+
+                  {tour.category_names?.length > 0 && (
+                    <div className="tour-categories">
+                      {tour.category_names.map((name) => (
+                        <span key={name} className="category-tag">
+                          {name}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="tour-footer">
+                    <div>
+                      <p className="tour-price-label">Giá từ</p>
+                      <h4 className="tour-price">
+                        {Number(tour.price).toLocaleString()} đ
+                      </h4>
+                    </div>
+                    <div className="tour-slots">{tour.slots} chỗ</div>
+                  </div>
+
+                  <button className="book-btn" onClick={() => navigate(`/tours/${tour.id}`)}>
+                    Đặt Tour
+                  </button>
+                </div>
+              </div>
+            ))}
+        </section>
+      </div>
+    </div>
+  );
 };
 
 export default ToursPage;

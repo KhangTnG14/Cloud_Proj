@@ -23,6 +23,7 @@ export default function Profile() {
       }
     };
     fetchMe();
+
     const interval = setInterval(() => {
       api.get('me/');
     }, 20000);
