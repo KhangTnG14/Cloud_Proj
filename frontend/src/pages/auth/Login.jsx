@@ -7,7 +7,7 @@ import travelImg from '../../assets/travel.png';
 export default function Login() {
   const navigate = useNavigate();
 
-  // GIỮ NGUYÊN: State quản lý dữ liệu Form cũ
+  // GIỮ NGUYÊN: State quản lý dữ liệu Form
   const [loginData, setLoginData] = useState({
     username: '',
     password: ''
@@ -15,7 +15,7 @@ export default function Login() {
 
   const [errorMsg, setErrorMsg] = useState('');
 
-  // GIỮ NGUYÊN: Hàm bắt sự kiện thay đổi input cũ
+  // GIỮ NGUYÊN: Hàm bắt sự kiện thay đổi input
   const handleChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
@@ -28,7 +28,7 @@ export default function Login() {
 
       console.log("Dữ liệu đăng nhập thành công:", response.data);
       
-      // 1. Giữ nguyên tính năng lưu dữ liệu vào localStorage của nhóm
+      // 1. Lưu dữ liệu vào localStorage
       localStorage.setItem('access_token', response.data.access_token);
       localStorage.setItem('refresh_token', response.data.refresh_token);
       localStorage.setItem('username', response.data.username);
@@ -58,15 +58,14 @@ export default function Login() {
     }
   };
 
-  // GIỮ NGUYÊN 100%: Toàn bộ cấu trúc giao diện HTML và thiết kế cũ
   return (
     <div className="login-container">
-      {/* IMAGE */}
+      {/* IMAGE SECTION (Bên trái) */}
       <div className="login-image-section">
         <img src={travelImg} alt="Travel Illustration" className="illustration" />
       </div>
 
-      {/* FORM */}
+      {/* FORM SECTION (Bên phải) */}
       <div className="login-form-section">
         <div className="form-wrapper">
           <h2 className="form-title">ĐĂNG NHẬP</h2>
@@ -81,6 +80,7 @@ export default function Login() {
                 placeholder="Nhập tên đăng nhập"
                 value={loginData.username}
                 onChange={handleChange}
+                className={errorMsg ? "input-error" : ""}
                 required
               />
             </div>
@@ -102,7 +102,7 @@ export default function Login() {
             {/* ERROR MESSAGE */}
             {errorMsg && <p className="error-message">{errorMsg}</p>}
 
-            {/* OPTIONS */}
+            {/* OPTIONS (Nhớ mật khẩu & Quên mật khẩu) */}
             <div className="form-options">
               <label className="remember-me">
                 <input type="checkbox" name="remember" />
@@ -113,12 +113,12 @@ export default function Login() {
               </Link>
             </div>
 
-            {/* BUTTON */}
+            {/* BUTTON SUBMIT */}
             <button type="submit" className="btn-login">
               ĐĂNG NHẬP
             </button>
 
-            {/* REGISTER */}
+            {/* REGISTER FOOTER */}
             <div className="register-footer">
               <p>Chưa có tài khoản?</p>
               <Link to="/register" className="register-link">

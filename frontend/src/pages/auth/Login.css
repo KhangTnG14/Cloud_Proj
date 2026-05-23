@@ -2,143 +2,193 @@
     display: flex;
     min-height: 100vh;
     width: 100%;
-    background-color: #f4f7f6;
-    /* Màu nền nhạt như trong ảnh */
+    background-color: #ffffff;
 }
 
 
-/* Phần hình ảnh */
+/* Phần hình ảnh bên trái */
 
 .login-image-section {
-    flex: 1;
+    flex: 1.1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
 }
 
 .illustration {
-    max-width: 80%;
+    max-width: 70%;
+    /* Thu nhỏ ảnh lại một chút cho thanh thoát */
     height: auto;
 }
 
 
-/* Phần Form */
+/* Phần Form bên phải */
 
 .login-form-section {
-    flex: 1;
+    flex: 0.9;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e1fbd9;
+    background-color: #e2fbe0;
+    padding: 15px;
 }
 
 .form-wrapper {
     width: 100%;
-    max-width: 400px;
-    padding: 20px;
+    max-width: 360px;
+    /* Thu hẹp độ rộng form gọn gàng hơn */
 }
 
 .form-title {
     text-align: center;
-    color: #2e7d32;
-    /* Màu xanh lá đặc trưng */
-    font-size: 30px;
-    margin-bottom: 40px;
+    color: #277735;
+    font-size: 26px;
+    /* Giảm cỡ chữ tiêu đề */
+    margin-bottom: 25px;
+    /* Thu hẹp khoảng cách */
     font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 
-/* Custom Input Underline */
+/* Cấu trúc Input nhóm dọc */
 
 .input-group {
-    margin-bottom: 25px;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center;
-    gap: 10px;
+    margin-bottom: 16px;
+    /* Giảm khoảng cách giữa các ô */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* Giảm khoảng cách label và input */
 }
 
 .input-group label {
-    width: 120px;
-    font-size: 14px;
-    color: #333;
+    font-size: 13px;
+    /* Thu nhỏ chữ label */
+    color: #333333;
+    font-weight: 500;
 }
 
 .input-group label span {
-    color: red;
+    color: #d32f2f;
+    margin-left: 2px;
 }
+
+
+/* Hộp input nhỏ nhắn, vừa vặn */
 
 .input-group input {
-    flex: 1;
-    border: none;
-    border-bottom: 1px solid #333;
-    /* Đường kẻ dưới */
-    background: transparent;
-    padding: 5px 0;
+    width: 100%;
+    border: 1px solid #b0bec5;
+    border-radius: 6px;
+    /* Bo góc nhỏ hơn một chút cho sắc nét */
+    background-color: #edf2fa;
+    padding: 9px 12px;
+    /* Giảm padding để input mỏng và gọn hơn */
     outline: none;
-    font-size: 14px;
+    font-size: 13.5px;
+    /* Giảm kích thước chữ nhập vào */
+    color: #333;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+    border-color: #277735;
+    background-color: #ffffff;
 }
 
 
-/* Options & Button */
+/* Khối chức năng Nhớ mật khẩu & Quên mật khẩu */
 
 .form-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    /* Thu hẹp khoảng cách */
     font-size: 13px;
+    /* Thu nhỏ chữ */
 }
 
 .remember-me {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     color: #333;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.remember-me input {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
 }
 
 .forgot-link {
-    color: #2e7d32;
+    color: #277735;
     text-decoration: underline;
+    font-weight: 500;
 }
+
+
+/* Nút bấm Đăng Nhập nhỏ gọn */
 
 .btn-login {
     width: 100%;
-    padding: 12px;
-    background-color: #2e7d32;
+    padding: 10px;
+    /* Giảm độ dày nút */
+    background-color: #277735;
     color: white;
     border: none;
-    border-radius: 25px;
-    /* Bo tròn nút */
+    border-radius: 20px;
+    /* Bo tròn vừa vặn độ cao mới */
+    font-size: 14px;
+    /* Giảm cỡ chữ nút */
     font-weight: bold;
     cursor: pointer;
     margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
 }
 
 .btn-login:hover {
-    background-color: #1b5e20;
+    background-color: #1e5a28;
 }
+
+
+/* Khối Đăng ký tài khoản mới */
 
 .register-footer {
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
 }
 
 .register-link {
-    color: #2e7d32;
+    color: #277735;
     font-weight: bold;
     text-decoration: underline;
 }
 
+
+/* CSS xử lý khi có lỗi đăng nhập */
+
 .error-message {
-    color: red;
-    font-size: 15px;
-    margin-top: -20px;
-    margin-bottom: 20px;
-    text-align: right;
+    color: #d32f2f;
+    font-size: 12.5px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
 .input-error {
-    border-bottom: 2px solid red !important;
+    border: 1px solid #d32f2f !important;
+    background-color: #fbe9e7 !important;
 }
