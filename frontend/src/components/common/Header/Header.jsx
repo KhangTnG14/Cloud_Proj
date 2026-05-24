@@ -6,6 +6,7 @@ import User from '../../../assets/user.png';
 import Order from '../../../assets/order.png';
 import Logout from '../../../assets/logout.png';
 import './Header.css';
+import { isRegularCustomer } from '../../../utils/roleUtils';
 
 export default function Header() {
   const location = useLocation();
@@ -15,6 +16,7 @@ export default function Header() {
   const token = localStorage.getItem('access_token');
   const username = localStorage.getItem('username');
   const role = localStorage.getItem('role') ? localStorage.getItem('role').toLowerCase() : '';
+  const showMyOrders = isRegularCustomer();
 
   const isActive = (path) => location.pathname === path;
 
@@ -97,10 +99,12 @@ export default function Header() {
                     Trang cá nhân
                   </Link>
                   
-                  <Link to="/booking-history" className="dropdown-item">
-                    <img src={Order} alt="order icon" className="menu-item-icon" />
-                    Đơn đặt của tôi
-                  </Link>
+                  {showMyOrders && (
+                    <Link to="/booking-history" className="dropdown-item">
+                      <img src={Order} alt="order icon" className="menu-item-icon" />
+                      Đơn đặt của tôi
+                    </Link>
+                  )}
                   
                   <div className="dropdown-divider"></div>
                   

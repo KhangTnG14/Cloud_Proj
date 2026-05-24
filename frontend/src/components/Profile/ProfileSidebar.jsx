@@ -1,7 +1,10 @@
 import React from 'react';
 import './ProfileSidebar.css';
+import { isRegularCustomer } from '../../utils/roleUtils';
 
 export default function ProfileSidebar({ activeTab, onChangeTab, user }) {
+  const isRegularUser = isRegularCustomer(user);
+
   return (
     <aside className="profile-sidebar">
       <div className="sidebar-user">
@@ -21,12 +24,14 @@ export default function ProfileSidebar({ activeTab, onChangeTab, user }) {
         >
           Thông tin
         </button>
-        <button
-          className={activeTab === 'history' ? 'active' : ''}
-          onClick={() => onChangeTab('history')}
-        >
-          Lịch sử đặt tour
-        </button>
+        {isRegularUser && (
+          <button
+            className={activeTab === 'history' ? 'active' : ''}
+            onClick={() => onChangeTab('history')}
+          >
+            Lịch sử đặt tour
+          </button>
+        )}
         <button
           className={activeTab === 'password' ? 'active' : ''}
           onClick={() => onChangeTab('password')}
@@ -34,12 +39,14 @@ export default function ProfileSidebar({ activeTab, onChangeTab, user }) {
           Đổi mật khẩu
         </button>
 
-        <button
-          className={activeTab === 'reviews' ? 'active' : ''}
-          onClick={() => onChangeTab('reviews')}
-        >
-          Đánh giá của tôi
-        </button>
+        {isRegularUser && (
+          <button
+            className={activeTab === 'reviews' ? 'active' : ''}
+            onClick={() => onChangeTab('reviews')}
+          >
+            Đánh giá của tôi
+          </button>
+        )}
       </div>
     </aside>
   );
