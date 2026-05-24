@@ -1,5 +1,16 @@
 import axiosClient from './axiosClient';
 
+export const isCustomerTourVisible = (tour) => {
+    if (tour.status !== 'approved') return false;
+    if (Number(tour.slots) <= 0) return false;
+    if (tour.departure_date) {
+        const now = new Date();
+        const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+        if (tour.departure_date <= today) return false;
+    }
+    return true;
+};
+
 // Lấy danh sách tất cả tour (Khang đã làm)
 export const getTours = async() => {
     const response = await axiosClient.get('tours/');

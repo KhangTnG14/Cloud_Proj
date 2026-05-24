@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getCategories, getTourById } from '../../api/tourApi';
+import { getCategories, getTourById, isCustomerTourVisible } from '../../api/tourApi';
 import './ToursPage.css';
 
 const fallbackImage = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e';
@@ -189,8 +189,8 @@ const ToursPage = () => {
               // Provider không thấy tour bị rejected
               if (isProvider) return tour.status !== 'rejected';
 
-              // Customer / khách chỉ thấy tour approved
-              return tour.status === 'approved';
+              // Customer / khách chỉ thấy tour còn đặt được
+              return isCustomerTourVisible(tour);
             })
             .map((tour) => (
               <div key={tour.id} className="tour-card">
