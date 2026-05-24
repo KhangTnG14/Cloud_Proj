@@ -33,11 +33,11 @@ class TourImageSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     user_name = serializers.ReadOnlyField(source='user.username')
-    
+    tour_title = serializers.CharField(source='tour.title', read_only=True)
     class Meta:
         model = Review
-        fields = ['id', 'user', 'user_name', 'rating', 'content', 'created_at']
-        read_only_fields = ['user']
+        fields = ['id', 'user', 'user_name', 'tour', 'tour_title','rating', 'content', 'created_at']
+        read_only_fields = ['user', 'tour', 'created_at']
 
 class TourSerializer(serializers.ModelSerializer):
     creator_name = serializers.ReadOnlyField(source='creator.username')
