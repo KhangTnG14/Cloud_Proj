@@ -1,9 +1,9 @@
 import React from 'react';
 import './ProfileSidebar.css';
-import { isRegularCustomer } from '../../utils/roleUtils';
 
 export default function ProfileSidebar({ activeTab, onChangeTab, user }) {
-  const isRegularUser = isRegularCustomer(user);
+  const currentRole = user?.role?.toLowerCase();
+  const isRestricted = currentRole === 'admin' || currentRole === 'provider';
 
   return (
     <aside className="profile-sidebar">
@@ -14,7 +14,13 @@ export default function ProfileSidebar({ activeTab, onChangeTab, user }) {
           className="sidebar-avatar"
         />
         <h3>{user?.username || 'Người dùng'}</h3>
-        <span className="sidebar-role">{user?.role || 'CUSTOMER'}</span>
+        <span className="sidebar-role">
+          {currentRole === 'admin'
+            ? 'ADMIN'
+            : currentRole === 'provider'
+            ? 'PROVIDER'
+            : 'CUSTOMER'}
+        </span>
       </div>
 
       <div className="sidebar-menu">
@@ -24,7 +30,8 @@ export default function ProfileSidebar({ activeTab, onChangeTab, user }) {
         >
           Thông tin
         </button>
-        {isRegularUser && (
+
+        {!isRestricted && (
           <button
             className={activeTab === 'history' ? 'active' : ''}
             onClick={() => onChangeTab('history')}
@@ -32,6 +39,7 @@ export default function ProfileSidebar({ activeTab, onChangeTab, user }) {
             Lịch sử đặt tour
           </button>
         )}
+
         <button
           className={activeTab === 'password' ? 'active' : ''}
           onClick={() => onChangeTab('password')}
@@ -39,12 +47,14 @@ export default function ProfileSidebar({ activeTab, onChangeTab, user }) {
           Đổi mật khẩu
         </button>
 
-        <button
-          className={activeTab === 'reviews' ? 'active' : ''}
-          onClick={() => onChangeTab('reviews')}
-        >
-          Đánh giá của tôi
-        </button>
+        {!isRestricted && (
+          <button
+            className={activeTab === 'reviews' ? 'active' : ''}
+            onClick={() => onChangeTab('reviews')}
+          >
+            Đánh giá của tôi
+          </button>
+        )}
       </div>
     </aside>
   );
