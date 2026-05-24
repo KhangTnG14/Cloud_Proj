@@ -389,7 +389,7 @@ else if (serverErrors?.date_error) {
                         {tour.category_names?.length > 0 && (
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', margin: '8px 0' }}>
                                 {tour.category_names.map((name) => (
-                                    <span key={name} style={{ fontSize: '12px', background: 'rgba(255,255,255,0.9)', color: '#1a73e8', padding: '4px 10px', borderRadius: '6px', fontWeight: 600 }}>
+                                    <span key={name} style={{ fontSize: '12px', background: 'rgba(255,255,255,0.9)', color: '#e8bb1a', padding: '4px 10px', borderRadius: '6px', fontWeight: 600 }}>
                                         {name}
                                     </span>
                                 ))}
