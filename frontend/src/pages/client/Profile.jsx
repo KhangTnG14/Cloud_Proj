@@ -5,8 +5,7 @@ import ProfileSidebar from '../../components/profile/ProfileSidebar';
 import ProfileInfo from '../../components/profile/ProfileInfo';
 import BookingHistory from '../../components/profile/BookingHistory';
 import ChangePassword from '../../components/profile/ChangePassword';
-import MyReviews from './MyReviews';
-import { isRegularCustomer } from '../../utils/roleUtils';
+import MyReviews from './MyReviews'; 
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -51,7 +50,7 @@ export default function Profile() {
         {activeTab === 'info' && <ProfileInfo user={user} onProfileUpdated={setUser} />}
         {activeTab === 'history' && isRegularUser && <BookingHistory />}
         {activeTab === 'password' && <ChangePassword />}
-        {activeTab === 'reviews' && isRegularUser && <MyReviews />}
+        {activeTab === 'reviews'  && <MyReviews />}
       </div>
     </div>
   );

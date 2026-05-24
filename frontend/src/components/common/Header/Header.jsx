@@ -58,7 +58,7 @@ export default function Header() {
 
           {role === 'admin' && (
             <li className={isActive('/admin/dashboard') ? 'active' : ''}>
-              <Link to="/admin/dashboard" style={{ color: '#cc2e2e', fontWeight: 'bold' }}>Kênh Admin</Link>
+              <Link to="/admin/dashboard">Kênh Admin</Link>
             </li>
           )}
         </ul>

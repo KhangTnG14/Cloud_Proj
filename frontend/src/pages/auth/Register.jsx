@@ -21,13 +21,13 @@ export default function Register() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrorMsg(''); // clear lỗi khi user nhập lại
+    setErrorMsg(''); // Xóa lỗi khi user nhập lại
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate
+    // Kiểm tra mật khẩu
     if (formData.password !== formData.confirmPassword) {
       setErrorMsg("Mật khẩu xác nhận không khớp!");
       return;
@@ -60,8 +60,7 @@ export default function Register() {
       const data = error.response?.data;
       
       if (data) {
-        // Backend DRF trả lỗi dạng {"email": ["..."], "phone": ["..."], "password": ["..."]}
-        // Tổng hợp tất cả lỗi lại thành 1 chuỗi để hiển thị
+        // Tổng hợp tất cả lỗi từ Backend DRF trả về thành một chuỗi văn bản
         const messages = [];
 
         if (data.email) messages.push(`Email: ${data.email[0]}`);
@@ -82,12 +81,12 @@ export default function Register() {
 
   return (
     <div className="register-container">
-      {/* IMAGE */}
+      {/* IMAGE SECTION (Bên trái) */}
       <div className="register-image-section">
         <img src={travelImg} alt="Travel Illustration" className="illustration" />
       </div>
 
-      {/* FORM */}
+      {/* FORM SECTION (Bên phải) */}
       <div className="register-form-section">
         <div className="reg-form-wrapper">
           <h2 className="reg-form-title">ĐĂNG KÝ</h2>
@@ -100,6 +99,7 @@ export default function Register() {
               <input
                 type="text"
                 name="username"
+                placeholder="Nhập tên đăng nhập"
                 value={formData.username}
                 onChange={handleChange}
                 className={errorMsg ? "input-error" : ""}
@@ -113,6 +113,7 @@ export default function Register() {
               <input
                 type="text"
                 name="phone"
+                placeholder="Nhập số điện thoại"
                 value={formData.phone}
                 onChange={handleChange}
                 className={errorMsg ? "input-error" : ""}
@@ -126,6 +127,7 @@ export default function Register() {
               <input
                 type="email"
                 name="email"
+                placeholder="Nhập địa chỉ email"
                 value={formData.email}
                 onChange={handleChange}
                 className={errorMsg ? "input-error" : ""}
@@ -133,7 +135,7 @@ export default function Register() {
               />
             </div>
 
-            {/* ROLE */}
+            {/* ROLE RADIO SELECTION */}
             <div className="reg-input-group">
               <label>Bạn là:</label>
               <div className="role-options">
@@ -167,6 +169,7 @@ export default function Register() {
               <input
                 type="password"
                 name="password"
+                placeholder="Nhập mật khẩu (tối thiểu 8 ký tự)"
                 value={formData.password}
                 onChange={handleChange}
                 className={errorMsg ? "input-error" : ""}
@@ -174,12 +177,13 @@ export default function Register() {
               />
             </div>
 
-            {/* CONFIRM */}
+            {/* CONFIRM PASSWORD */}
             <div className="reg-input-group">
               <label>Nhập lại mật khẩu: <span>*</span></label>
               <input
                 type="password"
                 name="confirmPassword"
+                placeholder="Xác nhận lại mật khẩu"
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 className={errorMsg ? "input-error" : ""}
@@ -187,13 +191,13 @@ export default function Register() {
               />
             </div>
 
-            {/* ERROR */}
+            {/* ERROR MESSAGE */}
             {errorMsg && <p className="error-message">{errorMsg}</p>}
 
-            {/* SUCCESS */}
+            {/* SUCCESS MESSAGE */}
             {successMsg && <p className="success-message">{successMsg}</p>}
 
-            {/* BUTTON */}
+            {/* BUTTON SUBMIT */}
             <button type="submit" className="btn-finish">
               HOÀN TẤT
             </button>

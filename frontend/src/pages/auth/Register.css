@@ -2,162 +2,188 @@
     display: flex;
     min-height: 100vh;
     width: 100%;
-    background-color: #f4f7f6;
+    background-color: #ffffff;
 }
+
+
+/* Phần hình ảnh bên trái */
 
 .register-image-section {
-    flex: 1;
+    flex: 1.1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
 }
 
+.illustration {
+    max-width: 70%;
+    height: auto;
+}
+
+
+/* Phần Form bên phải */
+
 .register-form-section {
-    flex: 1;
+    flex: 0.9;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e1fbd9;
+    background-color: #e2fbe0;
+    padding: 15px;
 }
 
 .reg-form-wrapper {
     width: 100%;
-    max-width: 450px;
-    padding: 20px;
+    max-width: 360px;
+    /* Ép độ rộng từ 440px xuống 360px để form đăng ký cực kỳ ngăn nắp */
 }
 
 .reg-form-title {
     text-align: center;
-    color: #2e7d32;
-    font-size: 30px;
-    margin-bottom: 25px;
+    color: #277735;
+    font-size: 26px;
+    margin-bottom: 20px;
     font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 
-/* Input Underline Style */
+/* Cấu trúc Input nhóm dọc */
 
 .reg-input-group {
-    margin-bottom: 20px;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center;
-    gap: 10px;
+    margin-bottom: 12px;
+    /* Khoảng cách sít lại giúp nhiều trường nhập liệu không bị tràn màn hình */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .reg-input-group label {
-    width: 140px;
-    font-size: 14px;
-    color: #333;
+    font-size: 13px;
+    color: #333333;
+    font-weight: 500;
 }
 
 .reg-input-group label span {
-    color: red;
+    color: #d32f2f;
+    margin-left: 2px;
 }
+
+
+/* Hộp input nhỏ gọn */
 
 .reg-input-group input[type="text"],
 .reg-input-group input[type="email"],
 .reg-input-group input[type="password"] {
-    flex: 1;
-    border: none;
-    border-bottom: 1px solid #333;
-    background: transparent;
-    padding: 5px 0;
-    outline: none;
-    font-size: 14px;
-}
-
-
-/* Radio Button Style */
-
-.gender-options {
-    display: flex;
-    gap: 30px;
-    flex: 1;
-}
-
-.radio-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.radio-label input {
-    cursor: pointer;
-}
-
-
-/* Button & Footer */
-
-.btn-finish {
     width: 100%;
-    padding: 12px;
-    background-color: #2e7d32;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 15px;
+    border: 1px solid #b0bec5;
+    border-radius: 6px;
+    background-color: #edf2fa;
+    padding: 8px 12px;
+    /* Tiết kiệm diện tích chiều cao */
+    outline: none;
+    font-size: 13.5px;
+    color: #333;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
 }
 
-.btn-finish:hover {
-    background-color: #1b5e20;
-}
-
-.login-footer {
-    text-align: center;
-    font-size: 14px;
-}
-
-.login-now-link {
-    color: #2e7d32;
-    font-weight: bold;
-    text-decoration: underline;
+.reg-input-group input:focus {
+    border-color: #277735;
+    background-color: #ffffff;
 }
 
 
-/* Thay thế hoặc bổ sung cho gender-options */
+/* Khu vực lựa chọn Radio nút "Bạn là:" */
 
 .role-options {
     display: flex;
-    gap: 15px;
-    flex: 1;
+    gap: 20px;
+    padding: 3px 0;
 }
 
 .radio-label {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
     cursor: pointer;
     font-size: 13px;
-    /* Nhỏ lại một chút để vừa hàng */
+    color: #333333;
     white-space: nowrap;
 }
 
-.error-message {
-    color: red;
+.radio-label input[type="radio"] {
+    width: 14px;
+    height: 14px;
+    accent-color: #277735;
+    cursor: pointer;
+}
+
+
+/* Nút Hoàn Tất thon gọn */
+
+.btn-finish {
+    width: 100%;
+    padding: 11px;
+    background-color: #277735;
+    color: white;
+    border: none;
+    border-radius: 20px;
     font-size: 15px;
-    margin-top: -5px;
-    margin-bottom: 10px;
-    text-align: right;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.btn-finish:hover {
+    background-color: #1e5a28;
+}
+
+
+/* Điều hướng chân trang đăng nhập nhanh */
+
+.login-footer {
+    text-align: center;
+    font-size: 13px;
+    color: #555555;
+}
+
+.login-now-link {
+    color: #277735;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 4px;
+}
+
+
+/* Thông báo Lỗi & Thành công đồng bộ */
+
+.error-message {
+    color: #d32f2f;
+    font-size: 12.5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    text-align: left;
+    line-height: 1.4;
 }
 
 .input-error {
-    border-bottom: 2px solid red !important;
+    border: 1px solid #d32f2f !important;
+    background-color: #fbe9e7 !important;
 }
 
 .success-message {
-    color: #2e7d32;
-    background-color: #e8f5e9;
-    border: 1px solid #2e7d32;
+    color: #1b5e20;
+    background-color: #c8e6c9;
+    border: 1px solid #a5d6a7;
     padding: 10px;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 6px;
+    font-size: 13px;
     margin-bottom: 10px;
     text-align: center;
+    font-weight: 500;
 }

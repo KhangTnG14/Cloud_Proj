@@ -86,12 +86,12 @@ export default function ForgotPassword() {
 
   return (
     <div className="forgot-password-container">
-      {/* IMAGE */}
+      {/* IMAGE SECTION (Bên trái) */}
       <div className="forgot-password-image-section">
         <img src={travelImg} alt="Travel Illustration" className="illustration" />
       </div>
 
-      {/* FORM */}
+      {/* FORM SECTION (Bên phải) */}
       <div className="forgot-password-form-section">
         <div className="form-wrapper">
           <h2 className="form-title">QUÊN MẬT KHẨU</h2>
@@ -109,6 +109,7 @@ export default function ForgotPassword() {
                   placeholder="Nhập email của bạn"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className={errorMsg ? "input-error" : ""}
                   required
                 />
               </div>
@@ -131,6 +132,7 @@ export default function ForgotPassword() {
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
                   maxLength={6}
+                  className={errorMsg ? "input-error" : ""}
                   required
                 />
               </div>
@@ -138,7 +140,9 @@ export default function ForgotPassword() {
               <button type="submit" className="btn-submit" disabled={loading}>
                 {loading ? 'ĐANG XÁC THỰC...' : 'XÁC THỰC MÃ'}
               </button>
-              <button type="button" className="btn-back" onClick={() => setStep(0)}> Quay lại </button>
+              <button type="button" className="btn-back-link" onClick={() => { setStep(0); setErrorMsg(''); }}>
+                Quay lại nhập Email
+              </button>
             </form>
           )}
 
@@ -153,6 +157,7 @@ export default function ForgotPassword() {
                   placeholder="Nhập mật khẩu mới"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
+                  className={errorMsg ? "input-error" : ""}
                   required
                   minLength={8}
                 />
@@ -164,6 +169,7 @@ export default function ForgotPassword() {
                   placeholder="Nhập lại mật khẩu mới"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
+                  className={errorMsg ? "input-error" : ""}
                   required
                 />
               </div>
@@ -174,8 +180,11 @@ export default function ForgotPassword() {
             </form>
           )}
 
+          {/* REGISTER FOOTER */}
           <div className="register-footer">
-            <Link to="/login" className="btn-back"> Quay lại đăng nhập </Link>
+            <Link to="/login" className="register-link">
+              Quay lại đăng nhập
+            </Link>
           </div>
         </div>
       </div>

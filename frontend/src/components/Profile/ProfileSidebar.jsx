@@ -39,14 +39,12 @@ export default function ProfileSidebar({ activeTab, onChangeTab, user }) {
           Đổi mật khẩu
         </button>
 
-        {isRegularUser && (
-          <button
-            className={activeTab === 'reviews' ? 'active' : ''}
-            onClick={() => onChangeTab('reviews')}
-          >
-            Đánh giá của tôi
-          </button>
-        )}
+        <button
+          className={activeTab === 'reviews' ? 'active' : ''}
+          onClick={() => onChangeTab('reviews')}
+        >
+          Đánh giá của tôi
+        </button>
       </div>
     </aside>
   );

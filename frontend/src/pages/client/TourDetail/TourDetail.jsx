@@ -285,7 +285,7 @@ export default function TourDetail() {
 const serverErrors = error.response?.data;
 
 // Cấu hình thông báo lỗi chung
-let errorMsg = "Có lỗi xảy ra, vui lòng thử lại!";
+let errorMsg = "Bạn không thể đặt tour này. Vui lòng đăng nhập để đặt tour!!!";
 let errorTitle = "Lỗi đặt tour";
 
 // 1. BẮT THEO MÃ STATUS 403 (Không cần Backend trả về chữ)
