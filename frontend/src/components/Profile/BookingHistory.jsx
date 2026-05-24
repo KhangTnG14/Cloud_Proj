@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getMyBookings } from '../../api/tourApi';
+import { getMyBookings, cancelBooking } from '../../api/tourApi';
 import './BookingHistory.css';
 
 const sections = [
@@ -12,24 +12,46 @@ const sections = [
 export default function BookingHistory() {
   const [bookings, setBookings] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [cancellingId, setCancellingId] = useState(null);
+
+  const fetchBookings = async () => {
+    try {
+      const res = await getMyBookings();
+      setBookings(res.bookings);
+    } catch (error) {
+      console.error('Lỗi lấy lịch sử đặt tour:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchBookings = async () => {
-      try {
-        const res = await getMyBookings();
-        setBookings(res.bookings);
-      } catch (error) {
-        console.error('Lỗi lấy lịch sử đặt tour:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchBookings();
   }, []);
 
-  if (loading) return <div className="loading">Đang tải lịch sử đặt tour...</div>;
+  const handleCancel = async (id) => {
+    if (!window.confirm('Bạn có chắc chắn muốn hủy đơn tour này không?')) return;
 
-  if (!bookings) return <div className="loading">Không có dữ liệu.</div>;
+    setCancellingId(id);
+    try {
+      await cancelBooking(id);
+      alert('Hủy đơn tour thành công!');
+      setLoading(true);
+      await fetchBookings();
+    } catch (error) {
+      alert(error.response?.data?.error || 'Không thể hủy đơn tour!');
+    } finally {
+      setCancellingId(null);
+    }
+  };
+
+  if (loading) {
+    return <div className="loading">Đang tải lịch sử đặt tour...</div>;
+  }
+
+  if (!bookings) {
+    return <div className="loading">Không có dữ liệu.</div>;
+  }
 
   return (
     <div className="booking-history-card">
@@ -55,8 +77,19 @@ export default function BookingHistory() {
                 </div>
                 <div className="booking-right">
                   <p><strong>Ngày khởi hành:</strong> {item.tour_departure_date}</p>
+                  <p><strong>Số người:</strong> {item.number_of_people}</p>
                   <p><strong>Trạng thái:</strong> {item.status_display}</p>
                   <p><strong>Tổng tiền:</strong> {Number(item.total_price).toLocaleString()} VNĐ</p>
+                  {item.status === 'pending' && (
+                    <button
+                      type="button"
+                      className="btn-cancel-booking"
+                      onClick={() => handleCancel(item.id)}
+                      disabled={cancellingId === item.id}
+                    >
+                      {cancellingId === item.id ? 'Đang hủy...' : 'Hủy tour'}
+                    </button>
+                  )}
                 </div>
               </div>
             ))
