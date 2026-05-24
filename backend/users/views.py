@@ -16,6 +16,8 @@ from datetime import date
 logger = logging.getLogger('app_logger')
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from tours.models import Tour, Booking, Payment
+import cloudinary.uploader 
+
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
@@ -328,3 +330,75 @@ class UserRoleView(APIView):
             "role": role,
             "is_admin": user.is_superuser or user.is_staff
         })
+
+
+
+# backend/users/views.py — THÊM VÀO CUỐI
+
+
+
+# UPDATE DAY 19: Thêm API upload ảnh đại diện lên Cloudinary
+class UploadAvatarView(APIView):
+    """
+    POST /api/users/upload-avatar/
+    Nhận file ảnh từ thiết bị → upload lên Cloudinary → trả về URL → lưu vào user.avatar
+    """
+    permission_classes = [IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]  # Hỗ trợ nhận file
+
+    def post(self, request):
+        # 1. Kiểm tra có file không
+        file = request.FILES.get("avatar")
+        if not file:
+            return Response(
+                {"detail": "Vui lòng chọn file ảnh."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # 2. Kiểm tra định dạng file
+        ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/jpg"]
+        if file.content_type not in ALLOWED_TYPES:
+            return Response(
+                {"detail": "Chỉ chấp nhận file JPG, PNG, WEBP."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # 3. Kiểm tra dung lượng (tối đa 2MB)
+        MAX_SIZE = 2 * 1024 * 1024  # 2MB
+        if file.size > MAX_SIZE:
+            return Response(
+                {"detail": "File quá lớn. Tối đa 2MB."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            # 4. Upload lên Cloudinary
+            upload_result = cloudinary.uploader.upload(
+                file,
+                folder="tourgo/avatars",          # Lưu vào folder riêng
+                public_id=f"user_{request.user.id}",  # Tên file theo user ID
+                overwrite=True,                    # Ghi đè nếu đã có
+                transformation=[
+                    {"width": 300, "height": 300,
+                     "crop": "fill", "gravity": "face"}  # Crop vuông, focus mặt
+                ]
+            )
+
+            # 5. Lấy URL từ kết quả upload
+            avatar_url = upload_result.get("secure_url")
+
+            # 6. Lưu URL vào database
+            request.user.avatar = avatar_url
+            request.user.save(update_fields=["avatar"])
+
+            return Response({
+                "message": "Upload ảnh đại diện thành công!",
+                "avatar_url": avatar_url,
+                "user": UserSerializer(request.user).data
+            }, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response(
+                {"detail": f"Upload thất bại: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
