@@ -41,6 +41,36 @@
     margin: 6px 0;
 }
 
+.booking-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 220px;
+}
+
+.btn-cancel-booking {
+    margin-top: 10px;
+    background: #fff;
+    color: #c62828;
+    border: 1px solid #c62828;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-cancel-booking:hover:not(:disabled) {
+    background: #c62828;
+    color: #fff;
+}
+
+.btn-cancel-booking:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .empty-text {
     color: #666;
 }

@@ -129,4 +129,4 @@ export const deleteProviderTour = async (id) => {
 export const deleteTourImage = async (imageId) => {
   const response = await axiosClient.delete(`tours/provider/tours/images/${imageId}/`);
   return response.data;
-};
+};

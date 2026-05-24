@@ -328,22 +328,20 @@ class BookingDetailView(APIView):
         """
         try:
             booking = Booking.objects.get(pk=pk, user=request.user)
-            
+
             if booking.status == 'cancelled':
                 return Response({"error": "Đơn hàng này đã được hủy trước đó rồi!"}, status=400)
 
-            # Cập nhật trạng thái đơn hàng
             booking.status = 'cancelled'
             booking.save()
 
-            # Hoàn trả lại số lượng chỗ (slots) cho Tour
             tour = booking.tour
-            tour.slots += booking.number_of_people
+            tour.slots += 1
             tour.save()
 
             logger.info(f"Hủy đơn hàng thành công: User {request.user} - Booking ID {pk}")
             return Response({"message": "Hủy đơn hàng thành công!", "status": "cancelled"})
-            
+
         except Booking.DoesNotExist:
             return Response({"error": "Không tìm thấy đơn hàng để hủy!"}, status=404)
         
