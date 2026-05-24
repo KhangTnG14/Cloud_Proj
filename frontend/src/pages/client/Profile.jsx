@@ -5,7 +5,7 @@ import ProfileSidebar from '../../components/profile/ProfileSidebar';
 import ProfileInfo from '../../components/profile/ProfileInfo';
 import BookingHistory from '../../components/profile/BookingHistory';
 import ChangePassword from '../../components/profile/ChangePassword';
-import MyReviews from './MyReviews'; 
+import MyReviews from './MyReviews';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -16,7 +16,11 @@ export default function Profile() {
     const fetchMe = async () => {
       try {
         const response = await api.get('me/');
-        setUser(response.data);
+        const roleRes = await api.get('users/role/');
+        console.log('Role từ API:', response.data?.role);
+        console.log('Role từ role API:', roleRes.data);
+
+        setUser({ ...response.data, role: roleRes.data.role });
       } catch (error) {
         console.error('Lỗi lấy thông tin cá nhân:', error);
       } finally {
@@ -32,16 +36,35 @@ export default function Profile() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (!user || loading) return;
+    const currentRole = user?.role?.toLowerCase();
+
+    if (
+      (currentRole === 'admin' || currentRole === 'provider') &&
+      (activeTab === 'history' || activeTab === 'reviews')
+    ) {
+      setActiveTab('info');
+    }
+  }, [user, activeTab, loading]);
+
   if (loading) return <div className="loading">Đang tải...</div>;
+
+  const currentRole = user?.role?.toLowerCase();
+  const isRestricted = currentRole === 'admin' || currentRole === 'provider';
 
   return (
     <div className="profile-dashboard">
       <ProfileSidebar activeTab={activeTab} onChangeTab={setActiveTab} user={user} />
+
       <div className="profile-main">
         {activeTab === 'info' && <ProfileInfo user={user} onProfileUpdated={setUser} />}
-        {activeTab === 'history' && <BookingHistory />}
+
+        {activeTab === 'history' && !isRestricted && <BookingHistory />}
+
         {activeTab === 'password' && <ChangePassword />}
-        {activeTab === 'reviews'  && <MyReviews />}
+
+        {activeTab === 'reviews' && !isRestricted && <MyReviews />}
       </div>
     </div>
   );

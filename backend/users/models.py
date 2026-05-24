@@ -40,4 +40,4 @@ class SystemLog(models.Model):
         return f"[{self.created_at.strftime('%Y-%m-%d %H:%M:%S')}] {self.user} - {self.action}"
     
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['-created_at']

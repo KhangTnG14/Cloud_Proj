@@ -18,7 +18,8 @@ import MyReviews from './pages/client/MyReviews';
 import ProviderDashboard from './pages/provider/ProviderDashboard';
 import ProviderCustomers from './pages/provider/ProviderCustomers';
 import AdminDashboard from './pages/admin/AdminDashboard';
-import BookingHistory from './components/Profile/BookingHistory';
+import BookingHistory from './components/profile/BookingHistory';
+import CustomerOnlyRoute from './components/auth/CustomerOnlyRoute';
 
 function AppContent() {
   const location = useLocation();
@@ -40,10 +41,10 @@ function AppContent() {
         <Route path="/search" element={<SearchResult />} />
         <Route path="/my-orders" element={<MyOrders />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/booking-history" element={<BookingHistory />} />
+        <Route path="/booking-history" element={<CustomerOnlyRoute><BookingHistory /></CustomerOnlyRoute>} />
         <Route path="/payment/:bookingId" element={<PaymentSelection />} />
         <Route path="/payment-result" element={<PaymentResult />} />
-        <Route path="/my-reviews" element={<MyReviews />} />
+        <Route path="/my-reviews" element={<CustomerOnlyRoute><MyReviews /></CustomerOnlyRoute>} />
         <Route path="/provider/dashboard" element={<ProviderDashboard />} />
         <Route path="/provider/customers" element={<ProviderCustomers />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
