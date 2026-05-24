@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getCategories, getTourById, isCustomerTourVisible } from '../../api/tourApi';
+import { getCategories, isCustomerTourVisible, getTourDisplayImage } from '../../api/tourApi';
 import './ToursPage.css';
 
 const fallbackImage = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e';
@@ -35,24 +35,12 @@ const ToursPage = () => {
 
       const toursData = Array.isArray(response.data) ? response.data : [];
 
-      const toursWithImages = await Promise.all(
-        toursData.map(async (tour) => {
-          try {
-            const detail = await getTourById(tour.id);
-            return {
-              ...tour,
-              image: detail.image_url || fallbackImage,
-            };
-          } catch (error) {
-            return {
-              ...tour,
-              image: fallbackImage,
-            };
-          }
-        })
+      setTours(
+        toursData.map((tour) => ({
+          ...tour,
+          image: getTourDisplayImage(tour, fallbackImage),
+        }))
       );
-
-      setTours(toursWithImages);
     } catch (error) {
       console.error(error);
       setTours([]);

@@ -13,18 +13,17 @@ import 'swiper/css/pagination';
 import './TourDetail.css';
 import ImageUploadModal from '../../../components/tour/ImageUploadModal';
 
-// --- Bản đồ Leaflet ---
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-
-let DefaultIcon = L.icon({
-    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-});
-L.Marker.prototype.options.icon = DefaultIcon;
+const buildGoogleMapSrc = (tour) => {
+    const params = 'hl=vi&z=13&output=embed';
+    if (tour.latitude != null && tour.longitude != null) {
+        return `https://www.google.com/maps?q=${tour.latitude},${tour.longitude}&${params}`;
+    }
+    if (tour.address) {
+        const query = encodeURIComponent(`${tour.address}, Việt Nam`);
+        return `https://www.google.com/maps?q=${query}&${params}`;
+    }
+    return null;
+};
 
 export default function TourDetail() {
     const { id } = useParams();
@@ -157,6 +156,7 @@ else if (serverErrors?.date_error) {
         return `http://127.0.0.1:8000${url}`;
     };
     const displayImages = (tour.tour_images?.length > 0 ? tour.tour_images.map(img => img.image) : [tour.image_url]).map(img => formatImageUrl(img));
+    const mapSrc = buildGoogleMapSrc(tour);
 
     return (
         <div className="tour-detail-page">
@@ -209,14 +209,17 @@ else if (serverErrors?.date_error) {
                             <p>{tour.description}</p>
                         </section>
                         
-                        {/* MapContainer giữ nguyên như code cũ của bạn */}
                         <section className="tour-map-section">
                             <h3>Vị trí điểm đến</h3>
-                            {tour.latitude && tour.longitude && (
-                                <MapContainer center={[tour.latitude, tour.longitude]} zoom={13} style={{ height: '400px', width: '100%', borderRadius: '12px' }}>
-                                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                                    <Marker position={[tour.latitude, tour.longitude]}><Popup>{tour.address}</Popup></Marker>
-                                </MapContainer>
+                            {mapSrc && (
+                                <iframe
+                                    className="tour-map-iframe"
+                                    src={mapSrc}
+                                    title={`Bản đồ ${tour.title}`}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                />
                             )}
                         </section>
                         

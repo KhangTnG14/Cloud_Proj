@@ -1,5 +1,26 @@
 import axiosClient from './axiosClient';
 
+const MEDIA_BASE = 'http://127.0.0.1:8000';
+const DEFAULT_TOUR_IMAGE = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e';
+
+export const formatTourImageUrl = (url) => {
+    if (!url) return null;
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    return `${MEDIA_BASE}${url.startsWith('/') ? url : `/${url}`}`;
+};
+
+export const getTourDisplayImage = (tour, fallback = DEFAULT_TOUR_IMAGE) => {
+    if (tour?.tour_images?.length > 0) {
+        const fromUpload = formatTourImageUrl(tour.tour_images[0].image);
+        if (fromUpload) return fromUpload;
+    }
+    if (tour?.image_url) {
+        const fromUrl = formatTourImageUrl(tour.image_url);
+        if (fromUrl) return fromUrl;
+    }
+    return fallback;
+};
+
 export const isCustomerTourVisible = (tour) => {
     if (tour.status !== 'approved') return false;
     if (Number(tour.slots) <= 0) return false;
