@@ -4,7 +4,7 @@ from .views import (
     ChangePasswordView, RegisterView, LoginView, UpdateProfileView,
     VerifyOTPView, ResetPasswordView, ForgotPasswordView,
     AdminUserListView, AdminSystemStatsView,ToggleUserStatusView,
-    AdminSystemLogListView,UserRoleView
+    AdminSystemLogListView,UserRoleView, UploadAvatarView
 )
 
 urlpatterns = [
@@ -19,5 +19,6 @@ urlpatterns = [
     path('admin/system-stats/', AdminSystemStatsView.as_view(), name='admin-system-stats'),
     path('admin/users/<int:user_id>/toggle-status/', ToggleUserStatusView.as_view(), name='toggle-user-status'),
     path('admin/system-logs/', AdminSystemLogListView.as_view(), name='admin-system-logs'),
-    path('role/', UserRoleView.as_view())
+    path('role/', UserRoleView.as_view()),
+    path('upload-avatar/', UploadAvatarView.as_view(), name='upload-avatar'),  # update day 19
 ]

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom'; // Thêm useLocation
-import { getCategories, getTourById } from '../../api/tourApi';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { getCategories, isCustomerTourVisible, getTourDisplayImage } from '../../api/tourApi';
 import './ToursPage.css';
 
 const fallbackImage = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e';
@@ -19,9 +19,8 @@ const ToursPage = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   const navigate = useNavigate();
-  const location = useLocation(); // Khởi tạo location để lấy query parameters
+  const location = useLocation();
 
-  // Đổi hàm thành nhận tham số tùy chọn (để phục vụ nạp dữ liệu ban đầu từ URL)
   const fetchTours = async (searchParams = {}) => {
     try {
       const response = await axios.get('http://127.0.0.1:8000/api/tours/', {
@@ -36,24 +35,12 @@ const ToursPage = () => {
 
       const toursData = Array.isArray(response.data) ? response.data : [];
 
-      const toursWithImages = await Promise.all(
-        toursData.map(async (tour) => {
-          try {
-            const detail = await getTourById(tour.id);
-            return {
-              ...tour,
-              image: detail.image_url || fallbackImage,
-            };
-          } catch (error) {
-            return {
-              ...tour,
-              image: fallbackImage,
-            };
-          }
-        })
+      setTours(
+        toursData.map((tour) => ({
+          ...tour,
+          image: getTourDisplayImage(tour, fallbackImage),
+        }))
       );
-
-      setTours(toursWithImages);
     } catch (error) {
       console.error(error);
       setTours([]);
@@ -76,33 +63,39 @@ const ToursPage = () => {
     }
   };
 
+  const getStatusBadge = (status) => {
+    const statusMap = {
+      approved: { label: 'Đang hoạt động', className: 'status-approved' },
+      pending:  { label: 'Chờ duyệt',      className: 'status-pending'  },
+      rejected: { label: 'Từ chối',         className: 'status-rejected' },
+    };
+    return statusMap[status] || { label: status, className: '' };
+  };
+
   useEffect(() => {
     fetchCurrentUser();
     getCategories()
       .then(setAllCategories)
       .catch(() => setAllCategories([]));
 
-    // Đọc tham số từ URL nếu người dùng tìm kiếm từ trang Home chuyển qua
     const queryParams = new URLSearchParams(location.search);
     const urlSearch = queryParams.get('search') || '';
     const urlStartDate = queryParams.get('startDate') || '';
     const urlMinPrice = queryParams.get('minPrice') || '';
     const urlMaxPrice = queryParams.get('maxPrice') || '';
 
-    // Cập nhật lại giao diện bộ lọc hiển thị ở Sidebar
     if (urlSearch) setSearch(urlSearch);
     if (urlStartDate) setStartDate(urlStartDate);
     if (urlMinPrice) setMinPrice(urlMinPrice);
     if (urlMaxPrice) setMaxPrice(urlMaxPrice);
 
-    // Kích hoạt gọi API tìm kiếm dựa trên các dữ liệu nhận từ Home
     fetchTours({
       search: urlSearch,
       start_date: urlStartDate,
       min_price: urlMinPrice,
       max_price: urlMaxPrice,
     });
-  }, [location.search]); // Thực thi lại nếu URL thay đổi
+  }, [location.search]);
 
   return (
     <div className="tours-page">
@@ -171,13 +164,21 @@ const ToursPage = () => {
         <section className="tours-grid">
           {tours
             .filter((tour) => {
-              const isStaffOrProvider =
+              const isAdmin =
                 currentUser &&
-                (currentUser.is_staff ||
-                  currentUser.role === 'PROVIDER' ||
-                  currentUser.role === 'ADMIN');
+                (currentUser.is_staff || currentUser.role === 'ADMIN');
 
-              return isStaffOrProvider ? true : tour.status === 'approved';
+              const isProvider =
+                currentUser && currentUser.role === 'PROVIDER';
+
+              // Admin thấy tất cả
+              if (isAdmin) return true;
+
+              // Provider không thấy tour bị rejected
+              if (isProvider) return tour.status !== 'rejected';
+
+              // Customer / khách chỉ thấy tour còn đặt được
+              return isCustomerTourVisible(tour);
             })
             .map((tour) => (
               <div key={tour.id} className="tour-card">
@@ -190,6 +191,16 @@ const ToursPage = () => {
                     className="tour-image"
                   />
                   <div className="tour-badge">Popular</div>
+
+                  {/* Badge trạng thái - chỉ admin và provider mới thấy */}
+                  {currentUser &&
+                    (currentUser.is_staff ||
+                      currentUser.role === 'ADMIN' ||
+                      currentUser.role === 'PROVIDER') && (
+                    <div className={`tour-status-badge ${getStatusBadge(tour.status).className}`}>
+                      {getStatusBadge(tour.status).label}
+                    </div>
+                  )}
                 </div>
 
                 {/* CONTENT */}
@@ -216,9 +227,11 @@ const ToursPage = () => {
                     <div className="tour-slots">{tour.slots} chỗ</div>
                   </div>
 
-                  <button className="book-btn" onClick={() => navigate(`/tours/${tour.id}`)}>
-                    Đặt Tour
-                  </button>
+                  {tour.status === 'approved' && (
+                    <button className="book-btn" onClick={() => navigate(`/tours/${tour.id}`)}>
+                      Đặt Tour
+                    </button>
+                  )}
                 </div>
               </div>
             ))}

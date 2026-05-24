@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getTourById, addReview } from '../../../api/tourApi';
 import axiosClient from '../../../api/axiosClient';
@@ -12,19 +12,231 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './TourDetail.css';
 import ImageUploadModal from '../../../components/tour/ImageUploadModal';
+import binIcon from '../../../assets/delete.png';
+import editIcon from '../../../assets/edit.png';
 
-// --- Bản đồ Leaflet ---
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+const buildGoogleMapSrc = (tour) => {
+    const params = 'hl=vi&z=13&output=embed';
+    if (tour.latitude != null && tour.longitude != null) {
+        return `https://www.google.com/maps?q=${tour.latitude},${tour.longitude}&${params}`;
+    }
+    if (tour.address) {
+        const query = encodeURIComponent(`${tour.address}, Việt Nam`);
+        return `https://www.google.com/maps?q=${query}&${params}`;
+    }
+    return null;
+};
 
-let DefaultIcon = L.icon({
-    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-});
-L.Marker.prototype.options.icon = DefaultIcon;
+// ========================================================
+// THÊM VÀO TRƯỚC export default function TourDetail()
+function ReviewThreeDotMenu({ onEdit, onDelete }) {
+  const [open, setOpen] = React.useState(false);
+  const menuRef = useRef();
+
+  React.useEffect(() => {
+    const handler = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target))
+        setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  return (
+    <div ref={menuRef} style={{ position: 'relative' }}>
+      <button
+        onClick={() => setOpen(!open)}
+        style={{
+          background: open ? '#f3f4f6' : 'none',
+          border: 'none', cursor: 'pointer',
+          fontSize: '20px', color: '#9ca3af',
+          padding: '2px 8px', borderRadius: '6px', lineHeight: 1,
+        }}
+        onMouseEnter={e => e.currentTarget.style.background = '#f3f4f6'}
+        onMouseLeave={e => e.currentTarget.style.background = open ? '#f3f4f6' : 'none'}
+      >⋮</button>
+
+      {open && (
+        <div style={{
+          position: 'absolute', right: 0, top: '110%',
+          background: 'white', border: '1px solid #e5e7eb',
+          borderRadius: '10px', boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+          minWidth: '150px', zIndex: 200, overflow: 'hidden',
+        }}>
+          <button
+            onClick={() => { onEdit(); setOpen(false); }}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '8px',
+              width: '100%', padding: '10px 16px', background: 'none',
+              border: 'none', cursor: 'pointer', fontSize: '14px',
+              color: '#374151', textAlign: 'left',
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = '#f9fafb'}
+            onMouseLeave={e => e.currentTarget.style.background = 'none'}
+            ><img
+                src={editIcon}
+                alt="Edit"
+                className="review-menu-icon"
+            /> Sửa đánh giá</button>
+
+          <div style={{ height: '1px', background: '#f3f4f6' }} />
+
+          <button
+            onClick={() => { onDelete(); setOpen(false); }}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '8px',
+              width: '100%', padding: '10px 16px', background: 'none',
+              border: 'none', cursor: 'pointer', fontSize: '14px',
+              color: '#ef4444', textAlign: 'left',
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = '#fef2f2'}
+            onMouseLeave={e => e.currentTarget.style.background = 'none'}
+            ><img
+                src={binIcon}
+                alt="Delete"
+                className="review-menu-icon"
+            /> Xóa đánh giá</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ReviewItemWithMenu({ rev, currentUser, onDeleted, onUpdated }) {
+  const [editing, setEditing]   = React.useState(false);
+  const [content, setContent]   = React.useState(rev.content);
+  const [rating, setRating]     = React.useState(rev.rating);
+  const [saving, setSaving]     = React.useState(false);
+  const [hovered, setHovered]   = React.useState(0);
+
+  // Chỉ hiện 3 chấm nếu là chủ review
+  const isOwnerOfReview = currentUser && currentUser.id === rev.user;
+
+  const handleDelete = async () => {
+    if (!window.confirm('Bạn có chắc muốn xóa đánh giá này?')) return;
+    try {
+      await axiosClient.delete(`tours/reviews/me/${rev.id}/`);
+      onDeleted(rev.id);
+    } catch {
+      Swal.fire('Lỗi', 'Xóa thất bại. Vui lòng thử lại.', 'error');
+    }
+  };
+
+  const handleSave = async () => {
+    if (!content.trim()) {
+      Swal.fire('Lỗi', 'Nội dung không được để trống.', 'error');
+      return;
+    }
+    setSaving(true);
+    try {
+      const res = await axiosClient.put(`tours/reviews/me/${rev.id}/`, { content, rating });
+      onUpdated(res.data);
+      setEditing(false);
+      Swal.fire({ icon: 'success', title: 'Đã cập nhật!', timer: 1200, showConfirmButton: false });
+    } catch {
+      Swal.fire('Lỗi', 'Cập nhật thất bại.', 'error');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div style={{ padding: '16px 0', borderBottom: '1px solid #eee' }}>
+      {/* Header: tên + ngày + 3 chấm */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+        <div>
+          <strong style={{ fontSize: '16px' }}>{rev.user_name}</strong>
+          <span style={{ color: '#95a5a6', fontSize: '13px', marginLeft: '12px' }}>
+            {new Date(rev.created_at).toLocaleDateString('vi-VN')}
+          </span>
+        </div>
+
+        {/* Chỉ hiện nút 3 chấm với review của chính mình */}
+        {isOwnerOfReview && !editing && (
+          <ReviewThreeDotMenu
+            onEdit={() => setEditing(true)}
+            onDelete={handleDelete}
+          />
+        )}
+      </div>
+
+      {/* Chế độ XEM */}
+      {!editing && (
+        <>
+          <div style={{ color: '#f1c40f', marginBottom: '8px', fontSize: '18px' }}>
+            {'★'.repeat(rev.rating)}
+            <span style={{ color: '#ddd' }}>{'★'.repeat(5 - rev.rating)}</span>
+          </div>
+          <p style={{ color: '#34495e', lineHeight: '1.6', margin: 0 }}>{rev.content}</p>
+        </>
+      )}
+
+      {/* Chế độ SỬA inline */}
+      {editing && (
+        <div style={{
+          marginTop: '10px', padding: '16px',
+          background: '#f8fafc', borderRadius: '10px',
+          border: '1.5px solid #e0e7ff',
+        }}>
+          {/* Chọn sao */}
+          <label style={{ fontSize: '13px', fontWeight: 600, color: '#374151' }}>Số sao</label>
+          <div style={{ display: 'flex', gap: '4px', margin: '6px 0 12px' }}>
+            {[1,2,3,4,5].map(star => (
+              <span
+                key={star}
+                onClick={() => setRating(star)}
+                onMouseEnter={() => setHovered(star)}
+                onMouseLeave={() => setHovered(0)}
+                style={{
+                  fontSize: '26px', cursor: 'pointer',
+                  color: star <= (hovered || rating) ? '#f59e0b' : '#d1d5db',
+                  transition: 'color 0.15s',
+                }}
+              >★</span>
+            ))}
+          </div>
+
+          {/* Textarea */}
+          <label style={{ fontSize: '13px', fontWeight: 600, color: '#374151' }}>Nội dung</label>
+          <textarea
+            value={content}
+            onChange={e => setContent(e.target.value)}
+            rows={3}
+            style={{
+              width: '100%', marginTop: '6px', padding: '10px 12px',
+              border: '1.5px solid #e5e7eb', borderRadius: '8px',
+              fontSize: '14px', resize: 'vertical',
+              boxSizing: 'border-box', fontFamily: 'inherit', outline: 'none',
+            }}
+            onFocus={e => e.target.style.borderColor = '#e67e22'}
+            onBlur={e => e.target.style.borderColor = '#e5e7eb'}
+          />
+
+          {/* Nút */}
+          <div style={{ display: 'flex', gap: '10px', marginTop: '12px' }}>
+            <button
+              onClick={handleSave} disabled={saving}
+              style={{
+                padding: '9px 20px', background: '#e67e22',
+                color: 'white', border: 'none', borderRadius: '8px',
+                fontWeight: 600, cursor: 'pointer', opacity: saving ? 0.7 : 1,
+              }}
+            >{saving ? 'Đang lưu...' : '💾 Lưu thay đổi'}</button>
+
+            <button
+              onClick={() => { setContent(rev.content); setRating(rev.rating); setEditing(false); }}
+              style={{
+                padding: '9px 20px', background: '#f1f5f9',
+                color: '#374151', border: 'none', borderRadius: '8px',
+                fontWeight: 600, cursor: 'pointer',
+              }}
+            >Hủy</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function TourDetail() {
     const { id } = useParams();
@@ -73,7 +285,7 @@ export default function TourDetail() {
 const serverErrors = error.response?.data;
 
 // Cấu hình thông báo lỗi chung
-let errorMsg = "Có lỗi xảy ra, vui lòng thử lại!";
+let errorMsg = "Bạn không thể đặt tour này. Vui lòng đăng nhập để đặt tour!!!";
 let errorTitle = "Lỗi đặt tour";
 
 // 1. BẮT THEO MÃ STATUS 403 (Không cần Backend trả về chữ)
@@ -157,6 +369,7 @@ else if (serverErrors?.date_error) {
         return `http://127.0.0.1:8000${url}`;
     };
     const displayImages = (tour.tour_images?.length > 0 ? tour.tour_images.map(img => img.image) : [tour.image_url]).map(img => formatImageUrl(img));
+    const mapSrc = buildGoogleMapSrc(tour);
 
     return (
         <div className="tour-detail-page">
@@ -209,14 +422,17 @@ else if (serverErrors?.date_error) {
                             <p>{tour.description}</p>
                         </section>
                         
-                        {/* MapContainer giữ nguyên như code cũ của bạn */}
                         <section className="tour-map-section">
                             <h3>Vị trí điểm đến</h3>
-                            {tour.latitude && tour.longitude && (
-                                <MapContainer center={[tour.latitude, tour.longitude]} zoom={13} style={{ height: '400px', width: '100%', borderRadius: '12px' }}>
-                                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                                    <Marker position={[tour.latitude, tour.longitude]}><Popup>{tour.address}</Popup></Marker>
-                                </MapContainer>
+                            {mapSrc && (
+                                <iframe
+                                    className="tour-map-iframe"
+                                    src={mapSrc}
+                                    title={`Bản đồ ${tour.title}`}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                />
                             )}
                         </section>
                         
@@ -277,24 +493,32 @@ else if (serverErrors?.date_error) {
 
                             {/* Danh sách đánh giá */}
                             <div className="reviews-list">
-                                {tour.reviews && tour.reviews.length > 0 ? (
-                                    tour.reviews.map((rev) => (
-                                        <div key={rev.id} className="review-item" style={{ padding: '15px 0', borderBottom: '1px solid #eee' }}>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                                                <strong style={{ fontSize: '16px' }}>{rev.user_name}</strong>
-                                                <span style={{ color: '#95a5a6', fontSize: '13px' }}>
-                                                    {new Date(rev.created_at).toLocaleDateString('vi-VN')}
-                                                </span>
-                                            </div>
-                                            <div style={{ color: '#f1c40f', marginBottom: '8px' }}>
-                                                {'★'.repeat(rev.rating)}{'☆'.repeat(5 - rev.rating)}
-                                            </div>
-                                            <p style={{ color: '#34495e', lineHeight: '1.6' }}>{rev.content}</p>
-                                        </div>
-                                    ))
-                                ) : (
-                                    <p style={{ color: '#7f8c8d', fontStyle: 'italic' }}>Chưa có đánh giá nào cho tour này.</p>
-                                )}
+                            {tour.reviews && tour.reviews.length > 0 ? (
+                                tour.reviews.map((rev) => (
+                                <ReviewItemWithMenu
+                                    key={rev.id}
+                                    rev={rev}
+                                    currentUser={currentUser}
+                                    tourId={id}
+                                    onDeleted={(deletedId) =>
+                                    setTour(prev => ({
+                                        ...prev,
+                                        reviews: prev.reviews.filter(r => r.id !== deletedId)
+                                    }))
+                                    }
+                                    onUpdated={(updated) =>
+                                    setTour(prev => ({
+                                        ...prev,
+                                        reviews: prev.reviews.map(r => r.id === updated.id ? updated : r)
+                                    }))
+                                    }
+                                />
+                                ))
+                            ) : (
+                                <p style={{ color: '#7f8c8d', fontStyle: 'italic' }}>
+                                Chưa có đánh giá nào cho tour này.
+                                </p>
+                            )}
                             </div>
                         </section>
                     </main>

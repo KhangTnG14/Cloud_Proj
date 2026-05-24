@@ -37,9 +37,17 @@ Trang review:
 
 - http://localhost:5173/my-reviews
 
-npm install recharts 
+npm install recharts
 
 Cài thư viện backend
 
 Cài thư viện frontend
 npm list --depth=0 > frontend-packages.txt
+
+Tai du lieu ve:
+
+python manage.py migrate
+
+python manage.py loaddata users.json
+
+python manage.py loaddata tour.json

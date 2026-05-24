@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Thêm useNavigate
 import BackGroundImage from '../../assets/background_home_1.jpg';
 import ticket from '../../assets/ticket.png';
-import { getTours, getTourById } from '../../api/tourApi.js';
+import { getTours, getTourById, isCustomerTourVisible, getTourDisplayImage } from '../../api/tourApi.js';
 import './Home.css';
 
 export default function Home() {
@@ -71,7 +71,7 @@ export default function Home() {
     navigate(`/tours?${params.toString()}`);
   };
 
-  const approvedTours = tours.filter((tour) => tour.status === 'approved');
+  const approvedTours = tours.filter(isCustomerTourVisible);
   const topPrice = [...approvedTours].sort((a, b) => Number(b.price) - Number(a.price)).slice(0, 100);
   const topHot = [...approvedTours].sort((a, b) => Number(a.slots) - Number(b.slots)).slice(0, 100);
   const featuredTours = Array.from(new Map([...topPrice, ...topHot].map((item) => [item.id, item])).values()).slice(0, 100);
@@ -142,7 +142,7 @@ export default function Home() {
                 <div className="tour-card">
                   <div className="tour-image">
                     <img
-                      src={tour.tour_images?.length > 0 ? tour.tour_images[0].image : tour.image_url || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'}
+                      src={getTourDisplayImage(tour)}
                       alt={tour.title}
                       onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'; }}
                     />

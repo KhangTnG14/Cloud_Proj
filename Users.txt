@@ -1,0 +1,9 @@
+Tai khoan Customer:
+Name: customer
+password: 12345abcd
+Tai khoan Admin:
+Name: admin 
+password: 020305
+Tai khoan Provider:
+Name: provider 
+password: 12345abd
