@@ -37,24 +37,30 @@
 
 .tour-title-overlay {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 60px 30px 30px;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    bottom: 35px;
+    left: 35px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(5px);
+    padding: 22px 28px;
+    border-radius: 18px;
+    max-width: 75%;
     color: white;
     text-align: left;
 }
 
 .tour-title-overlay h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: #fff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
 .tour-address-info {
-    font-size: 1.1rem;
-    opacity: 0.9;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .tour-content-layout {
