@@ -40,6 +40,7 @@ class ProviderTourView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(creator=self.request.user,status='pending')
+        
 
 class ProviderTourDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TourSerializer

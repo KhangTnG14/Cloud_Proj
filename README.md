@@ -6,7 +6,7 @@ cd
 
 # 2. Kích hoạt môi trường ảo
 
-.\venv\Scripts\activate
+ .\.venv\Scripts\Activate
 
 # 3. Khởi động server
 
@@ -42,7 +42,7 @@ npm install recharts
 Cài thư viện backend
 
 Cài thư viện frontend
-npm list --depth=0 > frontend-packages.txt
+npm install
 
 Tai du lieu ve:
 

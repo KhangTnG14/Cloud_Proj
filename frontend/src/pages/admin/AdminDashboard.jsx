@@ -258,6 +258,7 @@ export default function AdminDashboard() {
       setStats(statsData.data || { total_users: 0, total_tours: 0, total_revenue: 0 });
       setUsers(Array.isArray(usersData) ? usersData : []);
       setAllTours(Array.isArray(toursData) ? toursData : []);
+      fetchLocations();
     } catch (err) {
       console.error("Lỗi đồng bộ dữ liệu hệ thống Admin:", err);
     } finally {

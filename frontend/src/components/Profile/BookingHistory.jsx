@@ -52,7 +52,7 @@ export default function BookingHistory() {
   if (!bookings) {
     return <div className="loading">Không có dữ liệu.</div>;
   }
-
+  console.log('tour_image:', bookings);
   return (
     <div className="booking-history-card">
       <h2>Lịch sử đặt tour</h2>
@@ -67,9 +67,14 @@ export default function BookingHistory() {
               <div key={item.id} className="booking-row">
                 <div className="booking-left">
                   <img
-                    src={item.tour_image || 'https://via.placeholder.com/120'}
-                    alt={item.tour_title}
-                  />
+  src={
+    item.tour_image && item.tour_image.startsWith('http')
+      ? item.tour_image
+      : `http://127.0.0.1:8000${item.tour_image || ''}`
+  }
+  alt={item.tour_title}
+  onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'; }}
+/>
                   <div>
                     <h4>{item.tour_title}</h4>
                     <p>{item.tour_address}</p>
