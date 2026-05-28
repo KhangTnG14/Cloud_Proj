@@ -28,7 +28,7 @@ class RegisterView(generics.CreateAPIView):
             return Response({"message": "Đăng ký thành công!"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class  nView(APIView):
+class  LoginView(APIView):
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
