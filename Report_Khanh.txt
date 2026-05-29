@@ -1,0 +1,9 @@
+tao .env ngoai thu muc chinh
+noi dung file .env
+AWS_ACCESS_KEY_ID=MÃ_ACCESS_KEY_THẬT_CỦA_BẠN
+AWS_SECRET_ACCESS_KEY=MÃ_SECRET_KEY_THẬT_CỦA_BẠN
+AWS_STORAGE_BUCKET_NAME=tourgo-bigdata-lake
+AWS_S3_REGION_NAME=eu-north-1
+pip install python-dotenv
+cd backend
+python treaming_simulator.py

@@ -271,3 +271,12 @@ VIETQR_BANK_ID = "MB" # Ví dụ: MB, VCB, ICB, ...
 VIETQR_ACCOUNT_NO = "0376706825" 
 VIETQR_ACCOUNT_NAME = "NGUYEN HUYNH NHAT TAN"
 
+import os
+from pathlib import Path
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', 'tourgo-bigdata-lake')
+AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'eu-north-1')
+
+
+AWS_S3_SIGNATURE_VERSION = 's3v4'
