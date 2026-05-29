@@ -1,24 +1,24 @@
-﻿id,creator_id,creator_name,title,address,price,departure_date,slots,status,created_at,category_names
-8,13,Traveloko,Tour săn mây và đón bình minh Đà Lạt,Đà Lạt,500000.00,2026-05-24,12,pending,2026-05-23 11:19:57.246251+00:00,
-9,13,Traveloko,Delight Park Đà Lạt,Đà Lạt,150000.00,2026-05-02,1,approved,2026-05-23 16:15:00.977480+00:00,
-10,11,provider,Lotte World Aquarium,Hà Nội,180000.00,2026-05-31,0,approved,2026-05-23 16:21:45.610942+00:00,
-11,17,DuLichViet,Sun World Ba Na Hills tại Đà Nẵng,Đà Nẵng,70000.00,2026-05-30,0,approved,2026-05-23 16:34:37.155640+00:00,
-12,11,provider,Khám phá Hội An - Tour 3N2Đ,Quảng Nam,4000000.00,2026-06-24,8,approved,2026-05-23 16:58:07.604114+00:00,
-13,15,IVIVU,Địa đạo Củ Chi - Tour nửa ngày TNK,TP.HCM,521000.00,2026-05-27,10,approved,2026-05-23 17:11:01.863725+00:00,
-14,15,IVIVU,Thành phố Hồ Chí Minh | Tour du thuyền sinh thái hầm Củ Chi,TP.HCM,2000000.00,2026-07-17,5,rejected,2026-05-23 17:17:36.559187+00:00,
-15,11,provider,Tour 3 đảo bằng Cano Nam Phú Quốc - 1 ngày,"Bãi Dài, Phú Quốc, An Giang, Việt Nam",722222.00,2026-06-08,2,approved,2026-05-23 17:23:05.511846+00:00,
-16,11,provider,"Private Luxury Tour | 3 đảo Nha Trang: Hòn Mun, Làng Chài, Bãi Tranh","Nha Trang, Khánh Hòa, Việt Nam",1278000.00,2026-09-28,5,approved,2026-05-23 17:39:03.416213+00:00,
-17,11,provider,Khu du lịch Sinh Thái Cần Giờ,"HRQW+48P, Đê, An Hòa, Bình Khánh, Hồ Chí Minh, Việt Nam",1500000.00,2026-05-24,7,rejected,2026-05-23 18:01:16.883959+00:00,
-18,11,provider,Chiến khu Rừng Sác,"Rừng Sác, Cần Giờ, Hồ Chí Minh, Việt Nam",5100000.00,2026-05-30,5,rejected,2026-05-23 18:14:22.820339+00:00,
-19,11,provider,Thác Prenn,"Xuân Hương - Đà Lạt, Lâm Đồng, Việt Nam",10000000.00,2026-05-31,1,pending,2026-05-23 18:19:03.050366+00:00,
-21,11,provider,Phú Quốc 5 ngày,Phú Quốc,1000000.00,2026-05-01,2,approved,2026-05-24 15:23:28.608637+00:00,
-22,13,Traveloko,Vũng Tàu,Việt Nam,750000.00,2026-07-16,2,approved,2026-05-26 00:00:57.497890+00:00,Tour Du Lịch Biển
-23,15,IVIVU,núi Bà Đen,Tây Ninh,99999.97,2026-05-29,1,approved,2026-05-26 04:33:32.062264+00:00,Tour Di Sản Văn Hóa
-24,11,provider,Núi Bà Đen 1 ngày,Tây Ninh,1000000.00,2026-05-27,0,approved,2026-05-26 04:53:42.707514+00:00,Tour Di Sản Văn Hóa
-25,11,provider,TP. Cần Thơ 1 ngày,Cần Thơ,350000.00,2026-05-30,2,approved,2026-05-26 04:58:59.464164+00:00,Tour Di Sản Văn Hóa
-26,13,Traveloko,Đà Lạt,Đà Lạt 3N1D,350000.00,2026-06-06,2,approved,2026-05-29 05:07:01.599632+00:00,Du Lịch Khám Phá Mạo Hiểm
-27,13,Traveloko,Go Tộc Tày,Cao Bằng,1000000.00,2026-05-31,2,approved,2026-05-29 05:11:03.178755+00:00,Du Lịch Sinh Thái Miệt Vườn
-28,13,Traveloko,Tộc Tày,Cao Bằng,1000000.00,2026-05-29,2,approved,2026-05-29 05:16:27.352886+00:00,Tour Di Sản Văn Hóa
-29,13,Traveloko,Lang Mi Xi,Cao Bằng,1000000.00,2026-05-16,2,pending,2026-05-29 06:58:21.435515+00:00,Du Lịch Khám Phá Mạo Hiểm
-30,13,Traveloko,Mì Xi,Cao Bằng,1231123.00,2026-05-30,2,pending,2026-05-29 07:01:35.475520+00:00,Du Lịch Khám Phá Mạo Hiểm
-31,13,Traveloko,1,2,1000000.00,2026-05-29,2,pending,2026-05-29 07:06:26.442907+00:00,Tour Du Lịch Biển
+id,creator_id,title,price,departure_date,slots,status,created_at,category_names
+8,13,Tour săn mây và đón bình minh Đà Lạt,500000.0,2026-05-24,12,pending,2026-05-23 11:19:57,
+9,13,Delight Park Đà Lạt,150000.0,2026-05-02,1,approved,2026-05-23 16:15:00,
+10,11,Lotte World Aquarium,180000.0,2026-05-31,0,approved,2026-05-23 16:21:45,
+11,17,Sun World Ba Na Hills tại Đà Nẵng,70000.0,2026-05-30,0,approved,2026-05-23 16:34:37,
+12,11,Khám phá Hội An - Tour 3N2Đ,4000000.0,2026-06-24,8,approved,2026-05-23 16:58:07,
+13,15,Địa đạo Củ Chi - Tour nửa ngày TNK,521000.0,2026-05-27,10,approved,2026-05-23 17:11:01,
+14,15,Thành phố Hồ Chí Minh | Tour du thuyền sinh thái hầm Củ Chi,2000000.0,2026-07-17,5,rejected,2026-05-23 17:17:36,
+15,11,Tour 3 đảo bằng Cano Nam Phú Quốc - 1 ngày,722222.0,2026-06-08,2,approved,2026-05-23 17:23:05,
+16,11,"Private Luxury Tour | 3 đảo Nha Trang: Hòn Mun, Làng Chài, Bãi Tranh",1278000.0,2026-09-28,5,approved,2026-05-23 17:39:03,
+17,11,Khu du lịch Sinh Thái Cần Giờ,1500000.0,2026-05-24,7,rejected,2026-05-23 18:01:16,
+18,11,Chiến khu Rừng Sác,5100000.0,2026-05-30,5,rejected,2026-05-23 18:14:22,
+19,11,Thác Prenn,10000000.0,2026-05-31,1,pending,2026-05-23 18:19:03,
+21,11,Phú Quốc 5 ngày,1000000.0,2026-05-01,2,approved,2026-05-24 15:23:28,
+22,13,Vũng Tàu,750000.0,2026-07-16,2,approved,2026-05-26 00:00:57,Tour Du Lịch Biển
+23,15,núi Bà Đen,99999.97,2026-05-29,1,approved,2026-05-26 04:33:32,Tour Di Sản Văn Hóa
+24,11,Núi Bà Đen 1 ngày,1000000.0,2026-05-27,0,approved,2026-05-26 04:53:42,Tour Di Sản Văn Hóa
+25,11,TP. Cần Thơ 1 ngày,350000.0,2026-05-30,2,approved,2026-05-26 04:58:59,Tour Di Sản Văn Hóa
+26,13,Đà Lạt,350000.0,2026-06-06,2,approved,2026-05-29 05:07:01,Du Lịch Khám Phá Mạo Hiểm
+27,13,Go Tộc Tày,1000000.0,2026-05-31,2,approved,2026-05-29 05:11:03,Du Lịch Sinh Thái Miệt Vườn
+28,13,Tộc Tày,1000000.0,2026-05-29,2,approved,2026-05-29 05:16:27,Tour Di Sản Văn Hóa
+29,13,Lang Mi Xi,1000000.0,2026-05-16,2,pending,2026-05-29 06:58:21,Du Lịch Khám Phá Mạo Hiểm
+30,13,Mì Xi,1231123.0,2026-05-30,2,pending,2026-05-29 07:01:35,Du Lịch Khám Phá Mạo Hiểm
+31,13,1,1000000.0,2026-05-29,2,pending,2026-05-29 07:06:26,Tour Du Lịch Biển
