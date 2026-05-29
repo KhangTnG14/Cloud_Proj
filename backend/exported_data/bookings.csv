@@ -1,0 +1,12 @@
+﻿id,user_id,username,tour_id,tour_title,number_of_people,total_price,booking_date,status,created_at
+6,10,customer,10,Lotte World Aquarium,1,180000.00,2026-05-31,confirmed,2026-05-24 03:57:32.283585+00:00
+7,10,customer,11,Sun World Ba Na Hills tại Đà Nẵng,1,70000.00,2026-05-30,cancelled,2026-05-24 04:10:03.595606+00:00
+8,10,customer,10,Lotte World Aquarium,1,180000.00,2026-05-31,cancelled,2026-05-24 04:31:26.665444+00:00
+9,10,customer,10,Lotte World Aquarium,2,180000.00,2026-05-31,confirmed,2026-05-24 04:34:54.066455+00:00
+10,10,customer,12,Khám phá Hội An - Tour 3N2Đ,1,4000000.00,2026-06-24,confirmed,2026-05-24 04:41:15.100347+00:00
+11,10,customer,15,Tour 3 đảo bằng Cano Nam Phú Quốc - 1 ngày,1,722222.00,2026-06-08,cancelled,2026-05-24 12:02:59.289194+00:00
+12,10,customer,15,Tour 3 đảo bằng Cano Nam Phú Quốc - 1 ngày,1,722222.00,2026-06-08,cancelled,2026-05-24 12:03:01.201104+00:00
+13,27,khach,11,Sun World Ba Na Hills tại Đà Nẵng,4,70000.00,2026-05-30,confirmed,2026-05-24 15:19:32.562219+00:00
+14,10,customer,11,Sun World Ba Na Hills tại Đà Nẵng,1,70000.00,2026-05-30,confirmed,2026-05-24 15:24:36.950976+00:00
+15,10,customer,12,Khám phá Hội An - Tour 3N2Đ,1,4000000.00,2026-06-24,confirmed,2026-05-24 15:28:04.955892+00:00
+16,10,customer,24,Núi Bà Đen 1 ngày,1,1000000.00,2026-05-27,confirmed,2026-05-26 05:00:37.772589+00:00

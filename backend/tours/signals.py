@@ -41,7 +41,9 @@ def export_all_data_to_csv():
 @receiver(post_delete)
 def auto_pipeline_trigger(sender, instance, **kwargs):
     model_name = sender.__name__
-    TARGET_MODELS = ['User', 'Tour', 'Booking', 'Payment', 'Review']
+    
+    # 🔥 ĐÃ THÊM: Chỉ thêm duy nhất 'Revenue' vào cuối mảng, giữ nguyên toàn bộ logic cũ
+    TARGET_MODELS = ['User', 'Tour', 'Booking', 'Payment', 'Review', 'Revenue']
 
     if model_name in TARGET_MODELS:
         print(f"[Signal] Bang [{model_name}] thay doi -> Dang cap nhat CSV...")

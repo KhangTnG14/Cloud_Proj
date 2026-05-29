@@ -7,7 +7,8 @@ import csv
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 django.setup()
 
-from tours.models import Tour, Booking, Payment, Review
+# 🔥 ĐÃ SỬA: Import thêm model Revenue từ tours.models
+from tours.models import Tour, Booking, Payment, Review, Revenue
 from users.models import User
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -137,6 +138,28 @@ try:
 except Exception as e:
     print(f"[LOI] Bang Payments: {e}")
     export_log['payments'] = 0
+
+# --- REVENUES (🔥 ĐÃ THÊM MỚI BẢNG DOANH THU) ---
+try:
+    revenues_data = []
+    # Sử dụng select_related để tối ưu kết nối thông tin người tạo tour (creator)
+    for r in Revenue.objects.select_related('creator').all():
+        revenues_data.append({
+            'id': r.id,
+            'payment_id': r.payment_id,
+            'creator_id': r.creator_id,
+            'creator_name': r.creator.username if r.creator else '',
+            'total_amount': r.total_amount,
+            'creator_share': r.creator_share,
+            'admin_share': r.admin_share,
+            'created_at': str(r.created_at),
+        })
+    export_log['revenues'] = write_csv('revenue.csv', revenues_data,
+        ['id', 'payment_id', 'creator_id', 'creator_name', 
+         'total_amount', 'creator_share', 'admin_share', 'created_at'])
+except Exception as e:
+    print(f"[LOI] Bang Revenues: {e}")
+    export_log['revenues'] = 0
 
 # --- REVIEWS ---
 try:
