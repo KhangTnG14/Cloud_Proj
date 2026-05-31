@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
 import subprocess
@@ -41,6 +42,10 @@ def export_all_data_to_csv():
 @receiver(post_save)
 @receiver(post_delete)
 def auto_pipeline_trigger(sender, instance, **kwargs):
+    # 🔥 CƠ CHẾ CHỐNG TREO MÁY: Nếu phát hiện cờ SKIP_SIGNALS từ seed_data.py thì thoát luôn
+    if os.environ.get('SKIP_SIGNALS') == 'yes':
+        return
+
     model_name = sender.__name__
     
     # 🔥 KHỚP 100% THEO LEADER SCHEMA: Theo dõi toàn bộ biến động của cả 6 phân hệ dữ liệu Analytics
