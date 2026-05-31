@@ -1,6 +1,22 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
-sys.stdout.reconfigure(encoding='utf-8')
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+
+# Fix đường dẫn khi chạy từ scripts/
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# .../Test/scripts/
+
+project_dir = os.path.dirname(current_dir)
+# .../Test/
+
+backend_dir = os.path.join(project_dir, 'backend')
+# .../Test/backend/
+
+sys.path.insert(0, backend_dir)
+os.chdir(backend_dir)
+
 import django
 import csv
 
@@ -10,15 +26,15 @@ django.setup()
 from tours.models import Tour, Booking, Payment, Review, Revenue
 from users.models import User
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = backend_dir
 OUTPUT_DIR = os.path.join(BASE_DIR, 'exported_data')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 def write_csv(filename, rows, fields):
     path = os.path.join(OUTPUT_DIR, filename)
     try:
-        # Định dạng mã hóa UTF-8 đảm bảo hiển thị đúng tiếng Việt có dấu
-        with open(path, 'w', newline='', encoding='utf-8') as f:
+        # 🔥 ĐÃ SỬA: Đổi từ 'utf-8' thành 'utf-8-sig' để tự động chèn ký hiệu BOM nhận diện tiếng Việt trên Excel Windows
+        with open(path, 'w', newline='', encoding='utf-8-sig') as f:
             # Ràng buộc dấu nháy kép cho các trường text chứa dấu phẩy như title, category_names
             writer = csv.DictWriter(f, fieldnames=fields, delimiter=',', quoting=csv.QUOTE_MINIMAL)
             writer.writeheader()
@@ -36,7 +52,6 @@ print("[Pipeline] Bat dau trich xuat 6 file CSV bao mat theo dung Leader Schema.
 try:
     users_data = []
     for u in User.objects.all():
-        # Phân loại logic vai trò hệ thống
         if u.is_superuser or u.is_staff:
             role = 'Admin'
         elif getattr(u, 'role', '') == 'PROVIDER':
