@@ -1,24 +1,773 @@
-id,creator_id,title,price,departure_date,slots,status,created_at,category_names
-8,13,Tour săn mây và đón bình minh Đà Lạt,500000.0,2026-05-24,12,pending,2026-05-23 11:19:57,
-9,13,Delight Park Đà Lạt,150000.0,2026-05-02,1,approved,2026-05-23 16:15:00,
-10,11,Lotte World Aquarium,180000.0,2026-05-31,0,approved,2026-05-23 16:21:45,
-11,17,Sun World Ba Na Hills tại Đà Nẵng,70000.0,2026-05-30,0,approved,2026-05-23 16:34:37,
-12,11,Khám phá Hội An - Tour 3N2Đ,4000000.0,2026-06-24,8,approved,2026-05-23 16:58:07,
-13,15,Địa đạo Củ Chi - Tour nửa ngày TNK,521000.0,2026-05-27,10,approved,2026-05-23 17:11:01,
-14,15,Thành phố Hồ Chí Minh | Tour du thuyền sinh thái hầm Củ Chi,2000000.0,2026-07-17,5,rejected,2026-05-23 17:17:36,
+﻿id,creator_id,title,price,departure_date,slots,status,created_at,category_names
 15,11,Tour 3 đảo bằng Cano Nam Phú Quốc - 1 ngày,722222.0,2026-06-08,2,approved,2026-05-23 17:23:05,
 16,11,"Private Luxury Tour | 3 đảo Nha Trang: Hòn Mun, Làng Chài, Bãi Tranh",1278000.0,2026-09-28,5,approved,2026-05-23 17:39:03,
 17,11,Khu du lịch Sinh Thái Cần Giờ,1500000.0,2026-05-24,7,rejected,2026-05-23 18:01:16,
 18,11,Chiến khu Rừng Sác,5100000.0,2026-05-30,5,rejected,2026-05-23 18:14:22,
 19,11,Thác Prenn,10000000.0,2026-05-31,1,pending,2026-05-23 18:19:03,
 21,11,Phú Quốc 5 ngày,1000000.0,2026-05-01,2,approved,2026-05-24 15:23:28,
-22,13,Vũng Tàu,750000.0,2026-07-16,2,approved,2026-05-26 00:00:57,Tour Du Lịch Biển
-23,15,núi Bà Đen,99999.97,2026-05-29,1,approved,2026-05-26 04:33:32,Tour Di Sản Văn Hóa
 24,11,Núi Bà Đen 1 ngày,1000000.0,2026-05-27,0,approved,2026-05-26 04:53:42,Tour Di Sản Văn Hóa
 25,11,TP. Cần Thơ 1 ngày,350000.0,2026-05-30,2,approved,2026-05-26 04:58:59,Tour Di Sản Văn Hóa
+10,11,Lotte World Aquarium,180000.0,2026-05-31,0,approved,2026-05-23 16:21:45,
+12,11,Khám phá Hội An - Tour 3N2Đ,4000000.0,2026-06-24,8,approved,2026-05-23 16:58:07,
+33,11,Trai nghiem Ninh Binh 5N4D,3000000.0,2026-10-01,19,approved,2026-05-31 07:55:05,"Nui,Van hoa,Mao hiem"
+35,11,Trai nghiem Bien Hoa cuoi tuan,750000.0,2027-02-06,23,approved,2026-05-31 07:55:07,Van hoa
+36,11,Tour cao cap Kon Tum 4N3D,250000.0,2026-06-06,13,approved,2026-05-31 07:55:09,"Bien,Nui"
+40,11,Tour cao cap Mui Ne cuoi tuan,350000.0,2026-11-08,6,approved,2026-05-31 07:55:15,Van hoa
+42,11,Nghi duong Ninh Binh 5N4D,150000.0,2027-03-23,24,approved,2026-05-31 07:55:18,Nghi duong
+44,11,Hanh trinh Vung Tau 3N2D,2000000.0,2027-03-27,13,approved,2026-05-31 07:55:20,"Bien,Nui,Sang trong"
+52,11,Kham pha Ha Long 3N2D,750000.0,2027-05-03,8,approved,2026-05-31 07:55:32,"Van hoa,Nghi duong"
+56,11,Trai nghiem Phu Quoc 3N2D,250000.0,2026-07-19,46,pending,2026-05-31 07:55:40,"Van hoa,Sang trong"
+72,11,Phieu luu Buon Ma Thuot 4N3D,5000000.0,2027-04-27,8,approved,2026-05-31 07:56:04,"Bien,Sang trong,Nghi duong"
+74,11,Kham pha Bien Hoa 2N1D,750000.0,2027-03-17,38,pending,2026-05-31 07:56:06,Sang trong
+79,11,Tour cao cap Da Lat 1 ngay,350000.0,2026-08-17,26,approved,2026-05-31 07:56:15,"Bien,Nui,Mao hiem"
+83,11,Tham quan Quang Ninh 2N1D,3000000.0,2026-08-16,33,approved,2026-05-31 07:56:22,Nui
+86,11,Kham pha Da Nang 2N1D,1500000.0,2026-07-14,15,pending,2026-05-31 07:56:26,"Bien,Van hoa,Sang trong"
+89,11,Phieu luu Ha Noi 1 ngay,5000000.0,2026-07-16,32,pending,2026-05-31 07:56:30,Bien
+92,11,Tham quan Quy Nhon 4N3D,3000000.0,2027-03-29,5,approved,2026-05-31 07:56:34,"Nui,Sang trong"
+103,11,Trai nghiem Vung Tau 2N1D,750000.0,2027-04-17,45,approved,2026-05-31 07:56:50,Nghi duong
+104,11,Kham pha Vung Tau 3N2D,2000000.0,2027-04-03,49,approved,2026-05-31 07:56:52,Nui
+106,11,Phieu luu Kon Tum 2N1D,3000000.0,2026-10-31,6,pending,2026-05-31 07:56:55,Bien
+109,11,Du lich Buon Ma Thuot 5N4D,150000.0,2027-03-23,18,approved,2026-05-31 07:56:59,"Bien,Sang trong,Mao hiem"
+119,11,Du lich Da Nang 3N2D,350000.0,2026-07-23,31,approved,2026-05-31 07:57:12,Van hoa
+123,11,Tour cao cap Mui Ne 3N2D,10000000.0,2027-03-05,30,approved,2026-05-31 07:57:18,Nghi duong
+130,11,Hanh trinh Hue 1 ngay,2000000.0,2026-07-19,21,pending,2026-05-31 07:57:30,Nui
+131,11,Tham quan Ha Long 2N1D,10000000.0,2027-01-21,21,approved,2026-05-31 07:57:32,"Bien,Nui,Sang trong"
+136,11,Hanh trinh Hue 1 ngay,250000.0,2027-04-16,26,approved,2026-05-31 07:57:41,"Bien,Sang trong,Nghi duong"
+137,11,Nghi duong Ha Long 2N1D,7000000.0,2027-05-30,29,approved,2026-05-31 07:57:45,Nui
+140,11,Tour cao cap Da Lat 5N4D,10000000.0,2026-07-30,13,approved,2026-05-31 07:57:48,Bien
+150,11,Tham quan Ha Long 2N1D,150000.0,2026-12-11,32,pending,2026-05-31 07:58:02,"Sang trong,Mao hiem"
+151,11,Phieu luu Ha Long 4N3D,1000000.0,2027-01-07,22,approved,2026-05-31 07:58:04,"Sang trong,Mao hiem"
+331,11,Trải nghiệm Vũng Tàu 1 ngày,350000.0,2025-12-28,19,approved,2025-10-02 14:44:14,Văn hóa
+437,11,Nghỉ dưỡng Quy Nhơn 1 ngày,150000.0,2027-08-12,34,approved,2027-04-02 16:22:54,"Biển,Sang trọng,Nghỉ dưỡng"
+734,11,Tour cao cấp Hạ Long 2N1Đ,250000.0,2025-07-05,7,approved,2026-05-31 08:45:18,"Núi,Văn hóa,Sang trọng"
+739,11,Nghỉ dưỡng Hà Nội 2N1Đ,2000000.0,2026-07-13,43,approved,2026-05-31 08:45:18,"Biển,Núi,Nghỉ dưỡng"
+509,13,Nghỉ dưỡng Đà Lạt cuối tuần,10000000.0,2026-05-08,38,approved,2026-04-06 11:50:51,"Biển,Núi,Sang trọng"
+562,13,Tour cao cấp Tây Ninh 4N3Đ,350000.0,2027-05-25,27,pending,2027-01-08 22:58:12,Sang trọng
+148,13,Phieu luu Hoi An 3N2D,1500000.0,2027-01-16,23,approved,2026-05-31 07:58:00,"Van hoa,Sang trong,Nghi duong"
+141,13,Hanh trinh Can Tho 4N3D,5000000.0,2027-05-25,36,approved,2026-05-31 07:57:50,"Bien,Nui,Van hoa"
+142,13,Tham quan Kon Tum 3N2D,3000000.0,2026-09-06,26,approved,2026-05-31 07:57:51,"Nui,Mao hiem,Nghi duong"
+127,13,Kham pha Bien Hoa 1 ngay,750000.0,2026-10-12,7,pending,2026-05-31 07:57:25,"Nui,Van hoa"
+132,13,Kham pha Buon Ma Thuot 2N1D,150000.0,2026-11-23,24,approved,2026-05-31 07:57:34,Nui
+118,13,Tham quan Quang Ninh 2N1D,350000.0,2027-02-11,36,pending,2026-05-31 07:57:11,Van hoa
+122,13,Nghi duong Kon Tum 4N3D,10000000.0,2026-09-07,43,approved,2026-05-31 07:57:17,"Bien,Nui,Sang trong"
+110,13,Phieu luu Can Tho 1 ngay,2000000.0,2026-11-01,26,approved,2026-05-31 07:57:00,"Bien,Mao hiem"
+112,13,Tham quan Vung Tau 2N1D,500000.0,2027-04-12,24,approved,2026-05-31 07:57:03,"Bien,Nui,Sang trong"
+105,13,Tham quan Tay Ninh 4N3D,3000000.0,2026-08-07,31,approved,2026-05-31 07:56:53,"Bien,Mao hiem"
+102,13,Phieu luu Mui Ne 1 ngay,3000000.0,2026-07-17,22,approved,2026-05-31 07:56:48,Nghi duong
+97,13,Hanh trinh Ha Long 5N4D,750000.0,2026-09-22,8,pending,2026-05-31 07:56:41,"Bien,Mao hiem,Nghi duong"
+91,13,Hanh trinh Pleiku 1 ngay,7000000.0,2026-12-18,39,approved,2026-05-31 07:56:33,"Bien,Sang trong"
+78,13,Kham pha Kon Tum 3N2D,2000000.0,2027-05-29,41,approved,2026-05-31 07:56:13,"Sang trong,Nghi duong"
+73,13,Du lich Vung Tau 2N1D,1000000.0,2027-05-15,23,pending,2026-05-31 07:56:05,Mao hiem
+71,13,Tour cao cap Buon Ma Thuot 3N2D,150000.0,2026-10-31,13,pending,2026-05-31 07:56:02,"Nui,Van hoa,Mao hiem"
+58,13,Tour cao cap Ha Long 3N2D,1000000.0,2026-07-25,22,approved,2026-05-31 07:55:43,"Nui,Van hoa,Sang trong"
+65,13,Hanh trinh Can Tho 2N1D,3000000.0,2026-12-04,5,approved,2026-05-31 07:55:54,Nghi duong
+67,13,Du lich Mui Ne 1 ngay,1000000.0,2026-10-05,44,pending,2026-05-31 07:55:56,"Bien,Nui,Nghi duong"
+69,13,Nghi duong Hoi An 3N2D,750000.0,2026-11-17,9,approved,2026-05-31 07:55:59,Bien
+54,13,Hanh trinh Kon Tum 4N3D,3000000.0,2026-12-31,42,pending,2026-05-31 07:55:36,"Nui,Sang trong"
+51,13,Tour cao cap Pleiku cuoi tuan,1500000.0,2026-12-09,33,approved,2026-05-31 07:55:30,Bien
+37,13,Nghi duong Ha Long cuoi tuan,7000000.0,2027-05-27,22,approved,2026-05-31 07:55:11,Bien
+38,13,Du lich Ha Noi cuoi tuan,1000000.0,2027-01-15,26,approved,2026-05-31 07:55:12,"Bien,Van hoa,Mao hiem"
+34,13,Nghi duong Nha Trang 2N1D,7000000.0,2027-05-31,33,pending,2026-05-31 07:55:06,"Bien,Nui,Nghi duong"
+8,13,Tour săn mây và đón bình minh Đà Lạt,500000.0,2026-05-24,12,pending,2026-05-23 11:19:57,
+9,13,Delight Park Đà Lạt,150000.0,2026-05-02,1,approved,2026-05-23 16:15:00,
 26,13,Đà Lạt,350000.0,2026-06-06,2,approved,2026-05-29 05:07:01,Du Lịch Khám Phá Mạo Hiểm
 27,13,Go Tộc Tày,1000000.0,2026-05-31,2,approved,2026-05-29 05:11:03,Du Lịch Sinh Thái Miệt Vườn
 28,13,Tộc Tày,1000000.0,2026-05-29,2,approved,2026-05-29 05:16:27,Tour Di Sản Văn Hóa
 29,13,Lang Mi Xi,1000000.0,2026-05-16,2,pending,2026-05-29 06:58:21,Du Lịch Khám Phá Mạo Hiểm
 30,13,Mì Xi,1231123.0,2026-05-30,2,pending,2026-05-29 07:01:35,Du Lịch Khám Phá Mạo Hiểm
 31,13,1,1000000.0,2026-05-29,2,pending,2026-05-29 07:06:26,Tour Du Lịch Biển
+22,13,Vũng Tàu,750000.0,2026-07-16,2,approved,2026-05-26 00:00:57,Tour Du Lịch Biển
+157,13,Tham quan Mui Ne 3N2D,150000.0,2027-04-28,31,approved,2026-05-31 07:58:12,Mao hiem
+159,13,Nghi duong Hoi An 2N1D,350000.0,2026-08-24,38,approved,2026-05-31 07:58:15,"Van hoa,Sang trong,Nghi duong"
+162,13,Tour cao cap Da Lat 1 ngay,150000.0,2026-03-19,44,approved,2026-02-01 06:19:16,"Nui,Sang trong"
+164,15,Tour cao cap Da Nang 3N2D,150000.0,2026-03-24,32,approved,2026-03-02 11:45:07,Bien
+171,15,Du lịch Pleiku 4N3Đ,250000.0,2025-07-13,41,approved,2025-05-31 06:31:02,Biển
+187,15,Phiêu lưu Tây Ninh 2N1Đ,3000000.0,2025-06-24,17,approved,2025-02-23 07:20:33,Biển
+204,15,Tour cao cấp Đà Nẵng cuối tuần,5000000.0,2025-08-30,28,approved,2025-07-10 19:34:21,"Văn hóa,Sang trọng,Mạo hiểm"
+23,15,núi Bà Đen,99999.97,2026-05-29,1,approved,2026-05-26 04:33:32,Tour Di Sản Văn Hóa
+13,15,Địa đạo Củ Chi - Tour nửa ngày TNK,521000.0,2026-05-27,10,approved,2026-05-23 17:11:01,
+14,15,Thành phố Hồ Chí Minh | Tour du thuyền sinh thái hầm Củ Chi,2000000.0,2026-07-17,5,rejected,2026-05-23 17:17:36,
+43,15,Hanh trinh Nha Trang cuoi tuan,150000.0,2026-12-04,19,approved,2026-05-31 07:55:19,"Bien,Nui,Nghi duong"
+41,15,Phieu luu Quy Nhon 2N1D,5000000.0,2027-01-04,5,approved,2026-05-31 07:55:16,"Nui,Sang trong,Mao hiem"
+48,15,Phieu luu Buon Ma Thuot cuoi tuan,750000.0,2027-05-10,10,approved,2026-05-31 07:55:26,"Nui,Mao hiem,Nghi duong"
+60,15,Tham quan Mui Ne 2N1D,350000.0,2026-06-03,23,approved,2026-05-31 07:55:46,"Bien,Van hoa,Mao hiem"
+64,15,Phieu luu Ninh Binh 2N1D,500000.0,2026-09-07,26,pending,2026-05-31 07:55:52,Bien
+80,15,Trai nghiem Quang Ninh 2N1D,250000.0,2027-01-12,23,approved,2026-05-31 07:56:17,"Bien,Mao hiem,Nghi duong"
+88,15,Phieu luu Quy Nhon 2N1D,2000000.0,2027-02-26,26,approved,2026-05-31 07:56:29,Nui
+90,15,Phieu luu Hue 5N4D,3000000.0,2027-01-15,31,approved,2026-05-31 07:56:31,"Nui,Van hoa,Mao hiem"
+95,15,Nghi duong Tay Ninh 5N4D,1500000.0,2026-09-29,49,approved,2026-05-31 07:56:38,"Van hoa,Nghi duong"
+96,15,Tham quan Bien Hoa 1 ngay,1000000.0,2026-08-27,10,approved,2026-05-31 07:56:40,"Bien,Nui,Van hoa"
+98,15,Trai nghiem Ha Long cuoi tuan,5000000.0,2026-12-22,40,pending,2026-05-31 07:56:42,Bien
+99,15,Kham pha Can Tho 2N1D,150000.0,2027-02-23,16,pending,2026-05-31 07:56:44,"Mao hiem,Nghi duong"
+101,15,Phieu luu Pleiku 1 ngay,750000.0,2027-01-07,8,approved,2026-05-31 07:56:47,"Bien,Van hoa,Nghi duong"
+113,15,Tham quan Quy Nhon 5N4D,250000.0,2027-05-12,18,pending,2026-05-31 07:57:04,Van hoa
+111,15,Phieu luu Ninh Binh 5N4D,350000.0,2026-12-03,25,approved,2026-05-31 07:57:01,Bien
+120,15,Tham quan Nha Trang 1 ngay,750000.0,2026-11-29,34,pending,2026-05-31 07:57:14,"Nui,Van hoa"
+125,15,Nghi duong Ninh Binh 4N3D,350000.0,2026-09-13,46,approved,2026-05-31 07:57:22,Van hoa
+128,15,Tham quan Bien Hoa cuoi tuan,250000.0,2026-10-18,34,approved,2026-05-31 07:57:26,"Van hoa,Nghi duong"
+135,15,Tour cao cap Pleiku cuoi tuan,750000.0,2026-10-03,14,approved,2026-05-31 07:57:39,Sang trong
+139,15,Trai nghiem Vung Tau 5N4D,3000000.0,2026-07-01,39,approved,2026-05-31 07:57:47,Mao hiem
+149,15,Tour cao cap Hoi An cuoi tuan,350000.0,2026-08-25,42,pending,2026-05-31 07:58:01,Mao hiem
+153,15,Tour cao cap Hue 5N4D,5000000.0,2027-03-15,16,approved,2026-05-31 07:58:07,"Bien,Nui,Nghi duong"
+155,15,Trai nghiem Hoi An cuoi tuan,1500000.0,2027-05-11,38,approved,2026-05-31 07:58:10,"Van hoa,Sang trong,Mao hiem"
+156,15,Trai nghiem Tay Ninh 5N4D,7000000.0,2027-05-08,22,pending,2026-05-31 07:58:11,Bien
+725,15,Hành trình Nha Trang 4N3Đ,750000.0,2026-04-23,13,approved,2026-05-31 08:45:18,"Văn hóa,Sang trọng,Mạo hiểm"
+677,17,Tham quan Hạ Long cuối tuần,2000000.0,2026-07-27,10,approved,2026-05-31 08:45:18,"Núi,Văn hóa,Sang trọng"
+697,17,Phiêu lưu Huế cuối tuần,5000000.0,2025-12-04,48,approved,2026-05-31 08:45:18,"Biển,Sang trọng,Nghỉ dưỡng"
+154,17,Hanh trinh Quang Ninh cuoi tuan,2000000.0,2027-01-08,40,approved,2026-05-31 07:58:08,"Bien,Sang trong"
+146,17,Trai nghiem Vung Tau 3N2D,3000000.0,2027-02-19,28,approved,2026-05-31 07:57:57,"Nui,Van hoa,Nghi duong"
+143,17,Trai nghiem Nha Trang 1 ngay,2000000.0,2027-04-10,35,approved,2026-05-31 07:57:53,"Bien,Mao hiem"
+138,17,Du lich Phu Quoc 2N1D,10000000.0,2026-07-10,34,approved,2026-05-31 07:57:46,Sang trong
+133,17,Tham quan Da Nang 4N3D,1000000.0,2026-07-16,43,approved,2026-05-31 07:57:36,Mao hiem
+124,17,Hanh trinh Can Tho 4N3D,5000000.0,2026-12-16,21,approved,2026-05-31 07:57:20,"Bien,Nui"
+107,17,Trai nghiem Kon Tum 1 ngay,250000.0,2027-04-14,15,approved,2026-05-31 07:56:56,Nghi duong
+108,17,Tour cao cap Mui Ne 1 ngay,1500000.0,2026-08-07,19,approved,2026-05-31 07:56:57,"Bien,Van hoa"
+115,17,Tham quan Phu Quoc 5N4D,350000.0,2026-07-07,39,pending,2026-05-31 07:57:07,"Van hoa,Nghi duong"
+116,17,Nghi duong Can Tho 2N1D,350000.0,2026-08-14,24,approved,2026-05-31 07:57:08,"Bien,Sang trong,Nghi duong"
+117,17,Tham quan Phu Quoc 1 ngay,1000000.0,2026-11-30,16,approved,2026-05-31 07:57:10,"Bien,Nghi duong"
+100,17,Tour cao cap Quang Ninh 4N3D,350000.0,2026-12-08,34,approved,2026-05-31 07:56:45,Nghi duong
+93,17,Tham quan Da Nang 5N4D,1500000.0,2026-11-09,15,approved,2026-05-31 07:56:36,"Bien,Sang trong"
+82,17,Hanh trinh Ha Noi 1 ngay,5000000.0,2026-06-03,27,pending,2026-05-31 07:56:21,"Nui,Van hoa"
+87,17,Hanh trinh Kon Tum 4N3D,350000.0,2026-10-25,28,approved,2026-05-31 07:56:28,"Bien,Van hoa,Nghi duong"
+70,17,Tham quan Hue cuoi tuan,350000.0,2026-12-09,36,approved,2026-05-31 07:56:01,Mao hiem
+59,17,Trai nghiem Nha Trang 2N1D,750000.0,2026-11-15,8,approved,2026-05-31 07:55:44,"Sang trong,Mao hiem"
+57,17,Du lich Hoi An 3N2D,5000000.0,2027-02-01,22,pending,2026-05-31 07:55:41,"Van hoa,Sang trong"
+49,17,Du lich Tay Ninh 2N1D,350000.0,2026-08-09,9,pending,2026-05-31 07:55:27,Mao hiem
+50,17,Phieu luu Vung Tau 4N3D,3000000.0,2027-04-17,49,approved,2026-05-31 07:55:28,"Van hoa,Nghi duong"
+45,17,Du lich Mui Ne 2N1D,10000000.0,2027-04-10,17,pending,2026-05-31 07:55:22,"Bien,Nui,Sang trong"
+47,17,Trai nghiem Ha Long cuoi tuan,350000.0,2026-09-19,18,approved,2026-05-31 07:55:24,"Van hoa,Nghi duong"
+39,17,Hanh trinh Da Nang 1 ngay,750000.0,2027-05-19,15,approved,2026-05-31 07:55:14,"Bien,Nui,Van hoa"
+11,17,Sun World Ba Na Hills tại Đà Nẵng,70000.0,2026-05-30,0,approved,2026-05-23 16:34:37,
+227,17,Phiêu lưu Vũng Tàu 2N1Đ,5000000.0,2025-09-26,15,approved,2025-05-16 08:38:00,"Núi,Sang trọng,Nghỉ dưỡng"
+179,17,Hành trình Hạ Long 3N2Đ,350000.0,2025-06-24,47,approved,2026-05-31 08:24:38,
+165,17,Tour cao cap Ha Noi cuoi tuan,1000000.0,2026-04-06,35,approved,2025-11-23 19:49:39,"Bien,Nui,Mao hiem"
+160,17,Tham quan Quy Nhon 3N2D,350000.0,2026-10-20,23,approved,2026-05-31 07:58:17,
+158,17,Tour cao cap Pleiku 1 ngay,750000.0,2026-10-26,45,approved,2026-05-31 07:58:14,"Nui,Van hoa,Mao hiem"
+564,17,Tour cao cấp Quy Nhơn 2N1Đ,350000.0,2027-04-25,34,approved,2026-12-18 07:38:18,"Biển,Sang trọng,Mạo hiểm"
+447,17,Tham quan Tây Ninh 5N4Đ,150000.0,2026-06-19,21,pending,2026-03-29 10:25:33,Văn hóa
+484,17,Tham quan Đà Lạt 1 ngày,3000000.0,2027-08-10,5,approved,2027-03-05 04:43:14,"Biển,Núi,Nghỉ dưỡng"
+499,17,Trải nghiệm Nha Trang 4N3Đ,1000000.0,2027-03-14,38,approved,2026-11-30 18:50:07,"Biển,Văn hóa,Sang trọng"
+318,17,Tham quan Buôn Ma Thuột 5N4Đ,7000000.0,2027-06-05,50,approved,2027-03-05 06:26:40,Mạo hiểm
+397,17,Trải nghiệm Vũng Tàu 4N3Đ,10000000.0,2025-12-31,34,pending,2025-09-05 12:55:29,"Núi,Mạo hiểm"
+429,17,Tham quan Quy Nhơn 4N3Đ,3000000.0,2025-11-06,37,pending,2025-08-04 08:09:09,Văn hóa
+409,24,Phiêu lưu Pleiku 1 ngày,5000000.0,2025-09-19,38,approved,2025-04-15 21:54:31,"Núi,Mạo hiểm"
+376,24,Tour cao cấp Sapa cuối tuần,10000000.0,2025-04-15,11,approved,2025-04-03 12:23:01,Núi
+377,24,Tham quan Mũi Né 3N2Đ,1000000.0,2025-10-08,8,approved,2025-07-21 12:22:58,Sang trọng
+364,24,Trải nghiệm Đà Nẵng 2N1Đ,750000.0,2026-09-15,11,approved,2026-08-20 19:09:34,"Biển,Núi,Mạo hiểm"
+456,24,Khám phá Mũi Né 5N4Đ,150000.0,2025-03-22,48,approved,2025-03-11 18:05:35,"Văn hóa,Sang trọng"
+161,24,Phieu luu Da Lat 4N3D,1500000.0,2026-07-05,28,approved,2026-02-27 07:33:10,"Bien,Van hoa"
+166,24,Phieu luu Quy Nhon 1 ngay,3000000.0,2026-01-12,26,approved,2025-07-29 14:49:51,"Bien,Mao hiem"
+163,24,Tham quan Nha Trang 1 ngay,750000.0,2025-07-16,42,approved,2025-01-29 06:14:13,Bien
+262,24,Khám phá Ninh Bình 5N4Đ,500000.0,2026-03-31,8,approved,2026-02-04 20:56:13,"Núi,Sang trọng,Mạo hiểm"
+285,24,Trải nghiệm Mũi Né cuối tuần,150000.0,2027-06-11,42,pending,2027-02-24 07:45:05,Sang trọng
+32,24,Tour cao cap Quang Ninh 1 ngay,350000.0,2027-03-14,30,approved,2026-05-31 07:55:03,"Bien,Van hoa,Sang trong"
+53,24,Tham quan Mui Ne 2N1D,10000000.0,2027-03-04,19,approved,2026-05-31 07:55:33,"Van hoa,Nghi duong"
+46,24,Nghi duong Bien Hoa 1 ngay,7000000.0,2026-07-13,11,approved,2026-05-31 07:55:23,Nui
+55,24,Tour cao cap Ha Noi 3N2D,10000000.0,2027-05-21,7,pending,2026-05-31 07:55:38,"Bien,Sang trong,Mao hiem"
+61,24,Tham quan Hue 3N2D,500000.0,2026-11-29,19,approved,2026-05-31 07:55:47,"Sang trong,Mao hiem"
+62,24,Trai nghiem Quang Ninh cuoi tuan,10000000.0,2027-01-17,34,approved,2026-05-31 07:55:49,Nghi duong
+63,24,Tour cao cap Bien Hoa 2N1D,5000000.0,2026-07-02,37,approved,2026-05-31 07:55:50,Sang trong
+66,24,Trai nghiem Quang Ninh 5N4D,5000000.0,2026-09-01,24,approved,2026-05-31 07:55:55,"Nui,Nghi duong"
+68,24,Du lich Bien Hoa 2N1D,5000000.0,2027-05-25,10,approved,2026-05-31 07:55:58,"Nui,Van hoa,Nghi duong"
+75,24,Phieu luu Ha Long 4N3D,2000000.0,2026-11-26,46,pending,2026-05-31 07:56:08,"Sang trong,Nghi duong"
+76,24,Phieu luu Ha Noi 1 ngay,7000000.0,2026-11-08,8,approved,2026-05-31 07:56:09,"Sang trong,Mao hiem"
+77,24,Du lich Vung Tau 5N4D,5000000.0,2027-04-22,41,approved,2026-05-31 07:56:11,Mao hiem
+84,24,Phieu luu Sapa 2N1D,5000000.0,2027-04-08,38,pending,2026-05-31 07:56:24,"Van hoa,Mao hiem"
+85,24,Phieu luu Ninh Binh 2N1D,10000000.0,2026-08-03,20,approved,2026-05-31 07:56:25,Mao hiem
+81,24,Hanh trinh Buon Ma Thuot 3N2D,350000.0,2027-05-06,6,approved,2026-05-31 07:56:19,"Sang trong,Mao hiem,Nghi duong"
+94,24,Kham pha Quy Nhon 1 ngay,10000000.0,2026-08-25,42,approved,2026-05-31 07:56:37,"Van hoa,Sang trong"
+114,24,Trai nghiem Hoi An 2N1D,2000000.0,2027-05-14,11,pending,2026-05-31 07:57:06,"Bien,Sang trong,Mao hiem"
+126,24,Kham pha Ha Long 1 ngay,5000000.0,2026-08-15,48,approved,2026-05-31 07:57:23,"Nui,Sang trong"
+121,24,Du lich Phu Quoc 3N2D,500000.0,2027-03-02,8,pending,2026-05-31 07:57:15,Nui
+134,24,Nghi duong Buon Ma Thuot 3N2D,1000000.0,2027-05-08,47,approved,2026-05-31 07:57:37,"Nui,Sang trong,Mao hiem"
+129,24,Tham quan Da Lat 5N4D,1000000.0,2026-07-02,35,approved,2026-05-31 07:57:28,"Sang trong,Mao hiem"
+144,24,Hanh trinh Pleiku 2N1D,1000000.0,2026-11-24,13,approved,2026-05-31 07:57:54,"Bien,Sang trong,Nghi duong"
+145,24,Nghi duong Can Tho cuoi tuan,250000.0,2027-02-10,48,pending,2026-05-31 07:57:56,"Sang trong,Nghi duong"
+147,24,Hanh trinh Hoi An 2N1D,7000000.0,2026-10-04,34,approved,2026-05-31 07:57:58,Sang trong
+152,24,Tham quan Quy Nhon 1 ngay,250000.0,2027-03-15,33,approved,2026-05-31 07:58:06,Mao hiem
+168,129,Nghỉ dưỡng Pleiku 5N4Đ,7000000.0,2027-03-11,7,approved,2026-11-11 11:42:54,Sang trọng
+170,129,Hành trình Buôn Ma Thuột 4N3Đ,150000.0,2026-12-12,23,approved,2026-06-15 14:25:09,Nghỉ dưỡng
+199,129,Hành trình Cần Thơ 1 ngày,350000.0,2027-03-20,26,approved,2027-02-25 04:15:55,"Văn hóa,Sang trọng,Nghỉ dưỡng"
+383,129,Du lịch Kon Tum 5N4Đ,250000.0,2025-08-04,38,approved,2025-05-31 19:39:08,"Núi,Văn hóa"
+606,129,Khám phá Vũng Tàu 3N2Đ,1500000.0,2027-08-22,33,pending,2026-05-31 08:45:17,Biển
+737,130,Nghỉ dưỡng Ninh Bình 4N3Đ,7000000.0,2027-06-14,36,pending,2026-05-31 08:45:18,"Núi,Sang trọng,Nghỉ dưỡng"
+773,130,Du lịch Phú Quốc 4N3Đ,5000000.0,2026-08-11,38,approved,2026-05-31 08:45:19,"Biển,Núi"
+776,130,Phiêu lưu Ninh Bình 3N2Đ,750000.0,2025-10-03,37,approved,2026-05-31 08:45:19,"Núi,Mạo hiểm,Nghỉ dưỡng"
+215,130,Nghỉ dưỡng Vũng Tàu 3N2Đ,1500000.0,2027-01-10,24,approved,2026-10-29 20:20:36,Văn hóa
+172,130,Khám phá Hà Nội 5N4Đ,750000.0,2025-05-21,15,approved,2025-03-30 11:44:18,"Núi,Nghỉ dưỡng"
+174,130,Tham quan Quy Nhơn 2N1Đ,250000.0,2026-02-22,21,approved,2025-12-20 11:19:07,Mạo hiểm
+175,130,Khám phá Hạ Long 3N2Đ,500000.0,2027-05-27,35,approved,2027-03-16 04:34:53,"Biển,Núi,Sang trọng"
+167,130,Hành trình Phú Quốc cuối tuần,350000.0,2026-05-23,33,approved,2026-02-05 02:05:14,"Biển,Mạo hiểm"
+230,130,Tour cao cấp Mũi Né 5N4Đ,250000.0,2025-03-01,48,pending,2025-01-05 20:35:48,"Núi,Văn hóa"
+234,131,Nghỉ dưỡng Huế 1 ngày,250000.0,2027-03-21,8,approved,2026-11-16 04:23:16,"Biển,Núi,Nghỉ dưỡng"
+169,131,Trải nghiệm Hạ Long 2N1Đ,250000.0,2026-07-13,30,pending,2026-04-04 05:51:00,"Biển,Sang trọng"
+371,131,Phiêu lưu Nha Trang 2N1Đ,2000000.0,2026-03-03,45,approved,2025-10-07 11:41:30,Mạo hiểm
+332,131,Tham quan Quy Nhơn 1 ngày,1000000.0,2027-07-30,5,approved,2027-04-09 13:50:42,"Biển,Núi,Sang trọng"
+504,131,Trải nghiệm Phú Quốc 5N4Đ,150000.0,2026-06-08,36,approved,2026-01-02 20:51:17,"Biển,Núi"
+475,131,Khám phá Buôn Ma Thuột 2N1Đ,5000000.0,2025-10-10,35,approved,2025-05-09 16:02:49,Mạo hiểm
+631,131,Tour cao cấp Tây Ninh 1 ngày,250000.0,2026-07-06,46,approved,2026-05-31 08:45:17,Biển
+708,131,Du lịch Buôn Ma Thuột cuối tuần,1000000.0,2026-02-25,41,approved,2026-05-31 08:45:18,"Núi,Mạo hiểm,Nghỉ dưỡng"
+777,132,Hành trình Buôn Ma Thuột 1 ngày,5000000.0,2026-10-22,40,approved,2026-05-31 08:45:19,"Văn hóa,Nghỉ dưỡng"
+724,132,Tham quan Pleiku 2N1Đ,1500000.0,2027-06-12,25,approved,2026-05-31 08:45:18,Nghỉ dưỡng
+494,132,Nghỉ dưỡng Phú Quốc cuối tuần,5000000.0,2027-01-25,32,approved,2026-08-26 12:18:40,"Biển,Sang trọng,Mạo hiểm"
+424,132,Nghỉ dưỡng Đà Nẵng 1 ngày,5000000.0,2026-04-22,21,approved,2025-11-25 23:52:33,"Biển,Núi,Nghỉ dưỡng"
+370,133,Tham quan Ninh Bình 1 ngày,1500000.0,2026-05-20,28,pending,2025-12-08 00:36:04,"Núi,Văn hóa,Nghỉ dưỡng"
+380,133,Du lịch Nha Trang 2N1Đ,750000.0,2026-04-15,29,approved,2026-04-06 04:19:48,"Núi,Nghỉ dưỡng"
+301,133,Nghỉ dưỡng Biên Hòa 5N4Đ,1500000.0,2027-08-06,15,pending,2027-02-26 03:48:54,"Mạo hiểm,Nghỉ dưỡng"
+542,133,Hành trình Pleiku 1 ngày,2000000.0,2025-11-02,9,approved,2025-09-05 06:11:08,"Biển,Văn hóa"
+176,133,Nghỉ dưỡng Đà Nẵng cuối tuần,1500000.0,2026-11-08,12,approved,2026-05-18 19:18:05,"Văn hóa,Sang trọng,Mạo hiểm"
+239,133,Tham quan Đà Nẵng cuối tuần,10000000.0,2026-08-15,40,approved,2026-02-23 03:02:19,"Biển,Sang trọng"
+775,133,Tour cao cấp Ninh Bình cuối tuần,150000.0,2027-07-24,30,approved,2026-05-31 08:45:19,"Núi,Mạo hiểm,Nghỉ dưỡng"
+679,133,Trải nghiệm Vũng Tàu cuối tuần,10000000.0,2026-04-05,34,pending,2026-05-31 08:45:18,"Văn hóa,Mạo hiểm"
+678,134,Phiêu lưu Ninh Bình 3N2Đ,150000.0,2025-09-07,40,approved,2026-05-31 08:45:18,"Biển,Sang trọng"
+614,134,Tham quan Hà Nội 3N2Đ,5000000.0,2027-03-10,20,approved,2026-05-31 08:45:17,"Núi,Nghỉ dưỡng"
+296,134,Hành trình Quảng Ninh cuối tuần,5000000.0,2025-10-05,5,pending,2025-05-20 09:56:07,"Biển,Sang trọng,Nghỉ dưỡng"
+177,134,Tour cao cấp Hạ Long 4N3Đ,1500000.0,2027-04-13,50,approved,2027-01-08 06:37:51,"Biển,Mạo hiểm"
+173,134,Hành trình Quảng Ninh 3N2Đ,150000.0,2026-03-21,29,approved,2025-12-30 12:43:47,"Biển,Núi,Sang trọng"
+537,134,Phiêu lưu Vũng Tàu 4N3Đ,250000.0,2026-06-12,23,approved,2026-01-04 06:43:56,"Biển,Núi,Mạo hiểm"
+523,134,Hành trình Nha Trang 3N2Đ,150000.0,2026-02-21,7,pending,2025-12-04 18:03:42,"Núi,Nghỉ dưỡng"
+570,134,Khám phá Tây Ninh 1 ngày,3000000.0,2027-02-17,18,pending,2026-11-12 04:02:04,"Núi,Mạo hiểm,Nghỉ dưỡng"
+461,134,Du lịch Tây Ninh 1 ngày,3000000.0,2025-04-08,26,pending,2025-01-08 14:05:42,Biển
+344,134,Khám phá Sapa 4N3Đ,7000000.0,2025-11-18,18,pending,2025-09-02 09:22:26,"Văn hóa,Mạo hiểm"
+550,135,Tour cao cấp Vũng Tàu 1 ngày,3000000.0,2027-02-02,37,approved,2026-11-22 15:03:02,"Biển,Văn hóa,Mạo hiểm"
+558,136,Trải nghiệm Hà Nội 4N3Đ,5000000.0,2027-09-12,49,pending,2027-05-21 00:47:51,"Biển,Văn hóa,Mạo hiểm"
+439,136,Trải nghiệm Quy Nhơn cuối tuần,10000000.0,2025-10-05,20,approved,2025-07-15 19:40:43,"Núi,Nghỉ dưỡng"
+384,136,Phiêu lưu Vũng Tàu 2N1Đ,1500000.0,2025-11-26,35,approved,2025-08-12 08:03:00,"Biển,Sang trọng,Mạo hiểm"
+423,136,Phiêu lưu Mũi Né 2N1Đ,10000000.0,2026-07-21,20,approved,2026-05-24 15:42:47,"Biển,Núi,Mạo hiểm"
+665,136,Trải nghiệm Đà Nẵng 3N2Đ,3000000.0,2027-01-17,33,approved,2026-05-31 08:45:18,"Biển,Núi,Nghỉ dưỡng"
+767,136,Trải nghiệm Nha Trang 4N3Đ,750000.0,2026-08-06,9,approved,2026-05-31 08:45:19,Văn hóa
+662,137,Tham quan Phú Quốc cuối tuần,2000000.0,2026-04-03,9,approved,2026-05-31 08:45:18,"Biển,Sang trọng,Nghỉ dưỡng"
+698,137,Phiêu lưu Vũng Tàu 1 ngày,1000000.0,2027-04-24,16,approved,2026-05-31 08:45:18,"Biển,Văn hóa"
+620,137,Trải nghiệm Ninh Bình 1 ngày,10000000.0,2025-10-08,8,approved,2026-05-31 08:45:17,"Biển,Mạo hiểm"
+589,137,Trải nghiệm Huế cuối tuần,10000000.0,2025-12-15,8,approved,2026-05-31 08:45:17,"Biển,Mạo hiểm"
+420,137,Trải nghiệm Biên Hòa cuối tuần,1500000.0,2027-08-01,11,approved,2027-03-05 22:05:09,"Biển,Núi,Nghỉ dưỡng"
+393,137,Tham quan Huế 4N3Đ,2000000.0,2026-04-02,46,approved,2025-12-08 00:06:18,"Núi,Sang trọng,Nghỉ dưỡng"
+178,137,Phiêu lưu Quảng Ninh 2N1Đ,10000000.0,2025-11-06,16,approved,2025-08-17 10:50:17,"Núi,Văn hóa,Mạo hiểm"
+244,137,Hành trình Nha Trang cuối tuần,1500000.0,2026-04-04,44,approved,2026-03-14 12:05:44,"Văn hóa,Nghỉ dưỡng"
+224,138,Trải nghiệm Kon Tum 5N4Đ,5000000.0,2025-12-04,36,approved,2025-09-25 06:20:20,"Biển,Núi,Nghỉ dưỡng"
+546,138,Hành trình Vũng Tàu 3N2Đ,7000000.0,2025-11-29,5,approved,2025-08-23 20:41:29,Biển
+764,138,Tham quan Hội An cuối tuần,2000000.0,2026-08-04,29,pending,2026-05-31 08:45:19,"Văn hóa,Nghỉ dưỡng"
+750,138,Hành trình Biên Hòa 2N1Đ,5000000.0,2027-01-21,11,approved,2026-05-31 08:45:18,"Núi,Sang trọng,Nghỉ dưỡng"
+482,139,Trải nghiệm Quảng Ninh 4N3Đ,2000000.0,2027-04-22,43,approved,2026-11-13 07:18:29,"Biển,Núi,Sang trọng"
+404,139,Tham quan Hội An 4N3Đ,2000000.0,2027-02-12,31,approved,2026-12-26 11:21:43,Mạo hiểm
+407,139,Du lịch Sapa 2N1Đ,3000000.0,2025-04-12,24,pending,2025-03-27 17:11:58,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+408,139,Phiêu lưu Hội An cuối tuần,1000000.0,2027-02-13,36,pending,2026-11-19 22:38:20,Mạo hiểm
+595,140,Du lịch Cần Thơ 2N1Đ,750000.0,2027-01-23,25,approved,2026-05-31 08:45:17,"Văn hóa,Mạo hiểm"
+603,140,Phiêu lưu Vũng Tàu 5N4Đ,250000.0,2026-08-05,40,approved,2026-05-31 08:45:17,Biển
+336,141,Tour cao cấp Ninh Bình 1 ngày,150000.0,2026-04-02,30,approved,2026-02-24 17:09:33,Núi
+443,141,Tham quan Hạ Long 1 ngày,7000000.0,2027-03-04,34,approved,2026-12-05 07:26:48,Nghỉ dưỡng
+462,141,Trải nghiệm Quảng Ninh 2N1Đ,2000000.0,2027-03-15,7,approved,2026-11-18 09:50:32,"Sang trọng,Nghỉ dưỡng"
+554,141,Khám phá Đà Nẵng 1 ngày,250000.0,2025-07-04,47,pending,2025-06-23 01:38:02,"Văn hóa,Mạo hiểm"
+565,141,Phiêu lưu Hạ Long cuối tuần,2000000.0,2026-12-02,11,pending,2026-08-16 00:34:25,"Biển,Núi,Mạo hiểm"
+517,141,Du lịch Đà Nẵng 3N2Đ,1000000.0,2026-01-05,19,approved,2025-10-09 10:28:49,Sang trọng
+529,141,Tour cao cấp Phú Quốc 1 ngày,2000000.0,2026-02-04,5,approved,2025-10-21 23:13:15,"Biển,Núi,Nghỉ dưỡng"
+235,141,Nghỉ dưỡng Quảng Ninh 5N4Đ,350000.0,2026-04-17,10,approved,2025-12-09 12:15:01,"Biển,Núi"
+254,141,Tham quan Sapa 1 ngày,2000000.0,2025-10-24,32,approved,2025-06-27 23:38:35,"Biển,Mạo hiểm,Nghỉ dưỡng"
+288,141,Tour cao cấp Đà Lạt cuối tuần,1500000.0,2027-09-15,10,approved,2027-04-19 06:02:14,Nghỉ dưỡng
+290,142,Du lịch Sapa 1 ngày,10000000.0,2025-09-25,40,approved,2025-07-19 17:43:35,"Mạo hiểm,Nghỉ dưỡng"
+246,142,Tour cao cấp Hạ Long 2N1Đ,1500000.0,2027-01-24,28,approved,2026-11-15 13:21:52,"Mạo hiểm,Nghỉ dưỡng"
+501,142,Nghỉ dưỡng Cần Thơ 2N1Đ,3000000.0,2026-07-03,15,approved,2026-03-30 11:57:08,"Biển,Sang trọng,Nghỉ dưỡng"
+627,142,Hành trình Phú Quốc 1 ngày,5000000.0,2027-06-18,35,pending,2026-05-31 08:45:17,"Biển,Sang trọng,Nghỉ dưỡng"
+770,142,Tham quan Buôn Ma Thuột 2N1Đ,7000000.0,2025-04-11,27,approved,2026-05-31 08:45:19,"Văn hóa,Sang trọng,Nghỉ dưỡng"
+728,143,Tham quan Mũi Né 4N3Đ,10000000.0,2025-10-18,7,approved,2026-05-31 08:45:18,"Văn hóa,Sang trọng,Mạo hiểm"
+580,143,Khám phá Huế 3N2Đ,750000.0,2026-08-01,34,pending,2026-02-21 12:30:13,"Núi,Nghỉ dưỡng"
+563,143,Tour cao cấp Hội An cuối tuần,7000000.0,2026-08-15,20,approved,2026-06-27 12:05:47,"Sang trọng,Nghỉ dưỡng"
+552,143,Khám phá Vũng Tàu 2N1Đ,150000.0,2025-06-11,29,approved,2025-05-24 06:58:16,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+217,143,Tour cao cấp Buôn Ma Thuột 4N3Đ,3000000.0,2025-05-27,18,pending,2025-04-10 02:03:49,"Văn hóa,Mạo hiểm"
+192,143,Du lịch Đà Nẵng 3N2Đ,150000.0,2025-10-07,31,pending,2025-08-29 18:52:31,"Biển,Mạo hiểm"
+201,144,Hành trình Hội An 5N4Đ,750000.0,2026-03-08,29,approved,2026-01-18 03:13:14,Văn hóa
+516,144,Tour cao cấp Buôn Ma Thuột cuối tuần,150000.0,2027-06-18,41,approved,2026-12-28 05:36:03,"Biển,Sang trọng"
+488,144,Khám phá Hạ Long 2N1Đ,1500000.0,2026-06-16,28,approved,2026-04-30 02:14:21,"Biển,Núi,Sang trọng"
+441,144,Phiêu lưu Sapa 3N2Đ,1000000.0,2027-07-19,9,approved,2027-05-26 23:03:08,"Biển,Mạo hiểm,Nghỉ dưỡng"
+324,144,Tham quan Hà Nội 3N2Đ,10000000.0,2025-10-27,21,approved,2025-08-03 14:48:55,"Sang trọng,Mạo hiểm"
+378,144,Du lịch Hà Nội 4N3Đ,7000000.0,2026-10-04,34,pending,2026-08-07 10:06:38,"Núi,Văn hóa"
+617,144,Khám phá Phú Quốc 5N4Đ,2000000.0,2026-04-04,12,pending,2026-05-31 08:45:17,"Văn hóa,Nghỉ dưỡng"
+682,144,Khám phá Kon Tum 4N3Đ,150000.0,2026-09-30,36,approved,2026-05-31 08:45:18,"Núi,Sang trọng,Mạo hiểm"
+718,144,Trải nghiệm Pleiku 3N2Đ,10000000.0,2026-02-09,34,pending,2026-05-31 08:45:18,"Văn hóa,Mạo hiểm"
+745,145,Tour cao cấp Phú Quốc 2N1Đ,350000.0,2027-01-31,32,pending,2026-05-31 08:45:18,"Văn hóa,Sang trọng"
+672,145,Trải nghiệm Biên Hòa cuối tuần,5000000.0,2025-05-14,46,pending,2026-05-31 08:45:18,"Biển,Núi,Văn hóa"
+422,145,Khám phá Tây Ninh 2N1Đ,350000.0,2026-04-25,20,pending,2025-11-21 03:54:09,Nghỉ dưỡng
+325,145,Nghỉ dưỡng Kon Tum 4N3Đ,3000000.0,2025-04-08,50,approved,2025-02-15 17:07:43,"Văn hóa,Sang trọng,Mạo hiểm"
+358,145,Du lịch Cần Thơ 3N2Đ,500000.0,2026-05-21,29,approved,2026-03-08 11:27:35,"Biển,Sang trọng,Nghỉ dưỡng"
+449,145,Phiêu lưu Đà Nẵng 3N2Đ,250000.0,2026-10-04,12,approved,2026-06-23 11:21:52,"Núi,Văn hóa,Mạo hiểm"
+495,146,Tour cao cấp Đà Lạt 3N2Đ,3000000.0,2026-10-01,43,pending,2026-08-20 18:42:38,"Văn hóa,Mạo hiểm,Nghỉ dưỡng"
+536,146,Tham quan Huế cuối tuần,7000000.0,2025-07-21,33,approved,2025-06-11 15:12:48,"Biển,Văn hóa"
+351,146,Du lịch Phú Quốc 4N3Đ,7000000.0,2026-07-17,5,approved,2026-06-06 12:24:56,"Biển,Núi,Sang trọng"
+200,146,Tour cao cấp Quy Nhơn 2N1Đ,5000000.0,2026-11-07,30,approved,2026-10-04 21:00:27,Văn hóa
+289,146,Khám phá Tây Ninh cuối tuần,500000.0,2027-09-08,48,pending,2027-05-19 14:59:39,"Biển,Núi"
+701,146,Tour cao cấp Tây Ninh 2N1Đ,1000000.0,2027-06-01,39,approved,2026-05-31 08:45:18,Văn hóa
+684,146,Nghỉ dưỡng Sapa 4N3Đ,3000000.0,2026-09-12,36,approved,2026-05-31 08:45:18,Núi
+602,146,Nghỉ dưỡng Buôn Ma Thuột 4N3Đ,1500000.0,2027-06-29,44,approved,2026-05-31 08:45:17,Núi
+634,147,Tour cao cấp Đà Lạt cuối tuần,3000000.0,2026-06-24,48,approved,2026-05-31 08:45:17,"Núi,Văn hóa,Mạo hiểm"
+640,147,Tham quan Ninh Bình cuối tuần,10000000.0,2026-11-26,36,approved,2026-05-31 08:45:17,"Biển,Văn hóa,Sang trọng"
+731,147,Trải nghiệm Buôn Ma Thuột 2N1Đ,1000000.0,2026-12-19,24,approved,2026-05-31 08:45:18,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+772,147,Tour cao cấp Biên Hòa 2N1Đ,5000000.0,2025-12-23,44,approved,2026-05-31 08:45:19,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+277,147,Tham quan Cần Thơ 4N3Đ,7000000.0,2025-08-27,47,approved,2025-05-18 09:11:42,Sang trọng
+340,147,Tour cao cấp Vũng Tàu 3N2Đ,5000000.0,2026-01-29,34,approved,2025-08-21 20:51:41,"Biển,Nghỉ dưỡng"
+381,147,Hành trình Hà Nội 1 ngày,250000.0,2025-10-02,40,approved,2025-06-15 12:01:31,"Biển,Núi,Sang trọng"
+556,147,Phiêu lưu Tây Ninh 3N2Đ,250000.0,2027-03-19,37,approved,2026-12-02 03:33:42,"Núi,Sang trọng,Mạo hiểm"
+572,147,Tham quan Huế 5N4Đ,150000.0,2026-04-23,31,approved,2026-03-17 11:56:26,Sang trọng
+569,147,Khám phá Đà Lạt cuối tuần,10000000.0,2025-10-04,6,approved,2025-05-11 00:14:13,"Biển,Mạo hiểm,Nghỉ dưỡng"
+362,148,Tour cao cấp Pleiku 5N4Đ,10000000.0,2026-12-17,23,approved,2026-07-19 20:32:12,"Biển,Nghỉ dưỡng"
+716,148,Tham quan Nha Trang 3N2Đ,1000000.0,2026-03-13,22,pending,2026-05-31 08:45:18,Mạo hiểm
+690,149,Du lịch Quảng Ninh 4N3Đ,1000000.0,2026-07-04,38,approved,2026-05-31 08:45:18,"Văn hóa,Mạo hiểm,Nghỉ dưỡng"
+667,150,Du lịch Hà Nội 3N2Đ,7000000.0,2026-02-14,49,pending,2026-05-31 08:45:18,Biển
+642,150,Du lịch Mũi Né 4N3Đ,500000.0,2027-06-11,39,pending,2026-05-31 08:45:18,"Biển,Văn hóa,Mạo hiểm"
+577,150,Hành trình Vũng Tàu 2N1Đ,5000000.0,2026-12-12,12,approved,2026-10-09 03:42:33,Sang trọng
+590,150,Nghỉ dưỡng Ninh Bình 2N1Đ,500000.0,2025-10-17,45,approved,2026-05-31 08:45:17,"Biển,Núi,Mạo hiểm"
+366,150,Trải nghiệm Hà Nội 4N3Đ,10000000.0,2026-01-16,5,pending,2025-11-09 02:33:52,"Sang trọng,Nghỉ dưỡng"
+345,150,Khám phá Phú Quốc 1 ngày,500000.0,2026-11-16,22,approved,2026-10-02 00:24:53,"Núi,Văn hóa,Nghỉ dưỡng"
+316,150,Trải nghiệm Quảng Ninh 5N4Đ,2000000.0,2027-02-28,28,approved,2026-10-19 04:18:37,"Văn hóa,Mạo hiểm,Nghỉ dưỡng"
+206,150,Tham quan Đà Lạt cuối tuần,5000000.0,2027-01-31,14,approved,2026-10-25 23:07:19,Mạo hiểm
+210,151,Nghỉ dưỡng Hạ Long 3N2Đ,1500000.0,2025-09-11,6,approved,2025-05-20 21:08:27,"Biển,Sang trọng"
+328,151,Khám phá Biên Hòa 5N4Đ,150000.0,2025-10-05,17,approved,2025-06-23 19:53:44,"Văn hóa,Mạo hiểm,Nghỉ dưỡng"
+538,151,Trải nghiệm Đà Lạt 5N4Đ,1500000.0,2025-08-11,31,pending,2025-08-03 15:11:19,"Biển,Văn hóa,Sang trọng"
+647,151,Khám phá Cần Thơ 4N3Đ,750000.0,2026-12-19,24,approved,2026-05-31 08:45:18,"Biển,Núi,Văn hóa"
+749,151,Tham quan Quy Nhơn 4N3Đ,350000.0,2026-04-12,30,approved,2026-05-31 08:45:18,Nghỉ dưỡng
+754,152,Tour cao cấp Hạ Long 3N2Đ,5000000.0,2027-01-18,47,pending,2026-05-31 08:45:18,"Sang trọng,Nghỉ dưỡng"
+623,152,Phiêu lưu Mũi Né 5N4Đ,350000.0,2027-06-13,9,pending,2026-05-31 08:45:17,"Núi,Văn hóa,Nghỉ dưỡng"
+578,152,Khám phá Sapa 4N3Đ,750000.0,2026-06-23,14,approved,2026-02-26 06:26:07,"Sang trọng,Mạo hiểm"
+651,152,Nghỉ dưỡng Quảng Ninh cuối tuần,750000.0,2027-01-26,7,approved,2026-05-31 08:45:18,"Núi,Mạo hiểm,Nghỉ dưỡng"
+374,152,Tham quan Đà Nẵng 2N1Đ,5000000.0,2027-10-06,38,pending,2027-05-10 22:35:57,"Biển,Núi,Văn hóa"
+414,152,Tham quan Sapa 4N3Đ,10000000.0,2026-01-19,20,pending,2025-10-02 23:19:12,"Biển,Núi,Sang trọng"
+250,152,Nghỉ dưỡng Mũi Né 5N4Đ,250000.0,2027-05-08,43,approved,2027-03-16 21:12:25,"Biển,Mạo hiểm,Nghỉ dưỡng"
+585,153,Hành trình Quy Nhơn 4N3Đ,1500000.0,2025-10-10,34,approved,2026-05-31 08:45:17,Văn hóa
+638,153,Tour cao cấp Buôn Ma Thuột 3N2Đ,3000000.0,2027-05-13,8,approved,2026-05-31 08:45:17,Biển
+753,153,Hành trình Hà Nội 1 ngày,750000.0,2026-05-31,48,approved,2026-05-31 08:45:18,Sang trọng
+742,154,Du lịch Đà Nẵng 4N3Đ,2000000.0,2025-12-17,40,approved,2026-05-31 08:45:18,"Biển,Mạo hiểm"
+729,154,Du lịch Kon Tum cuối tuần,350000.0,2025-11-15,44,approved,2026-05-31 08:45:18,"Biển,Mạo hiểm"
+594,154,Khám phá Biên Hòa 1 ngày,250000.0,2026-09-07,32,approved,2026-05-31 08:45:17,Mạo hiểm
+664,154,Khám phá Đà Lạt 3N2Đ,10000000.0,2027-03-01,9,pending,2026-05-31 08:45:18,"Biển,Nghỉ dưỡng"
+691,154,Trải nghiệm Phú Quốc 2N1Đ,500000.0,2026-05-15,48,approved,2026-05-31 08:45:18,Sang trọng
+219,154,Phiêu lưu Quy Nhơn 4N3Đ,5000000.0,2026-03-23,30,pending,2025-10-16 00:32:36,"Núi,Nghỉ dưỡng"
+435,154,Du lịch Quảng Ninh 2N1Đ,350000.0,2026-10-26,30,approved,2026-07-06 21:38:49,"Núi,Văn hóa"
+392,154,Nghỉ dưỡng Huế cuối tuần,500000.0,2026-09-15,38,approved,2026-05-26 05:22:06,"Mạo hiểm,Nghỉ dưỡng"
+450,154,Phiêu lưu Hội An 4N3Đ,2000000.0,2027-03-22,5,pending,2026-10-09 02:34:29,"Núi,Nghỉ dưỡng"
+575,155,Tham quan Hà Nội 1 ngày,1500000.0,2026-01-16,33,approved,2025-11-14 18:06:42,"Núi,Sang trọng,Mạo hiểm"
+549,155,Tour cao cấp Cần Thơ 4N3Đ,10000000.0,2026-02-01,29,approved,2026-01-15 21:06:01,"Biển,Văn hóa,Nghỉ dưỡng"
+406,155,Tham quan Nha Trang 5N4Đ,250000.0,2025-10-12,31,pending,2025-08-01 17:19:45,"Núi,Nghỉ dưỡng"
+205,155,Trải nghiệm Mũi Né 2N1Đ,1500000.0,2025-04-14,14,approved,2025-02-09 20:56:11,"Văn hóa,Nghỉ dưỡng"
+582,155,Phiêu lưu Pleiku 4N3Đ,750000.0,2026-06-04,44,approved,2026-05-31 08:45:17,"Núi,Sang trọng,Mạo hiểm"
+735,155,Tour cao cấp Pleiku 1 ngày,350000.0,2026-03-31,23,pending,2026-05-31 08:45:18,Núi
+583,156,Trải nghiệm Phú Quốc 4N3Đ,150000.0,2025-08-11,27,approved,2026-05-31 08:45:17,Nghỉ dưỡng
+299,156,Khám phá Hạ Long 1 ngày,2000000.0,2027-04-29,32,approved,2027-01-20 17:44:23,"Văn hóa,Nghỉ dưỡng"
+525,156,Hành trình Phú Quốc cuối tuần,5000000.0,2027-07-22,20,approved,2027-01-23 10:28:05,"Văn hóa,Nghỉ dưỡng"
+576,157,Du lịch Pleiku cuối tuần,250000.0,2025-11-03,47,approved,2025-08-08 10:48:17,"Biển,Văn hóa"
+467,157,Khám phá Hạ Long 4N3Đ,500000.0,2027-04-22,8,approved,2026-12-24 23:39:45,"Văn hóa,Sang trọng"
+476,157,Hành trình Buôn Ma Thuột cuối tuần,1500000.0,2026-12-18,21,approved,2026-07-15 14:53:40,"Sang trọng,Mạo hiểm"
+644,157,Khám phá Cần Thơ 5N4Đ,250000.0,2027-04-20,22,pending,2026-05-31 08:45:18,"Văn hóa,Sang trọng,Mạo hiểm"
+650,157,Tour cao cấp Nha Trang 3N2Đ,7000000.0,2026-03-27,8,approved,2026-05-31 08:45:18,"Núi,Mạo hiểm,Nghỉ dưỡng"
+721,158,Tham quan Hạ Long cuối tuần,1500000.0,2026-08-06,46,pending,2026-05-31 08:45:18,"Văn hóa,Sang trọng,Mạo hiểm"
+561,158,Khám phá Mũi Né cuối tuần,7000000.0,2027-03-01,43,pending,2027-01-19 07:02:21,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+312,158,Hành trình Mũi Né 4N3Đ,10000000.0,2026-01-11,33,approved,2025-08-11 14:50:38,"Biển,Mạo hiểm,Nghỉ dưỡng"
+273,158,Du lịch Hội An 2N1Đ,500000.0,2027-02-09,29,approved,2026-11-20 04:49:50,"Núi,Nghỉ dưỡng"
+265,159,Nghỉ dưỡng Huế 4N3Đ,1000000.0,2026-01-03,43,approved,2025-12-13 04:44:44,"Núi,Văn hóa,Nghỉ dưỡng"
+226,159,Trải nghiệm Đà Lạt 4N3Đ,150000.0,2025-08-02,6,approved,2025-02-07 05:27:07,"Núi,Mạo hiểm"
+341,159,Khám phá Buôn Ma Thuột 2N1Đ,150000.0,2025-08-09,10,pending,2025-03-21 02:17:20,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+528,159,Nghỉ dưỡng Phú Quốc 5N4Đ,250000.0,2027-02-02,18,pending,2026-11-15 02:18:08,"Văn hóa,Mạo hiểm,Nghỉ dưỡng"
+503,159,Tour cao cấp Biên Hòa 1 ngày,1500000.0,2026-09-22,31,pending,2026-05-16 13:31:41,"Biển,Văn hóa"
+719,159,Trải nghiệm Tây Ninh 4N3Đ,500000.0,2025-07-01,41,approved,2026-05-31 08:45:18,"Núi,Mạo hiểm"
+675,159,Phiêu lưu Hạ Long 5N4Đ,500000.0,2026-05-18,25,pending,2026-05-31 08:45:18,Mạo hiểm
+706,159,Nghỉ dưỡng Biên Hòa 2N1Đ,1000000.0,2027-04-07,9,approved,2026-05-31 08:45:18,"Biển,Mạo hiểm,Nghỉ dưỡng"
+646,160,Nghỉ dưỡng Phú Quốc 3N2Đ,7000000.0,2025-05-09,13,approved,2026-05-31 08:45:18,Nghỉ dưỡng
+751,160,Tour cao cấp Sapa cuối tuần,3000000.0,2027-07-21,47,approved,2026-05-31 08:45:18,Sang trọng
+310,160,Du lịch Quy Nhơn 4N3Đ,1500000.0,2025-06-15,9,pending,2025-04-25 16:54:50,Mạo hiểm
+298,160,Khám phá Biên Hòa 2N1Đ,150000.0,2026-12-29,35,approved,2026-08-25 07:08:54,"Văn hóa,Sang trọng,Mạo hiểm"
+418,160,Tour cao cấp Đà Nẵng 2N1Đ,250000.0,2027-01-15,47,approved,2026-07-23 18:24:20,"Núi,Nghỉ dưỡng"
+368,160,Tham quan Quảng Ninh 1 ngày,2000000.0,2026-08-27,16,approved,2026-03-10 18:47:10,"Núi,Sang trọng,Nghỉ dưỡng"
+241,160,Hành trình Hà Nội 1 ngày,1500000.0,2025-08-25,33,pending,2025-05-03 23:40:04,"Văn hóa,Sang trọng"
+388,161,Phiêu lưu Ninh Bình 3N2Đ,750000.0,2026-10-23,19,pending,2026-09-15 19:59:11,"Văn hóa,Nghỉ dưỡng"
+434,161,Tham quan Biên Hòa 1 ngày,3000000.0,2026-11-09,49,approved,2026-08-03 09:28:57,Núi
+367,161,Khám phá Hà Nội 1 ngày,150000.0,2025-08-24,44,approved,2025-02-28 13:46:18,"Biển,Văn hóa"
+671,161,Khám phá Kon Tum 2N1Đ,5000000.0,2026-05-13,47,pending,2026-05-31 08:45:18,"Biển,Văn hóa"
+612,162,Phiêu lưu Buôn Ma Thuột 4N3Đ,250000.0,2027-07-11,22,approved,2026-05-31 08:45:17,Nghỉ dưỡng
+610,162,Trải nghiệm Đà Lạt 1 ngày,750000.0,2026-11-21,7,approved,2026-05-31 08:45:17,Núi
+761,162,Trải nghiệm Hạ Long 2N1Đ,1000000.0,2026-04-11,35,approved,2026-05-31 08:45:19,"Biển,Núi,Văn hóa"
+759,162,Tham quan Pleiku 3N2Đ,250000.0,2025-09-24,8,approved,2026-05-31 08:45:19,Núi
+216,162,Hành trình Nha Trang 2N1Đ,500000.0,2026-04-26,19,approved,2025-11-26 10:25:50,Núi
+338,163,Trải nghiệm Huế 4N3Đ,1500000.0,2025-06-13,31,approved,2025-03-21 23:13:55,"Núi,Sang trọng"
+304,163,Phiêu lưu Buôn Ma Thuột 3N2Đ,5000000.0,2026-01-10,10,approved,2025-12-07 17:35:13,Biển
+656,163,Trải nghiệm Kon Tum cuối tuần,750000.0,2025-09-03,27,approved,2026-05-31 08:45:18,"Núi,Nghỉ dưỡng"
+712,164,Tham quan Ninh Bình 4N3Đ,150000.0,2026-03-19,18,approved,2026-05-31 08:45:18,Mạo hiểm
+597,164,Tour cao cấp Hội An 5N4Đ,250000.0,2027-04-17,35,approved,2026-05-31 08:45:17,Biển
+599,164,Trải nghiệm Nha Trang 2N1Đ,150000.0,2025-12-15,34,approved,2026-05-31 08:45:17,"Biển,Văn hóa,Mạo hiểm"
+765,164,Phiêu lưu Quy Nhơn cuối tuần,1000000.0,2026-08-23,30,approved,2026-05-31 08:45:19,Biển
+302,164,Hành trình Tây Ninh 3N2Đ,500000.0,2025-11-24,26,pending,2025-09-28 16:02:46,"Biển,Núi,Văn hóa"
+348,164,Hành trình Hội An 3N2Đ,350000.0,2027-07-12,26,approved,2027-03-16 01:47:08,"Văn hóa,Sang trọng"
+356,164,Khám phá Phú Quốc 1 ngày,250000.0,2027-04-25,16,approved,2027-04-13 01:21:26,"Biển,Núi,Nghỉ dưỡng"
+425,164,Trải nghiệm Tây Ninh 5N4Đ,1000000.0,2026-06-10,36,approved,2026-02-11 00:11:54,Mạo hiểm
+479,164,Tour cao cấp Huế 5N4Đ,5000000.0,2026-05-28,10,approved,2026-04-21 05:07:34,"Mạo hiểm,Nghỉ dưỡng"
+208,164,Du lịch Tây Ninh 4N3Đ,150000.0,2025-04-29,39,approved,2025-03-21 22:52:12,"Sang trọng,Nghỉ dưỡng"
+551,165,Tham quan Phú Quốc cuối tuần,3000000.0,2025-08-12,36,pending,2025-07-31 08:05:51,"Văn hóa,Mạo hiểm"
+359,165,Khám phá Cần Thơ cuối tuần,150000.0,2026-01-17,23,approved,2025-11-18 12:03:52,"Biển,Sang trọng,Nghỉ dưỡng"
+330,165,Phiêu lưu Đà Lạt cuối tuần,750000.0,2025-05-02,45,pending,2025-04-11 18:03:12,"Biển,Văn hóa,Sang trọng"
+323,165,Trải nghiệm Phú Quốc 2N1Đ,350000.0,2026-09-19,27,approved,2026-05-30 15:49:31,"Núi,Sang trọng,Mạo hiểm"
+720,165,Khám phá Cần Thơ cuối tuần,250000.0,2025-03-16,15,approved,2026-05-31 08:45:18,"Biển,Mạo hiểm,Nghỉ dưỡng"
+592,165,Khám phá Kon Tum 1 ngày,7000000.0,2027-02-12,47,approved,2026-05-31 08:45:17,"Núi,Văn hóa"
+632,165,Nghỉ dưỡng Sapa 5N4Đ,250000.0,2025-08-23,45,pending,2026-05-31 08:45:17,"Biển,Văn hóa,Nghỉ dưỡng"
+693,165,Hành trình Huế 2N1Đ,10000000.0,2026-12-13,41,approved,2026-05-31 08:45:18,Văn hóa
+653,166,Phiêu lưu Quy Nhơn 1 ngày,500000.0,2025-11-30,31,approved,2026-05-31 08:45:18,"Núi,Văn hóa,Mạo hiểm"
+741,166,Tour cao cấp Huế 4N3Đ,3000000.0,2026-07-07,32,approved,2026-05-31 08:45:18,"Núi,Sang trọng"
+779,166,Tour cao cấp Hà Nội cuối tuần,350000.0,2025-12-04,16,approved,2026-05-31 08:45:19,Mạo hiểm
+343,166,Hành trình Buôn Ma Thuột 2N1Đ,500000.0,2026-10-18,44,approved,2026-09-22 16:22:53,"Núi,Văn hóa"
+346,166,Nghỉ dưỡng Tây Ninh 4N3Đ,1500000.0,2026-12-09,27,approved,2026-06-29 14:34:04,"Biển,Văn hóa,Nghỉ dưỡng"
+225,166,Hành trình Huế 2N1Đ,150000.0,2026-05-29,24,approved,2026-02-11 04:16:34,Biển
+214,167,Khám phá Quảng Ninh 3N2Đ,750000.0,2027-03-16,46,approved,2027-01-18 22:32:29,"Biển,Văn hóa,Nghỉ dưỡng"
+468,167,Nghỉ dưỡng Pleiku 2N1Đ,1000000.0,2026-11-04,18,approved,2026-05-14 02:51:16,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+762,167,Phiêu lưu Mũi Né 5N4Đ,1000000.0,2026-06-17,34,approved,2026-05-31 08:45:19,Văn hóa
+637,167,Tour cao cấp Đà Nẵng 1 ngày,3000000.0,2025-06-29,13,approved,2026-05-31 08:45:17,"Núi,Mạo hiểm"
+588,167,Tour cao cấp Buôn Ma Thuột 1 ngày,5000000.0,2026-01-22,30,approved,2026-05-31 08:45:17,"Biển,Mạo hiểm"
+421,168,Phiêu lưu Kon Tum 3N2Đ,10000000.0,2026-01-20,27,approved,2025-11-24 13:45:45,Biển
+379,168,Khám phá Biên Hòa 3N2Đ,7000000.0,2026-02-18,42,approved,2025-08-24 15:45:38,Biển
+184,168,Phiêu lưu Tây Ninh 1 ngày,3000000.0,2026-01-30,46,pending,2026-01-03 00:21:08,Nghỉ dưỡng
+335,169,Phiêu lưu Đà Lạt cuối tuần,350000.0,2027-02-09,11,approved,2026-12-19 02:40:33,"Văn hóa,Sang trọng"
+349,169,Trải nghiệm Sapa 4N3Đ,750000.0,2026-03-08,24,approved,2025-11-27 07:11:35,"Mạo hiểm,Nghỉ dưỡng"
+699,169,Trải nghiệm Quảng Ninh 4N3Đ,150000.0,2026-05-29,38,approved,2026-05-31 08:45:18,Biển
+624,170,Hành trình Phú Quốc 2N1Đ,750000.0,2026-04-26,5,approved,2026-05-31 08:45:17,Núi
+746,170,Hành trình Mũi Né 5N4Đ,7000000.0,2025-12-05,25,approved,2026-05-31 08:45:18,"Biển,Nghỉ dưỡng"
+722,170,Tham quan Đà Lạt 3N2Đ,250000.0,2026-02-02,40,approved,2026-05-31 08:45:18,"Núi,Sang trọng"
+395,170,Hành trình Vũng Tàu cuối tuần,5000000.0,2026-09-21,43,pending,2026-07-25 09:21:37,"Biển,Văn hóa,Mạo hiểm"
+466,170,Tour cao cấp Vũng Tàu cuối tuần,7000000.0,2026-05-02,28,pending,2025-12-29 22:17:23,"Biển,Mạo hiểm"
+492,170,Phiêu lưu Đà Lạt 4N3Đ,5000000.0,2027-04-07,35,pending,2027-02-09 23:53:15,"Biển,Sang trọng"
+521,170,Hành trình Ninh Bình 2N1Đ,250000.0,2026-03-11,34,approved,2025-11-26 20:37:15,Văn hóa
+497,171,Hành trình Kon Tum 4N3Đ,5000000.0,2027-01-13,26,approved,2026-08-06 15:27:52,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+231,171,Trải nghiệm Nha Trang 1 ngày,350000.0,2027-05-07,23,approved,2027-04-03 11:39:09,"Núi,Văn hóa,Mạo hiểm"
+607,171,Tham quan Mũi Né 3N2Đ,350000.0,2027-05-05,49,pending,2026-05-31 08:45:17,Văn hóa
+605,172,Phiêu lưu Mũi Né 4N3Đ,7000000.0,2025-11-14,30,pending,2026-05-31 08:45:17,Sang trọng
+645,172,Tham quan Mũi Né 4N3Đ,5000000.0,2025-12-12,49,approved,2026-05-31 08:45:18,"Núi,Sang trọng,Nghỉ dưỡng"
+188,172,Tour cao cấp Buôn Ma Thuột 2N1Đ,7000000.0,2026-01-24,11,approved,2025-09-03 23:40:43,"Biển,Sang trọng,Mạo hiểm"
+191,172,Nghỉ dưỡng Hạ Long cuối tuần,5000000.0,2025-12-11,37,pending,2025-11-26 03:25:39,"Biển,Văn hóa"
+228,172,Khám phá Phú Quốc cuối tuần,500000.0,2026-05-15,14,approved,2026-03-31 08:41:51,"Văn hóa,Mạo hiểm"
+477,172,Khám phá Đà Lạt 2N1Đ,500000.0,2027-03-20,31,approved,2027-02-24 23:48:16,"Văn hóa,Nghỉ dưỡng"
+398,172,Tham quan Hà Nội 3N2Đ,250000.0,2027-09-25,49,approved,2027-05-04 12:52:27,"Biển,Văn hóa,Sang trọng"
+369,172,Du lịch Nha Trang 2N1Đ,250000.0,2026-09-28,5,approved,2026-08-19 15:34:05,"Biển,Núi,Mạo hiểm"
+426,172,Du lịch Vũng Tàu 3N2Đ,500000.0,2026-07-23,45,pending,2026-02-24 01:44:13,"Biển,Sang trọng"
+412,172,Phiêu lưu Quy Nhơn 2N1Đ,3000000.0,2026-09-08,8,approved,2026-06-26 07:18:54,"Mạo hiểm,Nghỉ dưỡng"
+405,172,Phiêu lưu Đà Nẵng 4N3Đ,7000000.0,2027-07-21,31,approved,2027-03-05 09:59:00,"Núi,Văn hóa,Mạo hiểm"
+431,173,Phiêu lưu Ninh Bình 2N1Đ,10000000.0,2025-03-03,19,approved,2025-02-13 07:17:35,"Biển,Nghỉ dưỡng"
+591,173,Tham quan Nha Trang 3N2Đ,150000.0,2026-08-30,47,approved,2026-05-31 08:45:17,"Biển,Văn hóa,Sang trọng"
+689,173,Khám phá Quảng Ninh 2N1Đ,10000000.0,2026-11-15,32,approved,2026-05-31 08:45:18,"Sang trọng,Nghỉ dưỡng"
+744,173,Phiêu lưu Đà Lạt cuối tuần,1500000.0,2027-07-10,24,approved,2026-05-31 08:45:18,Biển
+673,174,Nghỉ dưỡng Ninh Bình 3N2Đ,350000.0,2025-11-13,16,approved,2026-05-31 08:45:18,"Biển,Sang trọng,Nghỉ dưỡng"
+311,174,Tour cao cấp Cần Thơ cuối tuần,750000.0,2027-04-22,26,approved,2026-12-02 20:43:25,"Biển,Sang trọng"
+518,174,Trải nghiệm Đà Nẵng 5N4Đ,750000.0,2027-03-01,34,pending,2027-02-02 17:53:38,Văn hóa
+574,174,Nghỉ dưỡng Quảng Ninh 1 ngày,750000.0,2025-09-03,7,approved,2025-03-26 15:45:37,Sang trọng
+190,174,Tham quan Quy Nhơn 4N3Đ,500000.0,2026-03-11,33,approved,2025-12-03 17:05:04,Sang trọng
+519,175,Tour cao cấp Nha Trang 4N3Đ,750000.0,2026-02-07,36,approved,2025-12-14 08:26:47,"Biển,Sang trọng"
+453,175,Phiêu lưu Biên Hòa 4N3Đ,150000.0,2027-02-06,17,approved,2027-01-19 14:05:01,Núi
+402,175,Tour cao cấp Huế 1 ngày,5000000.0,2026-11-10,24,approved,2026-07-13 09:00:41,"Núi,Mạo hiểm"
+403,176,Nghỉ dưỡng Sapa 1 ngày,10000000.0,2027-03-18,33,approved,2026-10-15 06:33:19,"Biển,Sang trọng,Mạo hiểm"
+442,176,Du lịch Hạ Long 5N4Đ,250000.0,2025-09-06,27,approved,2025-06-10 10:58:39,"Văn hóa,Sang trọng,Mạo hiểm"
+510,176,Tham quan Vũng Tàu 5N4Đ,1000000.0,2027-04-27,7,pending,2026-12-20 20:00:01,"Văn hóa,Nghỉ dưỡng"
+211,176,Du lịch Hạ Long 3N2Đ,750000.0,2025-10-22,22,approved,2025-10-12 15:29:00,"Biển,Nghỉ dưỡng"
+269,176,Tham quan Sapa 2N1Đ,750000.0,2025-03-07,9,pending,2025-02-04 14:47:53,Mạo hiểm
+278,176,Khám phá Huế 4N3Đ,7000000.0,2027-04-15,33,pending,2026-12-23 03:19:57,Núi
+655,176,Tham quan Buôn Ma Thuột 4N3Đ,750000.0,2026-12-18,30,approved,2026-05-31 08:45:18,Núi
+657,176,Hành trình Kon Tum 1 ngày,1500000.0,2025-10-18,46,approved,2026-05-31 08:45:18,Biển
+709,176,Khám phá Đà Nẵng 4N3Đ,2000000.0,2027-05-22,46,pending,2026-05-31 08:45:18,Văn hóa
+757,176,Nghỉ dưỡng Quảng Ninh 5N4Đ,2000000.0,2026-10-25,5,pending,2026-05-31 08:45:18,"Biển,Núi"
+769,176,Phiêu lưu Quảng Ninh 2N1Đ,750000.0,2025-07-20,44,approved,2026-05-31 08:45:19,"Núi,Sang trọng,Nghỉ dưỡng"
+601,177,Tour cao cấp Buôn Ma Thuột 3N2Đ,350000.0,2026-11-27,29,approved,2026-05-31 08:45:17,Núi
+233,177,Khám phá Pleiku 4N3Đ,750000.0,2027-09-03,19,pending,2027-04-08 03:33:15,"Biển,Núi,Mạo hiểm"
+197,177,Khám phá Vũng Tàu 3N2Đ,5000000.0,2027-05-10,33,approved,2026-12-27 07:53:10,Biển
+185,177,Du lịch Buôn Ma Thuột 1 ngày,3000000.0,2026-05-19,38,pending,2026-02-05 18:35:36,"Núi,Văn hóa"
+513,177,Phiêu lưu Mũi Né 4N3Đ,10000000.0,2026-04-22,9,approved,2026-02-19 10:18:35,"Núi,Sang trọng,Mạo hiểm"
+543,177,Du lịch Cần Thơ 1 ngày,3000000.0,2027-08-18,37,approved,2027-04-27 13:08:09,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+541,177,Nghỉ dưỡng Hà Nội 4N3Đ,500000.0,2027-09-08,11,pending,2027-05-12 23:33:29,"Văn hóa,Nghỉ dưỡng"
+512,178,Du lịch Huế cuối tuần,10000000.0,2027-08-17,6,approved,2027-04-01 13:48:36,Biển
+496,178,Trải nghiệm Pleiku 4N3Đ,350000.0,2026-04-03,34,pending,2026-03-14 21:19:30,"Biển,Sang trọng"
+317,178,Tour cao cấp Vũng Tàu 3N2Đ,3000000.0,2025-07-04,35,pending,2025-01-08 17:07:44,"Núi,Mạo hiểm,Nghỉ dưỡng"
+260,178,Trải nghiệm Sapa 4N3Đ,150000.0,2026-02-12,7,pending,2025-09-22 15:52:29,"Biển,Sang trọng,Nghỉ dưỡng"
+641,178,Du lịch Sapa 5N4Đ,5000000.0,2027-02-09,48,approved,2026-05-31 08:45:18,"Biển,Núi,Nghỉ dưỡng"
+489,179,Khám phá Pleiku 5N4Đ,7000000.0,2026-07-05,11,pending,2026-06-11 03:12:21,"Núi,Nghỉ dưỡng"
+490,180,Hành trình Huế 5N4Đ,500000.0,2026-11-09,45,approved,2026-07-19 16:41:24,"Núi,Sang trọng"
+613,180,Khám phá Đà Lạt 1 ngày,750000.0,2026-09-05,42,approved,2026-05-31 08:45:17,"Biển,Sang trọng"
+628,181,Tham quan Nha Trang cuối tuần,10000000.0,2026-08-29,31,approved,2026-05-31 08:45:17,"Biển,Mạo hiểm"
+326,181,Hành trình Vũng Tàu 1 ngày,1000000.0,2026-03-23,37,approved,2025-11-06 05:52:10,"Biển,Mạo hiểm"
+411,181,Khám phá Ninh Bình 5N4Đ,500000.0,2027-06-17,26,approved,2027-04-21 00:05:57,Văn hóa
+248,181,Khám phá Biên Hòa 3N2Đ,1500000.0,2027-01-08,9,approved,2026-12-01 15:35:24,"Núi,Văn hóa"
+267,181,Phiêu lưu Phú Quốc 1 ngày,1500000.0,2025-06-06,40,approved,2025-02-17 01:10:14,"Biển,Núi,Văn hóa"
+238,182,Phiêu lưu Buôn Ma Thuột 2N1Đ,7000000.0,2027-01-28,23,approved,2026-09-12 19:09:28,"Núi,Nghỉ dưỡng"
+203,182,Hành trình Đà Lạt 4N3Đ,750000.0,2026-11-16,15,approved,2026-10-28 02:35:51,"Biển,Sang trọng"
+306,182,Du lịch Sapa 4N3Đ,2000000.0,2027-03-17,16,pending,2026-11-16 14:02:48,"Văn hóa,Sang trọng"
+654,182,Nghỉ dưỡng Mũi Né 2N1Đ,500000.0,2026-09-05,44,approved,2026-05-31 08:45:18,Mạo hiểm
+666,183,Phiêu lưu Quảng Ninh 3N2Đ,1000000.0,2026-04-06,5,approved,2026-05-31 08:45:18,"Biển,Văn hóa,Sang trọng"
+635,183,Trải nghiệm Sapa 4N3Đ,7000000.0,2027-05-25,17,approved,2026-05-31 08:45:17,"Biển,Sang trọng,Mạo hiểm"
+410,183,Hành trình Kon Tum 3N2Đ,10000000.0,2027-04-25,15,approved,2027-02-18 13:05:19,Văn hóa
+544,183,Phiêu lưu Sapa cuối tuần,250000.0,2026-07-24,32,approved,2026-04-23 15:05:44,Sang trọng
+571,183,Tham quan Tây Ninh 3N2Đ,7000000.0,2026-02-17,19,pending,2026-01-21 00:58:12,"Núi,Mạo hiểm,Nghỉ dưỡng"
+252,183,Tour cao cấp Ninh Bình cuối tuần,10000000.0,2027-10-12,20,approved,2027-05-20 07:19:35,"Biển,Sang trọng,Mạo hiểm"
+258,183,Phiêu lưu Ninh Bình 5N4Đ,350000.0,2025-03-07,29,pending,2025-01-20 23:12:54,Nghỉ dưỡng
+294,184,Hành trình Buôn Ma Thuột 3N2Đ,5000000.0,2025-07-25,23,pending,2025-05-20 19:38:34,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+194,184,Nghỉ dưỡng Phú Quốc 5N4Đ,500000.0,2026-01-28,15,approved,2025-10-15 18:56:03,Văn hóa
+568,184,Tour cao cấp Hạ Long 1 ngày,1500000.0,2025-09-12,23,pending,2025-04-03 08:55:40,Văn hóa
+433,184,Tour cao cấp Hạ Long 4N3Đ,2000000.0,2025-07-25,13,pending,2025-03-18 08:55:29,"Núi,Sang trọng,Nghỉ dưỡng"
+329,184,Phiêu lưu Nha Trang cuối tuần,350000.0,2025-06-24,11,pending,2025-05-08 13:06:13,"Biển,Văn hóa"
+668,184,Hành trình Đà Lạt cuối tuần,7000000.0,2026-07-05,24,approved,2026-05-31 08:45:18,"Biển,Núi"
+755,184,Hành trình Cần Thơ 3N2Đ,350000.0,2027-03-31,17,pending,2026-05-31 08:45:18,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+676,185,Tham quan Huế 5N4Đ,250000.0,2027-02-24,41,approved,2026-05-31 08:45:18,"Núi,Mạo hiểm"
+622,185,Nghỉ dưỡng Biên Hòa 5N4Đ,7000000.0,2027-06-13,11,approved,2026-05-31 08:45:17,"Biển,Mạo hiểm"
+305,185,Tham quan Hà Nội 1 ngày,250000.0,2027-07-16,35,approved,2027-01-31 15:05:35,Văn hóa
+430,185,Nghỉ dưỡng Đà Nẵng 1 ngày,150000.0,2026-12-14,41,pending,2026-12-02 11:19:55,"Biển,Văn hóa,Sang trọng"
+557,185,Tham quan Đà Lạt 2N1Đ,1500000.0,2027-02-08,5,approved,2026-12-10 08:39:22,"Văn hóa,Sang trọng"
+522,185,Du lịch Vũng Tàu 3N2Đ,5000000.0,2025-12-19,37,pending,2025-09-25 12:07:41,"Núi,Mạo hiểm,Nghỉ dưỡng"
+284,185,Khám phá Pleiku 1 ngày,250000.0,2026-08-20,27,pending,2026-03-11 06:14:17,"Biển,Sang trọng,Nghỉ dưỡng"
+256,185,Tham quan Vũng Tàu 5N4Đ,350000.0,2025-11-15,26,approved,2025-10-24 00:51:24,"Núi,Nghỉ dưỡng"
+220,186,Hành trình Quy Nhơn 4N3Đ,750000.0,2026-08-23,45,approved,2026-06-24 23:26:06,"Biển,Sang trọng,Nghỉ dưỡng"
+485,186,Nghỉ dưỡng Kon Tum 5N4Đ,150000.0,2026-12-31,24,approved,2026-10-03 09:46:41,"Biển,Núi,Sang trọng"
+473,186,Trải nghiệm Hà Nội 2N1Đ,10000000.0,2026-08-21,11,pending,2026-06-14 02:13:56,"Núi,Văn hóa,Sang trọng"
+469,186,Hành trình Mũi Né cuối tuần,150000.0,2026-05-25,31,approved,2026-05-17 13:02:42,"Núi,Văn hóa,Sang trọng"
+457,186,Nghỉ dưỡng Vũng Tàu 1 ngày,1500000.0,2026-08-06,19,approved,2026-06-13 06:31:15,"Núi,Văn hóa,Nghỉ dưỡng"
+619,186,Phiêu lưu Kon Tum cuối tuần,1500000.0,2025-02-22,26,approved,2026-05-31 08:45:17,"Biển,Núi,Mạo hiểm"
+621,186,Tour cao cấp Pleiku 3N2Đ,350000.0,2027-03-20,15,pending,2026-05-31 08:45:17,"Văn hóa,Sang trọng,Nghỉ dưỡng"
+633,186,Tour cao cấp Đà Nẵng 4N3Đ,150000.0,2026-12-22,5,pending,2026-05-31 08:45:17,Biển
+608,187,Hành trình Vũng Tàu 1 ngày,2000000.0,2026-11-18,40,pending,2026-05-31 08:45:17,"Biển,Mạo hiểm,Nghỉ dưỡng"
+360,187,Tham quan Ninh Bình 2N1Đ,750000.0,2025-06-24,6,pending,2025-04-03 00:56:29,"Biển,Núi,Nghỉ dưỡng"
+357,187,Nghỉ dưỡng Quảng Ninh 5N4Đ,7000000.0,2026-11-01,47,approved,2026-06-22 11:28:54,"Núi,Nghỉ dưỡng"
+419,188,Du lịch Ninh Bình 1 ngày,350000.0,2026-09-09,9,pending,2026-08-10 18:24:12,Biển
+382,188,Phiêu lưu Tây Ninh 4N3Đ,1500000.0,2025-07-22,28,approved,2025-06-14 00:25:17,"Biển,Văn hóa"
+474,188,Trải nghiệm Hà Nội 5N4Đ,1500000.0,2026-11-08,10,approved,2026-07-11 05:51:47,"Núi,Sang trọng"
+222,188,Hành trình Buôn Ma Thuột 5N4Đ,1000000.0,2025-04-14,31,approved,2025-02-11 16:34:41,"Văn hóa,Sang trọng,Nghỉ dưỡng"
+280,188,Du lịch Vũng Tàu 2N1Đ,1000000.0,2025-08-23,49,pending,2025-06-15 07:54:59,"Biển,Mạo hiểm,Nghỉ dưỡng"
+295,188,Nghỉ dưỡng Kon Tum 5N4Đ,10000000.0,2027-08-24,11,approved,2027-04-12 02:56:01,Mạo hiểm
+245,189,Nghỉ dưỡng Pleiku cuối tuần,7000000.0,2026-04-29,48,pending,2026-01-20 19:05:23,Biển
+181,189,Tham quan Đà Nẵng 3N2Đ,10000000.0,2027-08-16,33,approved,2027-05-03 02:14:11,"Núi,Văn hóa,Nghỉ dưỡng"
+548,189,Khám phá Đà Lạt 5N4Đ,2000000.0,2027-05-22,10,approved,2027-01-11 12:49:02,Núi
+394,189,Tour cao cấp Kon Tum cuối tuần,250000.0,2025-03-03,33,approved,2025-02-20 20:39:21,"Văn hóa,Mạo hiểm"
+309,189,Nghỉ dưỡng Vũng Tàu 2N1Đ,3000000.0,2026-02-21,37,approved,2026-01-16 08:30:53,"Văn hóa,Mạo hiểm"
+327,190,Tham quan Kon Tum 4N3Đ,2000000.0,2026-11-28,41,approved,2026-10-13 05:23:04,"Văn hóa,Mạo hiểm"
+319,190,Tham quan Nha Trang 4N3Đ,500000.0,2026-04-16,23,approved,2025-10-23 22:35:08,"Biển,Văn hóa,Sang trọng"
+334,190,Trải nghiệm Huế 2N1Đ,150000.0,2027-08-23,28,approved,2027-05-22 15:40:11,"Biển,Núi,Sang trọng"
+337,190,Trải nghiệm Mũi Né 5N4Đ,1500000.0,2026-04-04,15,approved,2025-11-10 16:13:36,"Sang trọng,Mạo hiểm"
+506,190,Phiêu lưu Đà Lạt 2N1Đ,150000.0,2025-05-06,18,pending,2025-04-15 17:01:05,"Biển,Văn hóa,Sang trọng"
+464,190,Hành trình Quy Nhơn 1 ngày,3000000.0,2025-05-23,40,approved,2025-04-21 23:22:35,"Biển,Núi,Văn hóa"
+259,190,Phiêu lưu Cần Thơ 5N4Đ,2000000.0,2026-11-17,6,approved,2026-10-09 22:38:40,"Núi,Văn hóa,Nghỉ dưỡng"
+266,190,Phiêu lưu Phú Quốc 5N4Đ,500000.0,2025-09-19,19,approved,2025-03-30 14:06:40,"Văn hóa,Nghỉ dưỡng"
+587,190,Nghỉ dưỡng Ninh Bình 4N3Đ,1500000.0,2026-08-31,19,approved,2026-05-31 08:45:17,Văn hóa
+643,190,Hành trình Vũng Tàu 1 ngày,5000000.0,2026-06-17,46,approved,2026-05-31 08:45:18,"Núi,Sang trọng,Nghỉ dưỡng"
+625,191,Du lịch Đà Lạt cuối tuần,2000000.0,2027-02-21,37,approved,2026-05-31 08:45:17,"Biển,Núi,Mạo hiểm"
+593,191,Phiêu lưu Đà Nẵng cuối tuần,1500000.0,2025-06-23,33,approved,2026-05-31 08:45:17,"Núi,Mạo hiểm,Nghỉ dưỡng"
+237,191,Hành trình Đà Nẵng 4N3Đ,7000000.0,2025-06-15,18,approved,2025-02-22 04:42:28,Núi
+539,191,Khám phá Quảng Ninh 2N1Đ,1000000.0,2026-12-16,50,pending,2026-11-17 04:51:58,"Sang trọng,Nghỉ dưỡng"
+436,191,Nghỉ dưỡng Kon Tum cuối tuần,1000000.0,2025-06-05,17,approved,2025-05-12 14:27:08,Sang trọng
+452,192,Du lịch Quy Nhơn 2N1Đ,3000000.0,2027-10-11,7,pending,2027-04-14 06:22:01,"Văn hóa,Mạo hiểm"
+478,192,Du lịch Đà Nẵng 3N2Đ,3000000.0,2025-10-03,49,approved,2025-09-13 01:01:45,"Biển,Núi,Nghỉ dưỡng"
+648,192,Phiêu lưu Đà Lạt 5N4Đ,1000000.0,2027-01-08,29,approved,2026-05-31 08:45:18,"Sang trọng,Nghỉ dưỡng"
+700,193,Phiêu lưu Huế 2N1Đ,250000.0,2026-01-08,34,pending,2026-05-31 08:45:18,"Biển,Núi"
+498,193,Trải nghiệm Mũi Né cuối tuần,2000000.0,2025-03-05,13,approved,2025-01-12 03:13:54,"Văn hóa,Sang trọng,Nghỉ dưỡng"
+400,193,Hành trình Tây Ninh 3N2Đ,750000.0,2026-09-18,38,pending,2026-05-02 07:40:55,"Văn hóa,Mạo hiểm,Nghỉ dưỡng"
+322,193,Tham quan Kon Tum cuối tuần,1000000.0,2026-12-08,19,approved,2026-08-18 20:30:39,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+287,193,Hành trình Tây Ninh 5N4Đ,3000000.0,2026-05-15,12,approved,2026-03-10 01:24:10,"Biển,Mạo hiểm,Nghỉ dưỡng"
+183,193,Phiêu lưu Pleiku 2N1Đ,1000000.0,2026-04-21,42,approved,2026-03-16 14:26:41,Mạo hiểm
+268,194,Du lịch Kon Tum 3N2Đ,1000000.0,2027-08-22,5,pending,2027-05-07 04:45:52,Biển
+342,194,Trải nghiệm Sapa 5N4Đ,150000.0,2025-06-12,36,approved,2025-03-25 17:49:18,"Núi,Văn hóa,Mạo hiểm"
+440,194,Phiêu lưu Phú Quốc 2N1Đ,1500000.0,2025-03-11,21,pending,2025-02-25 06:04:22,"Biển,Sang trọng"
+705,194,Hành trình Quy Nhơn 2N1Đ,150000.0,2026-05-26,31,pending,2026-05-31 08:45:18,"Văn hóa,Mạo hiểm,Nghỉ dưỡng"
+703,195,Khám phá Hà Nội 5N4Đ,150000.0,2025-05-07,13,approved,2026-05-31 08:45:18,"Sang trọng,Mạo hiểm,Nghỉ dưỡng"
+710,195,Hành trình Quảng Ninh 5N4Đ,1500000.0,2026-10-16,31,approved,2026-05-31 08:45:18,Nghỉ dưỡng
+694,195,Tham quan Mũi Né 5N4Đ,3000000.0,2027-05-20,40,approved,2026-05-31 08:45:18,"Văn hóa,Sang trọng,Mạo hiểm"
+688,195,Nghỉ dưỡng Vũng Tàu 5N4Đ,2000000.0,2027-06-05,26,approved,2026-05-31 08:45:18,Sang trọng
+652,195,Du lịch Nha Trang 3N2Đ,7000000.0,2026-04-10,29,approved,2026-05-31 08:45:18,Nghỉ dưỡng
+717,196,Trải nghiệm Mũi Né cuối tuần,10000000.0,2025-12-03,40,approved,2026-05-31 08:45:18,"Núi,Văn hóa,Mạo hiểm"
+472,196,Hành trình Ninh Bình 3N2Đ,3000000.0,2026-04-20,19,approved,2025-12-28 04:43:00,"Biển,Sang trọng,Mạo hiểm"
+500,196,Khám phá Nha Trang 3N2Đ,10000000.0,2026-08-16,24,pending,2026-05-09 12:58:49,"Biển,Sang trọng,Mạo hiểm"
+567,196,Hành trình Kon Tum cuối tuần,250000.0,2026-12-27,8,pending,2026-11-07 22:44:35,Núi
+387,196,Tour cao cấp Biên Hòa 2N1Đ,3000000.0,2025-07-22,20,approved,2025-03-06 11:37:25,"Văn hóa,Sang trọng,Mạo hiểm"
+221,196,Hành trình Hội An cuối tuần,1500000.0,2027-04-03,8,approved,2027-01-02 19:16:00,"Núi,Nghỉ dưỡng"
+213,196,Nghỉ dưỡng Mũi Né 1 ngày,150000.0,2026-07-27,36,approved,2026-07-14 17:56:07,Mạo hiểm
+281,197,Tour cao cấp Hà Nội 5N4Đ,150000.0,2026-01-29,24,approved,2025-08-17 22:23:19,"Núi,Nghỉ dưỡng"
+372,197,Trải nghiệm Pleiku 1 ngày,350000.0,2027-01-26,26,approved,2026-11-26 01:28:21,Sang trọng
+307,197,Nghỉ dưỡng Huế 2N1Đ,500000.0,2025-07-31,12,approved,2025-04-27 01:16:38,Mạo hiểm
+320,197,Tour cao cấp Đà Nẵng 4N3Đ,1000000.0,2026-06-21,37,approved,2026-01-11 14:18:32,"Văn hóa,Mạo hiểm,Nghỉ dưỡng"
+321,197,Phiêu lưu Quy Nhơn 5N4Đ,500000.0,2025-12-10,24,pending,2025-08-12 23:23:35,"Biển,Văn hóa,Mạo hiểm"
+508,197,Nghỉ dưỡng Mũi Né 2N1Đ,2000000.0,2026-08-05,21,approved,2026-03-10 12:24:16,"Biển,Văn hóa,Mạo hiểm"
+520,197,Hành trình Kon Tum cuối tuần,1000000.0,2026-04-17,46,approved,2026-01-09 19:49:48,"Biển,Sang trọng"
+480,197,Hành trình Sapa 1 ngày,1500000.0,2026-03-13,6,approved,2025-11-01 09:54:20,"Văn hóa,Sang trọng,Nghỉ dưỡng"
+680,198,Trải nghiệm Buôn Ma Thuột 3N2Đ,2000000.0,2026-03-20,24,approved,2026-05-31 08:45:18,Núi
+586,199,Khám phá Đà Nẵng 3N2Đ,2000000.0,2025-08-29,9,approved,2026-05-31 08:45:17,"Biển,Sang trọng"
+758,199,Trải nghiệm Đà Lạt 3N2Đ,1500000.0,2027-05-22,43,pending,2026-05-31 08:45:18,"Núi,Sang trọng"
+533,199,Du lịch Tây Ninh 1 ngày,1000000.0,2026-09-09,50,approved,2026-07-08 08:03:57,"Núi,Văn hóa,Mạo hiểm"
+555,199,Trải nghiệm Hạ Long 1 ngày,3000000.0,2025-06-10,20,pending,2025-01-03 20:46:40,Nghỉ dưỡng
+354,199,Tham quan Hà Nội 1 ngày,2000000.0,2025-07-21,13,approved,2025-04-09 04:16:37,"Biển,Núi"
+386,199,Khám phá Sapa 5N4Đ,750000.0,2026-06-03,8,approved,2026-05-08 14:58:01,"Văn hóa,Sang trọng,Nghỉ dưỡng"
+212,199,Phiêu lưu Cần Thơ 2N1Đ,250000.0,2025-07-12,49,pending,2025-04-13 21:57:28,Nghỉ dưỡng
+198,199,Hành trình Vũng Tàu 3N2Đ,10000000.0,2025-10-27,21,approved,2025-06-19 03:29:17,"Biển,Mạo hiểm,Nghỉ dưỡng"
+209,199,Trải nghiệm Cần Thơ 2N1Đ,500000.0,2026-04-05,33,approved,2026-01-10 03:28:04,"Biển,Núi,Sang trọng"
+303,200,Hành trình Quy Nhơn 3N2Đ,750000.0,2026-03-14,23,approved,2025-11-27 07:04:04,"Núi,Mạo hiểm"
+547,200,Nghỉ dưỡng Tây Ninh 2N1Đ,150000.0,2025-07-17,5,approved,2025-05-22 01:03:56,Văn hóa
+573,200,Khám phá Cần Thơ 2N1Đ,500000.0,2026-01-22,11,approved,2025-08-29 03:02:22,"Biển,Núi,Văn hóa"
+763,200,Trải nghiệm Phú Quốc 3N2Đ,3000000.0,2027-04-05,42,approved,2026-05-31 08:45:19,"Văn hóa,Nghỉ dưỡng"
+756,201,Trải nghiệm Vũng Tàu 3N2Đ,150000.0,2025-11-28,44,approved,2026-05-31 08:45:18,"Văn hóa,Nghỉ dưỡng"
+251,201,Tham quan Huế 3N2Đ,7000000.0,2025-04-02,6,approved,2025-01-23 16:35:41,"Biển,Núi,Văn hóa"
+232,202,Tour cao cấp Đà Nẵng cuối tuần,3000000.0,2025-11-25,8,approved,2025-09-17 06:36:33,"Biển,Mạo hiểm"
+275,202,Phiêu lưu Tây Ninh 5N4Đ,1500000.0,2025-11-24,27,pending,2025-07-30 15:56:45,"Núi,Sang trọng,Mạo hiểm"
+223,202,Du lịch Hội An 5N4Đ,250000.0,2027-10-09,44,approved,2027-05-20 00:09:40,"Núi,Sang trọng,Mạo hiểm"
+540,202,Nghỉ dưỡng Kon Tum 5N4Đ,2000000.0,2025-06-30,50,approved,2025-01-26 11:40:08,Biển
+505,202,Hành trình Buôn Ma Thuột 2N1Đ,1500000.0,2025-07-01,43,approved,2025-02-24 03:06:29,"Núi,Nghỉ dưỡng"
+487,202,Tham quan Hội An cuối tuần,150000.0,2026-04-03,10,approved,2026-01-18 21:37:03,"Núi,Văn hóa"
+738,202,Tour cao cấp Vũng Tàu 3N2Đ,150000.0,2027-05-04,32,pending,2026-05-31 08:45:18,"Núi,Văn hóa"
+687,202,Tour cao cấp Cần Thơ 5N4Đ,250000.0,2026-09-02,26,approved,2026-05-31 08:45:18,"Biển,Núi,Sang trọng"
+670,203,Du lịch Quy Nhơn 2N1Đ,3000000.0,2026-08-03,21,pending,2026-05-31 08:45:18,"Biển,Núi,Văn hóa"
+639,203,Tour cao cấp Đà Nẵng 1 ngày,2000000.0,2026-09-09,17,approved,2026-05-31 08:45:17,"Biển,Văn hóa"
+618,203,Du lịch Hà Nội 3N2Đ,250000.0,2026-10-11,37,pending,2026-05-31 08:45:17,Nghỉ dưỡng
+446,203,Tour cao cấp Đà Lạt 4N3Đ,3000000.0,2026-10-03,9,pending,2026-09-18 06:16:37,Núi
+534,203,Hành trình Kon Tum 2N1Đ,5000000.0,2025-08-30,36,approved,2025-08-03 09:00:15,Sang trọng
+339,203,Phiêu lưu Hà Nội 4N3Đ,7000000.0,2027-06-18,41,approved,2027-03-27 03:13:23,"Núi,Văn hóa,Nghỉ dưỡng"
+196,203,Tham quan Huế 5N4Đ,10000000.0,2026-06-22,39,approved,2026-01-10 05:34:38,"Núi,Sang trọng"
+243,203,Tham quan Sapa cuối tuần,500000.0,2025-12-30,19,approved,2025-12-05 18:38:40,Mạo hiểm
+249,203,Hành trình Đà Nẵng 5N4Đ,5000000.0,2026-04-19,38,approved,2026-03-12 17:14:10,Biển
+218,204,Nghỉ dưỡng Ninh Bình 4N3Đ,7000000.0,2027-03-08,14,approved,2026-11-23 00:37:42,"Biển,Văn hóa,Mạo hiểm"
+180,204,Phiêu lưu Vũng Tàu 3N2Đ,3000000.0,2027-03-03,38,approved,2026-05-31 08:40:17,
+560,204,Hành trình Đà Nẵng 3N2Đ,1000000.0,2027-03-26,24,approved,2027-01-06 02:45:56,"Biển,Mạo hiểm,Nghỉ dưỡng"
+463,204,Khám phá Đà Nẵng 5N4Đ,1000000.0,2025-09-30,16,pending,2025-06-30 05:35:33,Biển
+483,204,Tham quan Biên Hòa 4N3Đ,350000.0,2025-07-10,11,approved,2025-03-29 04:49:59,"Biển,Sang trọng,Mạo hiểm"
+491,204,Trải nghiệm Kon Tum 1 ngày,250000.0,2027-06-30,46,pending,2027-04-21 07:51:31,Biển
+714,204,Du lịch Mũi Né 1 ngày,1000000.0,2027-03-03,38,pending,2026-05-31 08:45:18,"Biển,Núi,Sang trọng"
+661,205,Phiêu lưu Đà Nẵng 1 ngày,350000.0,2026-11-10,49,pending,2026-05-31 08:45:18,"Mạo hiểm,Nghỉ dưỡng"
+581,205,Hành trình Quảng Ninh 2N1Đ,750000.0,2025-10-16,40,approved,2026-05-31 08:45:17,Mạo hiểm
+596,205,Nghỉ dưỡng Quy Nhơn 4N3Đ,1500000.0,2025-07-02,5,pending,2026-05-31 08:45:17,"Biển,Văn hóa,Nghỉ dưỡng"
+736,205,Tour cao cấp Phú Quốc cuối tuần,5000000.0,2026-11-23,21,approved,2026-05-31 08:45:18,"Biển,Núi,Mạo hiểm"
+752,205,Khám phá Mũi Né 1 ngày,3000000.0,2027-08-29,19,approved,2026-05-31 08:45:18,"Sang trọng,Nghỉ dưỡng"
+448,205,Trải nghiệm Nha Trang 4N3Đ,1500000.0,2026-08-25,39,approved,2026-04-02 22:04:09,Mạo hiểm
+454,205,Nghỉ dưỡng Phú Quốc cuối tuần,7000000.0,2027-02-22,46,pending,2026-12-02 21:07:30,"Núi,Mạo hiểm,Nghỉ dưỡng"
+416,205,Hành trình Pleiku 1 ngày,7000000.0,2026-01-17,6,approved,2025-11-03 12:05:37,"Biển,Sang trọng"
+511,206,Phiêu lưu Hạ Long 5N4Đ,500000.0,2025-05-24,24,approved,2025-02-08 11:21:37,"Núi,Sang trọng,Mạo hiểm"
+274,206,Tham quan Vũng Tàu 4N3Đ,7000000.0,2025-05-19,48,approved,2025-04-07 15:18:50,Sang trọng
+707,206,Khám phá Đà Nẵng 1 ngày,7000000.0,2026-04-18,26,approved,2026-05-31 08:45:18,"Biển,Sang trọng,Mạo hiểm"
+704,207,Trải nghiệm Đà Nẵng 1 ngày,5000000.0,2025-12-31,16,approved,2026-05-31 08:45:18,"Văn hóa,Sang trọng"
+695,207,Nghỉ dưỡng Vũng Tàu 5N4Đ,1500000.0,2026-01-28,33,approved,2026-05-31 08:45:18,Núi
+663,207,Hành trình Pleiku cuối tuần,7000000.0,2025-11-25,10,pending,2026-05-31 08:45:18,Biển
+609,207,Khám phá Mũi Né 1 ngày,5000000.0,2025-07-10,12,approved,2026-05-31 08:45:17,"Mạo hiểm,Nghỉ dưỡng"
+732,207,Trải nghiệm Cần Thơ 3N2Đ,2000000.0,2026-04-21,42,approved,2026-05-31 08:45:18,"Biển,Sang trọng,Nghỉ dưỡng"
+727,207,Du lịch Mũi Né 4N3Đ,5000000.0,2025-09-09,39,approved,2026-05-31 08:45:18,"Núi,Sang trọng"
+291,207,Hành trình Đà Nẵng 3N2Đ,500000.0,2026-02-22,30,pending,2025-09-18 02:45:27,"Biển,Sang trọng,Mạo hiểm"
+535,207,Phiêu lưu Nha Trang 5N4Đ,1500000.0,2026-11-16,49,approved,2026-08-15 11:03:47,"Biển,Núi,Nghỉ dưỡng"
+471,207,Tour cao cấp Quy Nhơn 3N2Đ,1000000.0,2027-06-21,47,approved,2027-04-07 01:46:23,Sang trọng
+353,207,Khám phá Quy Nhơn 2N1Đ,2000000.0,2025-10-22,50,approved,2025-08-18 01:54:03,"Biển,Văn hóa,Mạo hiểm"
+361,207,Phiêu lưu Biên Hòa 5N4Đ,500000.0,2027-05-08,20,approved,2027-03-30 09:10:30,"Sang trọng,Nghỉ dưỡng"
+333,207,Du lịch Biên Hòa 3N2Đ,150000.0,2026-02-11,44,approved,2025-10-10 02:45:48,Núi
+465,208,Tour cao cấp Mũi Né 5N4Đ,5000000.0,2026-06-29,31,approved,2026-02-07 02:06:48,"Núi,Sang trọng"
+532,208,Tham quan Buôn Ma Thuột cuối tuần,250000.0,2027-03-30,37,pending,2027-01-19 02:18:00,"Núi,Sang trọng"
+276,208,Tour cao cấp Nha Trang 3N2Đ,10000000.0,2027-07-14,16,approved,2027-05-03 03:21:17,Núi
+768,208,Tour cao cấp Sapa 4N3Đ,3000000.0,2025-07-30,24,approved,2026-05-31 08:45:19,"Núi,Sang trọng,Mạo hiểm"
+681,208,Tham quan Cần Thơ 1 ngày,350000.0,2025-12-09,44,approved,2026-05-31 08:45:18,"Biển,Sang trọng"
+702,209,Hành trình Quảng Ninh 2N1Đ,5000000.0,2026-07-30,24,pending,2026-05-31 08:45:18,Mạo hiểm
+723,209,Hành trình Hội An 3N2Đ,350000.0,2027-09-23,49,pending,2026-05-31 08:45:18,Mạo hiểm
+240,209,Tour cao cấp Pleiku 4N3Đ,500000.0,2026-10-05,37,pending,2026-08-30 19:06:37,"Biển,Mạo hiểm"
+193,209,Hành trình Tây Ninh 5N4Đ,250000.0,2026-02-19,7,approved,2025-12-27 19:36:28,"Sang trọng,Nghỉ dưỡng"
+527,209,Nghỉ dưỡng Tây Ninh 3N2Đ,2000000.0,2025-05-20,14,approved,2025-04-28 06:08:48,"Biển,Nghỉ dưỡng"
+396,209,Trải nghiệm Ninh Bình 5N4Đ,350000.0,2025-10-03,16,approved,2025-08-30 14:11:51,Sang trọng
+385,210,Tour cao cấp Hạ Long cuối tuần,3000000.0,2025-04-04,39,approved,2025-01-16 10:51:08,Núi
+481,210,Du lịch Hội An cuối tuần,10000000.0,2027-05-12,7,approved,2027-01-07 00:46:05,Nghỉ dưỡng
+207,210,Khám phá Hạ Long 2N1Đ,750000.0,2027-06-26,17,approved,2027-04-14 11:47:16,"Biển,Núi,Văn hóa"
+242,210,Tour cao cấp Hà Nội cuối tuần,7000000.0,2026-02-24,44,approved,2026-02-14 21:48:25,"Biển,Núi,Văn hóa"
+283,210,Khám phá Quảng Ninh 3N2Đ,1000000.0,2026-01-27,46,pending,2025-10-31 22:42:11,"Biển,Sang trọng"
+740,210,Tham quan Vũng Tàu cuối tuần,2000000.0,2026-08-05,22,approved,2026-05-31 08:45:18,"Biển,Nghỉ dưỡng"
+715,210,Du lịch Nha Trang 5N4Đ,350000.0,2026-04-05,13,approved,2026-05-31 08:45:18,Mạo hiểm
+615,210,Trải nghiệm Đà Nẵng 5N4Đ,500000.0,2027-08-18,40,approved,2026-05-31 08:45:17,"Núi,Mạo hiểm"
+649,210,Khám phá Quy Nhơn 1 ngày,3000000.0,2027-03-29,19,approved,2026-05-31 08:45:18,"Biển,Mạo hiểm"
+584,211,Trải nghiệm Phú Quốc 5N4Đ,750000.0,2025-09-15,6,approved,2026-05-31 08:45:17,Núi
+747,211,Khám phá Quảng Ninh 4N3Đ,500000.0,2027-02-07,35,approved,2026-05-31 08:45:18,Văn hóa
+733,211,Tham quan Hà Nội 3N2Đ,7000000.0,2026-06-20,36,approved,2026-05-31 08:45:18,"Núi,Văn hóa,Nghỉ dưỡng"
+778,211,Nghỉ dưỡng Hà Nội 4N3Đ,150000.0,2026-04-25,31,pending,2026-05-31 08:45:19,Biển
+195,211,Khám phá Vũng Tàu cuối tuần,7000000.0,2027-01-16,23,approved,2026-09-20 06:07:33,"Văn hóa,Sang trọng,Nghỉ dưỡng"
+315,211,Phiêu lưu Buôn Ma Thuột 5N4Đ,3000000.0,2026-02-08,36,approved,2025-09-17 14:15:08,"Biển,Mạo hiểm"
+365,212,Tour cao cấp Vũng Tàu 1 ngày,3000000.0,2027-07-30,32,approved,2027-03-07 01:58:33,"Núi,Mạo hiểm"
+502,212,Nghỉ dưỡng Kon Tum 2N1Đ,3000000.0,2025-05-08,5,approved,2025-04-16 14:25:01,Mạo hiểm
+470,212,Tham quan Huế 5N4Đ,3000000.0,2026-06-15,45,approved,2026-04-28 11:09:17,"Biển,Núi,Mạo hiểm"
+514,212,Trải nghiệm Phú Quốc 2N1Đ,500000.0,2026-04-21,43,approved,2025-12-28 16:55:27,"Núi,Sang trọng,Nghỉ dưỡng"
+257,212,Hành trình Mũi Né cuối tuần,250000.0,2026-08-10,41,approved,2026-05-05 14:29:41,"Biển,Văn hóa,Mạo hiểm"
+292,213,Trải nghiệm Mũi Né 3N2Đ,1000000.0,2025-08-22,42,approved,2025-07-18 08:12:02,"Biển,Sang trọng,Nghỉ dưỡng"
+526,213,Du lịch Mũi Né 5N4Đ,350000.0,2027-06-18,18,approved,2027-05-12 20:26:58,Sang trọng
+459,213,Du lịch Tây Ninh 2N1Đ,750000.0,2025-06-16,46,pending,2025-03-12 04:41:06,"Núi,Sang trọng"
+451,213,Tham quan Cần Thơ 2N1Đ,2000000.0,2027-04-04,22,approved,2027-01-03 09:47:55,"Biển,Núi,Nghỉ dưỡng"
+352,213,Phiêu lưu Sapa 1 ngày,1000000.0,2027-03-17,14,approved,2026-10-17 11:03:33,"Núi,Văn hóa,Nghỉ dưỡng"
+373,213,Nghỉ dưỡng Phú Quốc 5N4Đ,1500000.0,2027-07-03,28,approved,2027-04-26 08:13:18,"Núi,Mạo hiểm"
+774,213,Tham quan Hà Nội 5N4Đ,7000000.0,2027-01-29,17,approved,2026-05-31 08:45:19,Biển
+760,213,Phiêu lưu Kon Tum cuối tuần,1000000.0,2027-07-30,41,approved,2026-05-31 08:45:19,"Biển,Núi,Nghỉ dưỡng"
+604,213,Du lịch Đà Nẵng 4N3Đ,3000000.0,2025-07-03,8,approved,2026-05-31 08:45:17,"Biển,Nghỉ dưỡng"
+711,213,Nghỉ dưỡng Sapa 1 ngày,7000000.0,2027-07-17,47,approved,2026-05-31 08:45:18,"Biển,Núi,Mạo hiểm"
+636,214,Du lịch Tây Ninh cuối tuần,1500000.0,2026-09-29,36,approved,2026-05-31 08:45:17,"Biển,Núi,Sang trọng"
+375,214,Phiêu lưu Mũi Né 5N4Đ,3000000.0,2027-02-25,38,approved,2027-01-19 19:59:27,Núi
+445,214,Phiêu lưu Quảng Ninh 3N2Đ,10000000.0,2025-04-30,18,approved,2025-04-05 02:03:47,"Biển,Mạo hiểm,Nghỉ dưỡng"
+524,214,Phiêu lưu Đà Nẵng 1 ngày,500000.0,2026-03-03,28,approved,2026-02-13 17:20:28,"Mạo hiểm,Nghỉ dưỡng"
+236,214,Phiêu lưu Hạ Long cuối tuần,1500000.0,2026-11-04,39,approved,2026-07-11 03:17:50,"Núi,Văn hóa,Sang trọng"
+202,214,Trải nghiệm Tây Ninh 3N2Đ,1500000.0,2026-01-16,11,approved,2025-09-04 22:57:28,"Biển,Núi,Sang trọng"
+253,215,Trải nghiệm Vũng Tàu 3N2Đ,500000.0,2026-10-02,33,approved,2026-04-17 02:07:42,Sang trọng
+279,215,Nghỉ dưỡng Hội An 5N4Đ,10000000.0,2026-11-20,38,approved,2026-08-20 09:01:28,Mạo hiểm
+455,215,Tour cao cấp Sapa 3N2Đ,10000000.0,2026-09-05,10,approved,2026-06-11 02:52:09,Sang trọng
+444,215,Trải nghiệm Sapa 4N3Đ,2000000.0,2026-08-24,49,approved,2026-06-18 14:11:10,"Mạo hiểm,Nghỉ dưỡng"
+399,215,Trải nghiệm Ninh Bình 3N2Đ,1000000.0,2027-07-01,24,approved,2027-05-19 19:01:50,"Núi,Nghỉ dưỡng"
+389,215,Hành trình Tây Ninh cuối tuần,1500000.0,2027-01-05,45,approved,2026-09-17 18:18:37,Núi
+391,215,Phiêu lưu Biên Hòa 5N4Đ,1000000.0,2026-05-15,48,approved,2025-12-05 12:47:21,"Văn hóa,Sang trọng"
+347,215,Nghỉ dưỡng Đà Nẵng cuối tuần,2000000.0,2026-09-13,5,approved,2026-06-29 20:27:01,"Sang trọng,Mạo hiểm"
+313,215,Tham quan Phú Quốc 2N1Đ,750000.0,2025-08-22,35,approved,2025-04-29 20:03:24,"Núi,Sang trọng,Mạo hiểm"
+685,215,Hành trình Mũi Né 2N1Đ,10000000.0,2025-10-21,46,approved,2026-05-31 08:45:18,Biển
+683,215,Nghỉ dưỡng Đà Nẵng cuối tuần,1500000.0,2027-05-15,43,approved,2026-05-31 08:45:18,"Sang trọng,Nghỉ dưỡng"
+669,215,Khám phá Quy Nhơn 1 ngày,7000000.0,2027-03-10,20,approved,2026-05-31 08:45:18,"Núi,Sang trọng"
+658,215,Phiêu lưu Kon Tum 2N1Đ,2000000.0,2026-08-03,29,approved,2026-05-31 08:45:18,Nghỉ dưỡng
+766,216,Du lịch Pleiku 3N2Đ,2000000.0,2026-09-26,41,pending,2026-05-31 08:45:19,"Biển,Núi"
+730,216,Phiêu lưu Sapa 1 ngày,750000.0,2027-06-01,31,approved,2026-05-31 08:45:18,"Biển,Mạo hiểm"
+460,216,Trải nghiệm Đà Nẵng 3N2Đ,3000000.0,2026-11-12,39,approved,2026-10-08 17:52:59,"Biển,Núi,Sang trọng"
+545,216,Tham quan Quy Nhơn cuối tuần,750000.0,2025-10-10,25,approved,2025-06-28 09:41:43,Biển
+553,216,Hành trình Hà Nội 2N1Đ,5000000.0,2027-03-27,39,approved,2026-12-15 05:35:55,Sang trọng
+271,216,Khám phá Cần Thơ cuối tuần,500000.0,2026-02-17,16,approved,2025-10-29 07:46:54,"Núi,Mạo hiểm"
+297,217,Trải nghiệm Vũng Tàu 5N4Đ,1500000.0,2025-12-14,29,approved,2025-07-31 13:13:42,"Biển,Văn hóa,Nghỉ dưỡng"
+458,217,Tham quan Sapa 3N2Đ,250000.0,2027-08-29,45,pending,2027-03-18 13:34:28,Biển
+493,217,Phiêu lưu Kon Tum 5N4Đ,5000000.0,2026-05-10,24,approved,2026-01-02 09:30:03,"Văn hóa,Sang trọng,Nghỉ dưỡng"
+413,217,Khám phá Nha Trang 3N2Đ,1000000.0,2027-03-04,42,approved,2026-11-16 10:03:07,"Biển,Núi,Nghỉ dưỡng"
+427,217,Trải nghiệm Hội An 3N2Đ,750000.0,2027-10-23,30,approved,2027-05-09 05:32:37,"Biển,Văn hóa,Mạo hiểm"
+780,217,Phiêu lưu Nha Trang 5N4Đ,350000.0,2026-02-20,23,approved,2026-05-31 08:45:19,"Núi,Sang trọng"
+686,218,Tour cao cấp Biên Hòa 5N4Đ,150000.0,2027-09-05,19,approved,2026-05-31 08:45:18,Núi
+432,218,Trải nghiệm Nha Trang 1 ngày,500000.0,2025-01-31,31,pending,2025-01-06 08:57:53,Biển
+415,218,Tham quan Vũng Tàu 1 ngày,3000000.0,2025-04-17,10,approved,2025-01-29 02:38:09,"Sang trọng,Nghỉ dưỡng"
+350,218,Nghỉ dưỡng Tây Ninh 5N4Đ,350000.0,2025-09-29,7,pending,2025-08-11 13:28:47,Núi
+486,218,Khám phá Quy Nhơn 5N4Đ,750000.0,2026-06-06,36,approved,2026-03-02 18:01:08,"Biển,Sang trọng,Nghỉ dưỡng"
+293,218,Khám phá Biên Hòa cuối tuần,2000000.0,2025-05-05,29,approved,2025-03-23 18:38:44,"Biển,Văn hóa,Mạo hiểm"
+264,218,Tour cao cấp Buôn Ma Thuột 4N3Đ,250000.0,2026-01-04,28,pending,2025-10-21 18:09:59,"Mạo hiểm,Nghỉ dưỡng"
+247,218,Trải nghiệm Sapa 4N3Đ,3000000.0,2025-12-14,7,pending,2025-09-13 22:44:25,"Sang trọng,Nghỉ dưỡng"
+261,219,Trải nghiệm Buôn Ma Thuột 1 ngày,7000000.0,2025-12-19,26,approved,2025-06-25 11:00:35,"Núi,Văn hóa,Mạo hiểm"
+286,219,Tham quan Hạ Long cuối tuần,3000000.0,2026-03-28,26,approved,2025-10-07 10:38:19,Biển
+507,219,Tour cao cấp Quảng Ninh 5N4Đ,2000000.0,2026-09-25,27,approved,2026-09-01 11:22:53,"Biển,Văn hóa"
+630,219,Nghỉ dưỡng Quảng Ninh 4N3Đ,1500000.0,2027-01-23,5,pending,2026-05-31 08:45:17,Núi
+611,219,Trải nghiệm Hà Nội 4N3Đ,3000000.0,2027-05-19,46,approved,2026-05-31 08:45:17,"Văn hóa,Mạo hiểm,Nghỉ dưỡng"
+263,220,Nghỉ dưỡng Mũi Né 3N2Đ,7000000.0,2026-02-16,45,pending,2025-10-05 18:51:25,"Biển,Văn hóa,Sang trọng"
+515,221,Khám phá Buôn Ma Thuột 4N3Đ,10000000.0,2025-04-12,46,approved,2025-02-08 23:04:02,"Biển,Văn hóa"
+363,221,Phiêu lưu Quảng Ninh 2N1Đ,7000000.0,2026-10-13,37,approved,2026-05-06 11:51:47,"Biển,Sang trọng,Nghỉ dưỡng"
+314,221,Du lịch Hội An 5N4Đ,1000000.0,2026-12-17,7,pending,2026-12-07 10:52:20,"Núi,Sang trọng"
+629,221,Khám phá Ninh Bình cuối tuần,3000000.0,2026-04-08,12,pending,2026-05-31 08:45:17,Sang trọng
+713,221,Nghỉ dưỡng Cần Thơ 2N1Đ,500000.0,2025-06-14,10,approved,2026-05-31 08:45:18,Mạo hiểm
+674,221,Tham quan Hội An 2N1Đ,150000.0,2026-11-05,16,approved,2026-05-31 08:45:18,"Núi,Sang trọng"
+660,222,Khám phá Tây Ninh 3N2Đ,10000000.0,2026-11-15,23,approved,2026-05-31 08:45:18,Văn hóa
+616,222,Khám phá Đà Nẵng 1 ngày,350000.0,2026-08-23,45,pending,2026-05-31 08:45:17,Núi
+282,222,Trải nghiệm Mũi Né 1 ngày,5000000.0,2027-03-03,8,pending,2026-12-07 03:15:19,Núi
+272,222,Nghỉ dưỡng Vũng Tàu 3N2Đ,250000.0,2027-04-29,47,pending,2026-11-28 17:33:42,"Biển,Văn hóa,Nghỉ dưỡng"
+428,223,Du lịch Cần Thơ 4N3Đ,10000000.0,2026-01-23,37,approved,2025-07-30 08:18:08,"Biển,Núi,Sang trọng"
+530,223,Tour cao cấp Cần Thơ 5N4Đ,750000.0,2025-04-12,32,approved,2025-01-24 01:15:48,"Núi,Nghỉ dưỡng"
+626,223,Trải nghiệm Phú Quốc 4N3Đ,150000.0,2026-11-14,49,approved,2026-05-31 08:45:17,Nghỉ dưỡng
+659,223,Tour cao cấp Nha Trang 5N4Đ,250000.0,2026-11-29,44,approved,2026-05-31 08:45:18,Sang trọng
+692,223,Tham quan Cần Thơ 1 ngày,5000000.0,2026-11-06,41,approved,2026-05-31 08:45:18,Nghỉ dưỡng
+696,224,Hành trình Phú Quốc 5N4Đ,2000000.0,2025-03-14,34,approved,2026-05-31 08:45:18,"Núi,Mạo hiểm"
+559,224,Khám phá Đà Nẵng cuối tuần,250000.0,2026-11-09,5,pending,2026-07-23 00:08:21,"Núi,Văn hóa"
+390,224,Trải nghiệm Quảng Ninh 5N4Đ,1000000.0,2026-04-05,7,approved,2026-03-25 23:45:34,Núi
+300,224,Nghỉ dưỡng Đà Nẵng 3N2Đ,7000000.0,2026-04-24,33,approved,2025-12-15 23:24:54,Núi
+229,224,Tham quan Đà Lạt 3N2Đ,1500000.0,2026-06-18,46,pending,2026-03-17 18:15:29,"Núi,Văn hóa,Mạo hiểm"
+182,224,Phiêu lưu Ninh Bình 4N3Đ,5000000.0,2026-12-12,32,approved,2026-09-12 04:38:55,"Núi,Sang trọng,Nghỉ dưỡng"
+189,225,Trải nghiệm Cần Thơ cuối tuần,1000000.0,2025-07-03,41,approved,2025-02-11 05:08:16,"Sang trọng,Mạo hiểm"
+417,225,Khám phá Kon Tum 5N4Đ,1500000.0,2025-04-17,41,approved,2025-01-30 05:07:48,Sang trọng
+771,225,Khám phá Mũi Né 5N4Đ,7000000.0,2025-08-13,13,approved,2026-05-31 08:45:19,"Biển,Mạo hiểm"
+748,225,Hành trình Sapa 1 ngày,10000000.0,2027-06-20,22,pending,2026-05-31 08:45:18,"Núi,Nghỉ dưỡng"
+743,226,Phiêu lưu Cần Thơ 2N1Đ,350000.0,2025-03-06,43,pending,2026-05-31 08:45:18,"Biển,Văn hóa,Nghỉ dưỡng"
+598,226,Hành trình Pleiku 4N3Đ,1500000.0,2025-10-09,20,approved,2026-05-31 08:45:17,"Sang trọng,Mạo hiểm"
+401,226,Nghỉ dưỡng Hạ Long 2N1Đ,350000.0,2026-01-27,26,approved,2025-09-15 17:19:27,"Biển,Văn hóa"
+566,226,Hành trình Hà Nội cuối tuần,750000.0,2025-11-05,22,approved,2025-08-15 02:49:34,"Văn hóa,Mạo hiểm,Nghỉ dưỡng"
+438,226,Trải nghiệm Pleiku 5N4Đ,1000000.0,2026-11-13,7,approved,2026-09-14 17:45:03,Biển
+308,227,Tham quan Đà Nẵng 5N4Đ,150000.0,2026-10-15,7,pending,2026-06-04 19:44:32,"Biển,Núi,Sang trọng"
+355,227,Hành trình Ninh Bình 4N3Đ,7000000.0,2027-02-04,7,pending,2026-11-05 19:08:02,"Văn hóa,Sang trọng"
+600,227,Tham quan Vũng Tàu 2N1Đ,500000.0,2026-09-24,31,approved,2026-05-31 08:45:17,"Núi,Nghỉ dưỡng"
+579,228,Phiêu lưu Hạ Long 5N4Đ,150000.0,2027-03-30,5,approved,2026-12-17 06:09:44,"Núi,Nghỉ dưỡng"
+726,228,Tham quan Biên Hòa 1 ngày,2000000.0,2026-12-27,8,approved,2026-05-31 08:45:18,"Núi,Văn hóa"
+531,228,Du lịch Vũng Tàu 3N2Đ,500000.0,2025-06-11,32,approved,2025-04-02 01:19:02,"Biển,Sang trọng"
+186,228,Nghỉ dưỡng Vũng Tàu cuối tuần,150000.0,2027-01-06,13,approved,2026-11-25 18:25:21,"Biển,Văn hóa,Mạo hiểm"
+270,228,Nghỉ dưỡng Hà Nội 3N2Đ,1500000.0,2025-09-28,50,approved,2025-07-17 20:30:44,"Biển,Núi,Mạo hiểm"
+255,228,Tham quan Vũng Tàu 4N3Đ,250000.0,2025-02-24,16,approved,2025-01-01 06:14:29,"Văn hóa,Nghỉ dưỡng"
