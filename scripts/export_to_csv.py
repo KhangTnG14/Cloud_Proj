@@ -1,10 +1,21 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-
-# Ép hệ thống xuất text chuẩn hóa tránh lỗi hiển thị trên Terminal Windows
 import io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+
+# Fix đường dẫn khi chạy từ scripts/
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# .../Test/scripts/
+
+project_dir = os.path.dirname(current_dir)
+# .../Test/
+
+backend_dir = os.path.join(project_dir, 'backend')
+# .../Test/backend/
+
+sys.path.insert(0, backend_dir)
+os.chdir(backend_dir)
 
 import django
 import csv
@@ -15,7 +26,7 @@ django.setup()
 from tours.models import Tour, Booking, Payment, Review, Revenue
 from users.models import User
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = backend_dir
 OUTPUT_DIR = os.path.join(BASE_DIR, 'exported_data')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

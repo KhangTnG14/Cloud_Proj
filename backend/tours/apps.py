@@ -12,8 +12,18 @@ class ToursConfig(AppConfig):
         if os.environ.get('RUN_MAIN') == 'true':
             try:
                 current_dir = os.path.dirname(os.path.abspath(__file__))
+                # .../backend/tours/
+
                 backend_dir = os.path.dirname(current_dir)
-                script_path = os.path.join(backend_dir, 'export_to_csv.py')
+                # .../backend/
+
+                project_dir = os.path.dirname(backend_dir)
+                # .../Test/
+
+                script_path = os.path.join(project_dir, 'scripts', 'export_to_csv.py')
+                # .../Test/scripts/export_to_csv.py
+
+                print(f"[CSV] Tim script tai: {script_path}")
 
                 if os.path.exists(script_path):
                     subprocess.run(
