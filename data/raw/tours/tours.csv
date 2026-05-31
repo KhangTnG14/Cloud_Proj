@@ -1,0 +1,51 @@
+tour_id,name,destination,price,duration_days,category,available_slots
+1,Tour Move 1,Ha Long,8162110,6,Cultural,28
+2,Tour Television 2,Hue,2912584,2,Adventure,29
+3,Tour World 3,Phu Quoc,6336637,7,Beach,15
+4,Tour Discuss 4,Hoi An,6024410,7,Luxury,19
+5,Tour Hot 5,Ha Long,1357406,3,Beach,21
+6,Tour Reduce 6,Hue,6629473,3,Cultural,21
+7,Tour Skill 7,Hue,7146029,3,Luxury,27
+8,Tour Never 8,Hoi An,8362426,7,Adventure,19
+9,Tour New 9,Nha Trang,9069569,5,Cultural,12
+10,Tour Nature 10,Hoi An,1916782,7,Luxury,19
+11,Tour Option 11,Hue,8987572,5,Cultural,14
+12,Tour Senior 12,Nha Trang,5574616,4,Mountain,11
+13,Tour Region 13,Phu Quoc,3686260,7,Luxury,20
+14,Tour Throughout 14,Da Nang,4243930,6,Cultural,30
+15,Tour Development 15,Sapa,9922063,6,Mountain,18
+16,Tour Value 16,Da Nang,3371396,2,Luxury,10
+17,Tour Free 17,Nha Trang,5562748,6,Luxury,18
+18,Tour Become 18,Sapa,5493550,5,Beach,15
+19,Tour Ball 19,Hoi An,9460730,4,Luxury,30
+20,Tour With 20,Hue,2667077,7,Luxury,25
+21,Tour For 21,Sapa,3714440,7,Beach,26
+22,Tour Cell 22,Da Lat,2481858,6,Cultural,22
+23,Tour Crime 23,Da Nang,3376074,6,Adventure,30
+24,Tour Camera 24,Nha Trang,6424178,2,Cultural,18
+25,Tour Art 25,Hue,1468989,6,Cultural,12
+26,Tour Statement 26,Phu Quoc,9856515,2,Mountain,11
+27,Tour Marriage 27,Phu Quoc,6424927,3,Luxury,17
+28,Tour Fly 28,Da Nang,1725172,5,Luxury,19
+29,Tour Build 29,Nha Trang,2590975,5,Cultural,15
+30,Tour Thousand 30,Hue,9686433,2,Cultural,26
+31,Tour Move 31,Sapa,7889797,7,Mountain,24
+32,Tour Through 32,Phu Quoc,8026239,2,Beach,29
+33,Tour Method 33,Hue,5843230,3,Mountain,13
+34,Tour Son 34,Hue,9630610,7,Cultural,30
+35,Tour This 35,Ha Long,8695015,3,Beach,11
+36,Tour Election 36,Nha Trang,7807367,7,Luxury,20
+37,Tour Main 37,Phu Quoc,8827251,4,Mountain,14
+38,Tour Difficult 38,Ha Long,9559958,5,Beach,30
+39,Tour Condition 39,Ha Long,7550535,6,Beach,16
+40,Tour Bar 40,Hoi An,7030742,7,Luxury,18
+41,Tour Seek 41,Nha Trang,5207470,3,Adventure,10
+42,Tour Dark 42,Da Nang,8496163,4,Adventure,19
+43,Tour Cultural 43,Sapa,1004034,3,Luxury,24
+44,Tour Actually 44,Sapa,6847372,3,Luxury,26
+45,Tour Spend 45,Da Nang,2749858,6,Beach,23
+46,Tour Half 46,Hoi An,1551612,4,Cultural,23
+47,Tour Security 47,Da Nang,2550654,6,Mountain,24
+48,Tour Still 48,Hue,1864620,5,Cultural,18
+49,Tour Yard 49,Ha Long,4736504,2,Cultural,23
+50,Tour On 50,Hue,7215189,3,Mountain,16
