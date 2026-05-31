@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
 import subprocess
@@ -9,43 +10,69 @@ def export_all_data_to_csv():
     try:
         current_dir = os.path.dirname(os.path.abspath(__file__))
         backend_dir = os.path.dirname(current_dir)
-        script_path = os.path.join(backend_dir, 'export_to_csv.py')
+        project_dir = os.path.dirname(backend_dir)
 
-        if not os.path.exists(script_path):
-            print(f"[CSV] Khong tim thay file: {script_path}")
-            return
+        # 1. Đường dẫn tới 2 file script của bạn
+        csv_script = os.path.join(project_dir, 'scripts', 'export_to_csv.py')
+        s3_script = os.path.join(project_dir, 'scripts', 'incremental_export.py')
 
         env = os.environ.copy()
         env['PYTHONIOENCODING'] = 'utf-8'
 
-        # Sử dụng đúng logic run kiểm tra tiến trình đồng bộ nguyên bản của bạn
-        result = subprocess.run(
-            [sys.executable, script_path],
-            capture_output=True,
-            text=True,
-            timeout=30,
-            env=env
-        )
-
-        if result.returncode == 0:
-            print("[CSV] Kich hoat dong bo 6 file Analytics thanh cong!")
+        # --- BƯỚC 1: CHẠY EXPORT RA CSV LOCAL ---
+        if os.path.exists(csv_script):
+            print(f"[CSV] Đang chạy script xuất CSV: {csv_script}")
+            csv_result = subprocess.run(
+                [sys.executable, csv_script],
+                capture_output=True,
+                text=True,
+                timeout=180,
+                env=env
+            )
+            
+            if csv_result.returncode == 0:
+                print("[CSV] Đồng bộ 6 file Analytics thành công!")
+                
+                # --- BƯỚC 2: TỰ ĐỘNG KÍCH HOẠT S3 PIPELINE NGAY SAU ĐÓ ---
+                if os.path.exists(s3_script):
+                    print(f"[AWS S3] Phát hiện file CSV mới, đang kích hoạt Pipeline lên S3...")
+                    # Chạy với tham số 'once' để đẩy dữ liệu lên S3 rồi thoát ngay lập tức
+                    s3_result = subprocess.run(
+                        [sys.executable, s3_script, 'once'],
+                        capture_output=True,
+                        text=True,
+                        timeout=45,
+                        env=env
+                    )
+                    
+                    if s3_result.returncode == 0:
+                        print("[AWS S3] Upload dữ liệu mới lên S3 Data Lake thành công!")
+                    else:
+                        print("[AWS S3] Pipeline S3 gặp lỗi!")
+                        print(s3_result.stderr)
+                else:
+                    print(f"[AWS S3] Không tìm thấy file script S3: {s3_script}")
+            else:
+                print("[CSV] Pipeline CSV gặp lỗi, hủy lệnh đẩy lên S3!")
+                print(csv_result.stderr)
         else:
-            print("[CSV] Pipeline gap loi khi chay qua n nhat!")
-            print(result.stderr)
+            print(f"[CSV] Không tìm thấy file xuất CSV: {csv_script}")
 
     except subprocess.TimeoutExpired:
-        print("[CSV] Script chay qua 30 giay!")
+        print("[Signal Timeout] Script chạy quá thời gian quy định!")
     except Exception as e:
-        print(f"[CSV] Loi: {e}")
+        print(f"[Signal Error] Lỗi hệ thống: {e}")
 
 @receiver(post_save)
 @receiver(post_delete)
 def auto_pipeline_trigger(sender, instance, **kwargs):
+    if os.environ.get('SKIP_SIGNALS') == 'yes':
+        return
+
     model_name = sender.__name__
-    
-    # 🔥 KHỚP 100% THEO LEADER SCHEMA: Theo dõi toàn bộ biến động của cả 6 phân hệ dữ liệu Analytics
     TARGET_MODELS = ['User', 'Tour', 'Booking', 'Payment', 'Revenue', 'Review']
 
     if model_name in TARGET_MODELS:
-        print(f"[Signal] Phat hien bang Analytics [{model_name}] co thay doi -> Dang dong bo...")
+        print(f"[Signal] Bảng [{model_name}] thay đổi -> Đang chuẩn bị kích hoạt chuỗi đồng bộ (CSV + S3)...")
+        # Đợi database lưu thành công (commit) mới kích hoạt script chạy ngầm để tránh lỗi khóa DB
         transaction.on_commit(export_all_data_to_csv)
