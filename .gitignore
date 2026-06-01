@@ -205,3 +205,10 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# TourGo Incremental Export
+logs/*.log
+scripts/last_export_state.json
+.env
+exported_data/
+*.csv

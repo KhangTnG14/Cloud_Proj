@@ -51,3 +51,15 @@ python manage.py migrate
 python manage.py loaddata users.json
 
 python manage.py loaddata tour.json
+## Quick Start
+
+### 1. Ch?y Incremental Export Service
+cd scripts/
+pip install -r requirements.txt
+python incremental_export.py
+
+### 2. Ch?y Databricks Pipeline
+- Run 00_verify_real_data.ipynb
+- Run 01_bronze_ingestion.ipynb
+- Run 02_silver_cleaning.ipynb
+
