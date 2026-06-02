@@ -1,93 +1,134 @@
 # TOURGO ANALYTICS - EXPORT DATA SCHEMA ARCHITECTURE
 **Vai trò thực hiện:** [A] Leader / Business Logic & Validation (Nguyễn Vũ Hà)  
-**Mục tiêu:** Định nghĩa cấu trúc Schema chuẩn hóa cho 6 file dữ liệu CSV xuất từ hệ thống Web TOURGO sang môi trường Big Data Databricks. Loại bỏ hoàn toàn dữ liệu nhạy cảm (PII) đảm bảo tính bảo mật.
+**Phiên bản:** 3.0 — Production Ready & ML Ready (Verified)  
+**Mục tiêu:** Định nghĩa cấu trúc Schema chuẩn hóa cho 6 file dữ liệu CSV xuất từ hệ thống Web TOURGO sang môi trường Big Data Databricks. Loại bỏ hoàn toàn dữ liệu nhạy cảm (PII) đảm bảo tính bảo mật và toàn vẹn tài chính.
 
 ---
 
-## 1. BẢNG CHI TIẾT SCHEMA 6 FILE EXPORT
+## GLOBAL STANDARDS
 
-### 1.1. Bảng `users.csv` (Thông tin người dùng đã ẩn danh)
-* Quản lý phân hệ phân cụm hành vi và thâm niên hệ thống.
-* *Dữ liệu loại bỏ bảo mật:* `password`, `email`, `phone`, `username`, `avatar`.
-
-| Tên Trường (Field) | Kiểu Dữ Liệu SQL Server | Kiểu Dữ Liệu Spark | Ràng buộc | Mô tả |
-| :--- | :--- | :--- | :--- | :--- |
-| `id` | INT (Primary Key) | IntegerType | NOT NULL | ID duy nhất của người dùng |
-| `role` | VARCHAR(20) | StringType | NOT NULL | Vai trò hệ thống (`Customer`, `Provider`, `Admin`) |
-| `is_active` | BIT | BooleanType | NOT NULL | Trạng thái tài khoản (`True` / `False`) |
-| `date_joined` | DATETIME | TimestampType | NOT NULL | Ngày đăng ký hệ thống (Định dạng: `YYYY-MM-DD HH:mm:ss`) |
-
-### 1.2. Bảng `tours.csv` (Thông tin các gói sản phẩm du lịch)
-* Phục vụ phân hệ xếp hạng hiệu suất Tour và khai phá thuộc tính danh mục (`category_names`).
-
-| Tên Trường (Field) | Kiểu Dữ Liệu SQL Server | Kiểu Dữ Liệu Spark | Ràng buộc | Mô tả |
-| :--- | :--- | :--- | :--- | :--- |
-| `id` | INT (Primary Key) | IntegerType | NOT NULL | ID duy nhất của Tour |
-| `creator_id` | INT (Foreign Key) | IntegerType | NOT NULL | ID của Provider sở hữu và tạo tour |
-| `title` | NVARCHAR(255) | StringType | NOT NULL | Tên gọi của Tour du lịch |
-| `price` | DECIMAL(18,2) | DoubleType | NOT NULL | Đơn giá trọn gói của Tour |
-| `departure_date` | DATE | DateType | NOT NULL | Ngày khởi hành chính thức (`YYYY-MM-DD`) |
-| `slots` | INT | IntegerType | NOT NULL | Số lượng chỗ (vé) tối đa mở bán |
-| `status` | VARCHAR(20) | StringType | NOT NULL | Trạng thái hoạt động (`Active`, `Inactive`) |
-| `created_at` | DATETIME | TimestampType | NOT NULL | Ngày đăng tải hệ thống |
-| `category_names` | NVARCHAR(MAX) | StringType | NULLABLE | Chuỗi danh mục gộp từ quan hệ M2M (Ví dụ: `"Biển,Núi"`) |
-
-### 1.3. Bảng `bookings.csv` (Thông tin giao dịch đặt Tour)
-* Đầu não cho phân hệ phễu chuyển đổi (`gold_booking_funnel`) và thuật toán dự báo.
-
-| Tên Trường (Field) | Kiểu Dữ Liệu SQL Server | Kiểu Dữ Liệu Spark | Ràng buộc | Mô tả |
-| :--- | :--- | :--- | :--- | :--- |
-| `id` | INT (Primary Key) | IntegerType | NOT NULL | ID duy nhất của Đơn đặt tour |
-| `user_id` | INT (Foreign Key) | IntegerType | NOT NULL | ID của khách hàng đặt chỗ |
-| `tour_id` | INT (Foreign Key) | IntegerType | NOT NULL | ID của Tour được đặt |
-| `number_of_people` | INT | IntegerType | NOT NULL | Số lượng khách tham gia trong đơn đặt |
-| `total_price` | DECIMAL(18,2) | DoubleType | NOT NULL | Tổng giá trị đơn hàng toán học |
-| `booking_date` | DATE | DateType | NOT NULL | Ngày thực hiện đặt đơn (`YYYY-MM-DD`) |
-| `status` | VARCHAR(20) | StringType | NOT NULL | Trạng thái đơn (`Pending`, `Confirmed`, `Cancelled`) |
-| `created_at` | DATETIME | TimestampType | NOT NULL | Thời gian hệ thống ghi nhận tạo đơn |
-
-### 1.4. Bảng `payments.csv` (Nhật ký giao dịch tài chính)
-* Phục vụ phân tích so sánh tỷ lệ phương thức thanh toán (`VietQR` vs `VNPay`).
-
-| Tên Trường (Field) | Kiểu Dữ Liệu SQL Server | Kiểu Dữ Liệu Spark | Ràng buộc | Mô tả |
-| :--- | :--- | :--- | :--- | :--- |
-| `id` | INT (Primary Key) | IntegerType | NOT NULL | ID duy nhất của giao dịch thanh toán |
-| `booking_id` | INT (Foreign Key) | IntegerType | NOT NULL | ID đơn đặt chỗ liên kết |
-| `amount` | DECIMAL(18,2) | DoubleType | NOT NULL | Số tiền thực tế giao dịch thành công |
-| `payment_method` | VARCHAR(20) | StringType | NOT NULL | Phương thức xử lý (`VNPay`, `VietQR`) |
-| `status` | VARCHAR(20) | StringType | NOT NULL | Trạng thái cổng thanh toán (`Success`, `Failed`) |
-| `created_at` | DATETIME | TimestampType | NOT NULL | Thời gian thực thi giao dịch thành công |
-
-### 1.5. Bảng `revenues.csv` (Báo cáo phân chia dòng tiền thực tế)
-* Cực kỳ quan trọng để giám sát hiệu suất doanh thu đối soát dòng tiền và thuật toán hồi quy tuyến tính.
-
-| Tên Trường (Field) | Kiểu Dữ Liệu SQL Server | Kiểu Dữ Liệu Spark | Ràng buộc | Mô tả |
-| :--- | :--- | :--- | :--- | :--- |
-| `id` | INT (Primary Key) | IntegerType | NOT NULL | ID bảng phân chia doanh thu |
-| `payment_id` | INT (Foreign Key) | IntegerType | NOT NULL | ID hóa đơn gốc đối soát |
-| `creator_id` | INT (Foreign Key) | IntegerType | NOT NULL | ID của Provider nhận tiền |
-| `total_amount` | DECIMAL(18,2) | DoubleType | NOT NULL | Tổng dòng tiền nhận về hệ thống sàn |
-| `creator_share` | DECIMAL(18,2) | DoubleType | NOT NULL | Số tiền thực tế chia cho Provider |
-| `admin_share` | DECIMAL(18,2) | DoubleType | NOT NULL | Phí hoa hồng sàn trích lại cho Admin |
-| `created_at` | DATETIME | TimestampType | NOT NULL | Ngày hạch toán dòng tiền thành công |
-
-### 1.6. Bảng `reviews.csv` (Đánh giá và phản hồi chất lượng)
-* Phục vụ phân tích phân phối xếp hạng (Rating 1-5 sao).
-* *Dữ liệu loại bỏ bảo mật:* `content` (bỏ text dài để tối ưu hóa không gian lưu trữ Analytics).
-
-| Tên Trường (Field) | Kiểu Dữ Liệu SQL Server | Kiểu Dữ Liệu Spark | Ràng buộc | Mô tả |
-| :--- | :--- | :--- | :--- | :--- |
-| `id` | INT (Primary Key) | IntegerType | NOT NULL | ID bản ghi đánh giá |
-| `user_id` | INT (Foreign Key) | IntegerType | NOT NULL | ID của khách hàng đánh giá |
-| `tour_id` | INT (Foreign Key) | IntegerType | NOT NULL | ID của Tour được nhận đánh giá |
-| `rating` | INT | IntegerType | NOT NULL | Số sao đánh giá tiêu chuẩn (Dải giá trị: `1` đến `5`) |
-| `created_at` | DATETIME | TimestampType | NOT NULL | Ngày thực hiện gửi đánh giá lên hệ thống |
+* **Timezone:** Toàn bộ các trường mốc thời gian áp dụng chuẩn: `Asia/Ho_Chi_Minh (UTC+7)`
+* **Enum Convention:** Toàn bộ các giá trị phân loại danh mục (Enum) bắt buộc viết hoa đồng nhất: `CUSTOMER`, `PROVIDER`, `ADMIN`, `PENDING`, `CONFIRMED`, `CANCELLED`, `ACTIVE`, `INACTIVE`, `SUCCESS`, `FAILED`, `AWAITING_ADMIN`.
+* **CSV Export Configuration:**
+  * Encoding: `UTF-8` (Bảo toàn tiếng Việt có dấu).
+  * Delimiter: Dấu phẩy `,`
+  * Quote Character: Dấu nháy kép `"` (Bắt buộc bao bọc trường chuỗi ký tự).
+  * Header: Bắt buộc cấu hình dòng đầu tiên chứa tên trường.
+  * Null Value: Biểu diễn bằng chuỗi rỗng (Empty String).
 
 ---
 
-## 2. QUY CHUẨN ĐỊNH DẠNG TỆP TIN XUẤT KHẨU (CSV CONFIGURATION)
-Để bảo đảm tính thống nhất tuyệt đối khi truyền dữ liệu qua AWS S3:
-1. **Ký tự phân tách (Delimiter):** Dấu phẩy `,` 
-2. **Ký tự bao bọc chuỗi (Quote Character):** Dấu nháy kép `"` (Bắt buộc bao bọc trường `title` và `category_names` để tránh lỗi vỡ dòng do dấu phẩy chứa bên trong dữ liệu).
-3. **Định dạng Mã hóa (Encoding):** `UTF-8` (Đảm bảo tiếng Việt có dấu của trường `title` và `category_names` hiển thị chuẩn xác).
-4. **Dòng đầu tiên (Header):** Bắt buộc phải chứa chính xác tên cột như định nghĩa ở Mục 1.
+## 1. CHI TIẾT SCHEMA 6 FILE EXPORT DỮ LIỆU THÔ
+
+### 1.1. Bảng `users.csv`
+* **Mục đích:** Phục vụ phân hệ phân cụm hành vi khách hàng (Machine Learning) và phân tích thâm niên tài khoản.
+* *Dữ liệu loại bỏ bảo mật (PII Stripped):* `email`, `phone`, `password`, `username`, `avatar`.
+
+| Field | SQL Type | Spark Type | Constraint | Mô tả |
+| :--- | :--- | :--- | :--- | :--- |
+| `id` | INT | IntegerType | PK, NOT NULL | ID duy nhất định danh người dùng |
+| `role` | VARCHAR(20) | StringType | CUSTOMER / PROVIDER / ADMIN | Vai trò phân quyền trên hệ thống |
+| `is_active` | BIT | BooleanType | NOT NULL | Trạng thái tài khoản hoạt động (`True` / `False`) |
+| `date_joined` | DATETIME | TimestampType | NOT NULL | Ngày giờ tài khoản đăng ký gia nhập hệ thống |
+
+### 1.2. Bảng `tours.csv`
+* **Mục đích:** Phục vụ phân tích hiệu suất sản phẩm Tour, năng lực kinh doanh đối tác và hệ thống gợi ý (Recommendation System).
+* **Business Rule:** Trường `creator_id` bắt buộc phải tham chiếu đến một `user_id` có `role = 'PROVIDER'`.
+* **Category Format:** Phân tách các danh mục bằng Delimiter nội bộ là dấu gạch đứng `|` (Ví dụ: `Biển\|Núi\|Sinh thái`).
+
+| Field | SQL Type | Spark Type | Constraint | Mô tả |
+| :--- | :--- | :--- | :--- | :--- |
+| `id` | INT | IntegerType | PK, NOT NULL | ID duy nhất định danh Tour du lịch |
+| `creator_id` | INT | IntegerType | FK → users.id | ID của đối tác (Provider) sở hữu và tạo gói Tour |
+| `title` | NVARCHAR(255) | StringType | NOT NULL | Tên gọi hiển thị của Tour du lịch |
+| `price` | DECIMAL(18,2) | DecimalType(18,2) | NOT NULL | Đơn giá trọn gói mở bán của Tour |
+| `departure_date` | DATE | DateType | NOT NULL | Ngày khởi hành chính thức của chuyến đi |
+| `slots` | INT | IntegerType | > 0, NOT NULL | Số lượng chỗ (vé) tối đa mở bán cho Tour |
+| `status` | VARCHAR(20) | StringType | approved/pending/cancelled| Trạng thái hiển thị đóng/mở bán gói Tour |
+| `created_at` | DATETIME | TimestampType | NOT NULL | Ngày giờ gói Tour được phê duyệt lên sàn |
+| `category_names` | NVARCHAR(MAX) | StringType | NULLABLE | Chuỗi gộp danh mục chủ đề của Tour |
+
+### 1.3. Bảng `bookings.csv`
+* **Mục đích:** Đầu não phân tích phễu chuyển đổi đơn hàng (Booking Funnel), hạch toán doanh thu và dự báo xu hướng.
+* **Business Rule:** Trường `user_id` bắt buộc phải tham chiếu đến một `user_id` có `role = 'CUSTOMER'`.
+
+| Field | SQL Type | Spark Type | Constraint | Mô tả |
+| :--- | :--- | :--- | :--- | :--- |
+| `id` | INT | IntegerType | PK, NOT NULL | ID duy nhất định danh đơn đặt Tour |
+| `user_id` | INT | IntegerType | FK → users.id | ID của tài khoản khách hàng thực hiện đặt đơn |
+| `tour_id` | INT | IntegerType | FK → tours.id | ID của gói Tour du lịch được lựa chọn đặt |
+| `number_of_people` | INT | IntegerType | > 0, NOT NULL | Số lượng hành khách đăng ký tham gia trong đơn |
+| `total_price` | DECIMAL(18,2) | DecimalType(18,2) | >= 0, NOT NULL | Tổng giá trị hóa đơn thô tính toán toán học |
+| `booking_date` | DATE | DateType | NOT NULL | Ngày hành khách sử dụng dịch vụ/khởi hành thực tế |
+| `status` | VARCHAR(20) | StringType | **APPROVED / PENDING / CANCELLED** | Trạng thái kiểm duyệt và hiển thị gói Tour (`approved`: Đang mở bán, `pending`: Chờ Admin   duyệt`cancelled`: Ẩn/Hủy bán) |
+| `created_at` | DATETIME | TimestampType | NOT NULL | Mốc thời gian thực tế hệ thống ghi nhận tạo đơn |
+
+### 1.4. Bảng `payments.csv`
+* **Mục đích:** Phục vụ phân tích dòng tiền vào, đo lường thị phần giữa các giải pháp và cổng kết nối thanh toán.
+
+| Field | SQL Type | Spark Type | Constraint | Mô tả |
+| :--- | :--- | :--- | :--- | :--- |
+| `id` | INT | IntegerType | PK, NOT NULL | ID duy nhất định danh giao dịch tài chính |
+| `booking_id` | INT | IntegerType | FK → bookings.id | ID của đơn đặt Tour liên kết đối chiếu luồng |
+| `amount` | DECIMAL(18,2) | DecimalType(18,2) | >= 0, NOT NULL | Số tiền thực tế ghi nhận giao dịch thành công |
+| `payment_method` | VARCHAR(20) | StringType | NOT NULL | Cổng xử lý: `VNPAY` / `VIETQR` / `CASH` / `BANK_TRANSFER` |
+| `status` | VARCHAR(20) | StringType | NOT NULL | Trạng thái cổng: `SUCCESS` / `FAILED` / `AWAITING_ADMIN` |
+| `created_at` | DATETIME | TimestampType | NOT NULL | Thời gian thực tế ghi nhận luồng tiền thanh toán |
+
+### 1.5. Bảng `revenues.csv`
+* **Mục đích:** Phục vụ báo cáo tài chính doanh nghiệp, đo lường tăng trưởng và phân tích hiệu suất nhà cung ứng.
+* **Business Rule:** Đảm bảo cân bằng toán học dòng tiền tuyệt đối: `creator_share + admin_share = total_amount`.
+
+| Field | SQL Type | Spark Type | Constraint | Mô tả |
+| :--- | :--- | :--- | :--- | :--- |
+| `id` | INT | IntegerType | PK, NOT NULL | ID duy nhất của bảng phân chia doanh thu |
+| `payment_id` | INT | IntegerType | FK → payments.id | ID của hóa đơn tài chính gốc đối soát dòng tiền vào |
+| `creator_id` | INT | IntegerType | FK → users.id | ID của đối tác (Provider) thụ hưởng nhận tiền chia sẻ |
+| `total_amount` | DECIMAL(18,2) | DecimalType(18,2) | >= 0, NOT NULL | Tổng dòng tiền gốc nhận về hệ thống sàn từ hóa đơn |
+| `creator_share` | DECIMAL(18,2) | DecimalType(18,2) | >= 0, NOT NULL | Số tiền thực tế trích chi trả chuyển vào ví Provider |
+| `admin_share` | DECIMAL(18,2) | DecimalType(18,2) | >= 0, NOT NULL | Phí hoa hồng sàn khấu trừ giữ lại cho quản trị Admin |
+| `created_at` | DATETIME | TimestampType | NOT NULL | Mốc thời gian phát sinh bản ghi phân chia doanh thu thực tế(sau khi thanh toán được xác nhận thành công)|
+
+### 1.6. Bảng `reviews.csv`
+
+* **Mục đích:** Đo lường chỉ số hài lòng của khách hàng (CSAT) và đánh giá chất lượng sản phẩm Tour phục vụ bài toán Machine Learning (Recommendation System).
+* *Dữ liệu loại bỏ bảo mật (PII Stripped):* `content` (Loại bỏ văn bản dài để tối ưu không gian lưu trữ và tốc độ tính toán).
+* **Business Rules (Ràng buộc nghiệp vụ nghiêm ngặt):**
+  1. **Đối tượng hợp lệ:** Chỉ người dùng có `role = 'CUSTOMER'` mới được quyền gửi đánh giá.
+  2. **Điều kiện đơn hàng:** Chỉ những `booking_id` có trạng thái `CONFIRMED` và giao dịch tài chính thành công (`payments.status = 'SUCCESS'`) mới được phép tồn tại bản ghi review tương ứng.
+  3. **Ràng buộc duy nhất:** Một đơn đặt hàng (`booking_id`) chỉ được phép xuất hiện tối đa một lần duy nhất trong bảng này (`booking_id` mang ràng buộc `UNIQUE`).
+  4. **Logic dòng thời gian (Timeline):** Mốc thời gian đánh giá (`reviews.created_at`) bắt buộc phải xảy ra **SAU HOẶC BẰNG** ngày khởi hành thực tế của chuyến đi (`bookings.booking_date`).
+
+| Field | SQL Type | Spark Type | Constraint | Mô tả |
+| :--- | :--- | :--- | :--- | :--- |
+| `id` | INT | IntegerType | PK, NOT NULL | ID duy nhất định danh bản ghi đánh giá |
+| `booking_id` | INT | IntegerType | FK → bookings.id, UNIQUE | ID đơn đặt Tour liên kết. Khóa cứng quy tắc: mỗi đơn chỉ được đánh giá tối đa 1 lần. |
+| `user_id` | INT | IntegerType | FK → users.id | ID của khách hàng viết đánh giá (Bắt buộc phải trùng khớp với `user_id` trong bảng `bookings` của đơn đó). |
+| `tour_id` | INT | IntegerType | FK → tours.id | ID của gói Tour nhận đánh giá (Bắt buộc phải trùng khớp với `tour_id` trong bảng `bookings` của đơn đó). |
+| `rating` | INT | IntegerType | NOT NULL (1–5) | Số sao đánh giá tiêu chuẩn chất lượng dịch vụ (Chỉ nhận dải số nguyên từ `1` đến `5`). |
+| `created_at` | DATETIME | TimestampType | NOT NULL | Ngày giờ khách gửi đánh giá (Đảm bảo điều kiện thiết lập: `reviews.created_at >= bookings.booking_date`). |
+---
+
+## 2. SƠ ĐỒ MỐI QUAN HỆ KIẾN TRÚC DỮ LIỆU (RELATIONSHIP DIAGRAM)
+
+```text
+users
+ │
+├── tours.creator_id (Chỉ lọc Role = PROVIDER)
+ ├── bookings.user_id (Chỉ lọc Role = CUSTOMER)
+ ├── revenues.creator_id
+ └── reviews.user_id
+
+tours
+ │
+ ├── bookings.tour_id
+ └── reviews.tour_id
+
+bookings
+ │
+ ├── payments.booking_id
+ └── reviews.booking_id (Ràng buộc UNIQUE)
+
+payments
+ │
+ └── revenues.payment_id

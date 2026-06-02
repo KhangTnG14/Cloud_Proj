@@ -7,3 +7,4 @@ AWS_S3_REGION_NAME=eu-north-1
 pip install python-dotenv
 cd backend
 python treaming_simulator.py
+ chay python seed_data.py de  lay du lieu
