@@ -95,14 +95,14 @@ Chỉ số cần tính:
 - Predicted revenue theo ngày/tháng.
 - Forecast error.
 
-## Cell 8 - Section 7: Anomaly Alerts
+## Cell 8 - Section 8: Anomaly Alerts (Day 8 — [C])
 
-Mục tiêu: Hiển thị các bất thường về doanh thu, booking hoặc thanh toán.
+Mục tiêu: Hiển thị các bất thường về doanh thu, booking hoặc tour từ bảng `gold_anomalies` (notebook `04c_anomaly_detection.ipynb`).
 
 Visual đề xuất:
 
-- Table alert: alert_date, metric, actual_value, expected_value, severity, note.
-- Bar chart: số alert theo severity.
+- Table alert: date, anomaly_type, severity, user_id, tour_id, tour_title, value.
+- Bar chart: số alert theo severity và theo anomaly_type.
 
 Quy tắc gợi ý:
 
@@ -110,19 +110,25 @@ Quy tắc gợi ý:
 - Payment failed rate cao.
 - Booking cancel rate cao.
 
-## Cell 9 - Section 8: Real-Time Counter
+## Cell 9 - Section 9: Real-Time Streaming Status (Day 9 — [C])
 
-Mục tiêu: Hiển thị thông tin streaming/new bookings cho demo realtime.
+Mục tiêu: Hiển thị counter và bảng booking mới từ `stream_bookings_bronze` (notebook `06_streaming.ipynb`).
 
 Visual đề xuất:
 
-- Counter: booking mới trong stream.
-- Table: các booking mới nhất.
-- Line chart: booking count theo time window.
+- KPI: tổng booking stream, confirmed/pending, streaming revenue.
+- Bar/pie chart: số booking theo `status`.
+- Table: 10 booking mới nhất (sort `processed_at` desc).
+- Line chart (nếu đủ batch): booking count theo `processed_at`.
 
-Đường dẫn streaming dự kiến:
+Phụ thuộc:
 
-- `s3://tourgo-data-lake/streaming/new_bookings/`
+- [D] `streaming_simulator.py` upload JSON lên S3.
+- [B] `06_streaming.ipynb` ghi bảng `stream_bookings_bronze`.
+
+## Cell 10 - Section 10: Tour Recommendations (Day 7)
+
+Mục tiêu: Hiển thị gợi ý tour theo cluster từ `ml_tour_recommendations`.
 
 ## Checklist Ngày 1 - Phần C
 
