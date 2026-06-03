@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
 import json
@@ -5,118 +6,124 @@ import time
 import random
 import boto3
 from datetime import datetime, date
-# 🔥 ĐÃ THÊM: Import thư viện load file .env trực tiếp
 from dotenv import load_dotenv
 
-# ── 1. NẠP BIẾN MÔI TRƯỜNG TỪ FILE .ENV TRƯỚC KHI GỌI AWS ──────────────
-# Vị trí file: C:\Test\backend\streaming_simulator.py
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))   # Thư mục backend
-PROJECT_ROOT = os.path.dirname(CURRENT_DIR)                 # Thư mục gốc C:\Test
-ENV_PATH = os.path.join(PROJECT_ROOT, '.env')              # Đường dẫn tới C:\Test\.env
+# Load .env
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_dir = os.path.dirname(current_dir)
+load_dotenv(os.path.join(project_dir, '.env'))
 
-if os.path.exists(ENV_PATH):
-    load_dotenv(dotenv_path=ENV_PATH)
-    print(f"✅ [SYSTEM] Đã nạp file cấu hình bảo mật .env từ: {ENV_PATH}")
-else:
-    print(f"⚠️ [CẢNH BÁO] Không tìm thấy file .env tại {ENV_PATH}. Hãy kiểm tra lại vị trí file!")
+# Lấy IDs thật từ CSV
+import csv
 
-# ── 2. THIẾT LẬP KẾT NỐI DJANGO ORM TẠI CHỖ ───────────────────────────
-sys.path.append(CURRENT_DIR)
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+def load_ids_from_csv(filename, id_col):
+    path = os.path.join(project_dir, 'backend', 'exported_data', filename)
+    ids = []
+    # Sử dụng utf-8-sig để tự bóc tách ký tự BOM ẩn trên Windows nếu có
+    with open(path, encoding='utf-8-sig') as f:
+        for row in csv.DictReader(f):
+            # Tự động loại bỏ hoàn toàn dấu nháy kép thừa ở cả Key và Value của dòng dữ liệu
+            clean_row = {k.strip('"'): v.strip('"') for k, v in row.items() if k is not None}
+            if id_col in clean_row and clean_row[id_col]:
+                ids.append(int(clean_row[id_col]))
+    return ids
 
-try:
-    import django
-    django.setup()
-    from tours.models import Tour, Booking
-    from users.models import User
-    HAS_DJANGO = True
-except Exception as e:
-    print(f"[CẢNH BÁO] Không thể khởi chạy Django ORM: {e}")
-    HAS_DJANGO = False
+def load_prices_from_csv():
+    path = os.path.join(project_dir, 'backend', 'exported_data', 'tours.csv')
+    prices = []
+    with open(path, encoding='utf-8-sig') as f:
+        for row in csv.DictReader(f):
+            # Tự động loại bỏ hoàn toàn dấu nháy kép thừa ở cả Key và Value của dòng dữ liệu
+            clean_row = {k.strip('"'): v.strip('"') for k, v in row.items() if k is not None}
+            try:
+                if 'price' in clean_row and clean_row['price']:
+                    prices.append(float(clean_row['price']))
+            except:
+                pass
+    return prices
 
-# ── 3. CẤU HÌNH AWS S3 CHUẨN XÁC THEO ẢNH CHỤP CONSOLE ────────────────
+# Load IDs thật
+print("[LOAD] Dang doc IDs that tu CSV...")
+REAL_USER_IDS = load_ids_from_csv('users.csv', 'id')
+REAL_TOUR_IDS = load_ids_from_csv('tours.csv', 'id')
+REAL_PRICES   = load_prices_from_csv()
+
+print(f"[LOAD] Users: {len(REAL_USER_IDS)} | Tours: {len(REAL_TOUR_IDS)} | Prices: {len(REAL_PRICES)}")
+
+# S3 config
 BUCKET = 'tourgo-bigdata-lake'
 PREFIX = 'streaming/new_bookings'
-REGION = 'eu-north-1'  # Khu vực Stockholm
 
-# Hệ thống lấy chính xác chuỗi mã thực tế từ file .env vừa nạp ở trên
-AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-
-# Khởi tạo client kèm định danh vùng Region chuẩn xác
-s3 = boto3.client('s3',
-    aws_access_key_id=AWS_ACCESS_KEY,
-    aws_secret_access_key=AWS_SECRET_KEY,
-    region_name=REGION
+s3 = boto3.client(
+    's3',
+    aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
+    aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
+    region_name=os.getenv('AWS_REGION', 'ap-southeast-1')
 )
 
-# ── 4. TRÍCH XUẤT ID THẬT TỪ DATABASE DJANGO ─────────────────────────
-if HAS_DJANGO:
-    try:
-        SAMPLE_USER_IDS = list(User.objects.filter(is_active=True).values_list('id', flat=True))
-        SAMPLE_TOUR_IDS = list(Tour.objects.filter(status='Active').values_list('id', flat=True))
-        
-        if not SAMPLE_USER_IDS: SAMPLE_USER_IDS = [1, 2, 3]
-        if not SAMPLE_TOUR_IDS: SAMPLE_TOUR_IDS = [1, 2, 3]
-    except Exception:
-        SAMPLE_USER_IDS = [1, 2, 3, 5, 8, 13, 21]
-        SAMPLE_TOUR_IDS = [1, 2, 3, 4, 5]
-else:
-    SAMPLE_USER_IDS = [1, 2, 3, 5, 8, 13, 21]
-    SAMPLE_TOUR_IDS = [1, 2, 3, 4, 5]
-
-SAMPLE_PRICES = [1500000, 2000000, 3500000, 5000000, 7500000]
-
 def generate_booking():
-    """Tạo bản ghi dữ liệu đơn hàng giả lập khớp kiểu Double và Timestamp của Spark"""
+    """Tạo 1 booking giả lập với IDs thật từ TourGo"""
+    tour_idx = random.randint(0, len(REAL_TOUR_IDS) - 1)
     return {
-        "id": int(datetime.now().timestamp() * 1000) + random.randint(1, 999),
-        "user_id": random.choice(SAMPLE_USER_IDS),
-        "tour_id": random.choice(SAMPLE_TOUR_IDS),
+        "id":               int(datetime.now().timestamp() * 1000) + random.randint(1, 999),
+        "user_id":          random.choice(REAL_USER_IDS),
+        "tour_id":          REAL_TOUR_IDS[tour_idx],
         "number_of_people": random.randint(1, 4),
-        "total_price": float(random.choice(SAMPLE_PRICES)),
-        "booking_date": str(date.today()),
-        "status": random.choice(["pending", "confirmed"]),
-        "created_at": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-        "source": "streaming_simulator"
+        "total_price":      REAL_PRICES[tour_idx] * random.randint(1, 4),
+        "booking_date":     str(date.today()),
+        "status":           random.choice(["confirmed", "confirmed", "pending"]),
+        "created_at":       datetime.now().isoformat(),
+        "source":           "streaming_simulator"
     }
 
 def upload_batch(batch_size=2):
-    """Đóng gói mảng bản ghi thành chuỗi JSON Lines (phân tách \n) và đẩy lên AWS S3"""
+    """Upload 1 batch lên S3 dưới dạng JSON Lines"""
     bookings = [generate_booking() for _ in range(batch_size)]
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
     key = f"{PREFIX}/bookings_{timestamp}.json"
-    
-    body = "\n".join(json.dumps(b) for b in bookings)
-    
-    try:
-        s3.put_object(Bucket=BUCKET, Key=key, Body=body)
-        print(f"✅ [S3] Đã đẩy thành công batch {batch_size} đơn → s3://{BUCKET}/{key}")
-    except Exception as e:
-        print(f"❌ [S3 LỖI THỰC TẾ] Không thể đẩy dữ liệu stream lên Bucket [{BUCKET}]: {e}")
-        print("    ↳ Mẹo kiểm tra: Hãy soát lại xem chuỗi điền trong file .env có bị thừa dấu cách hay ngoặc kép không.")
-        
-    return bookings
+
+    # JSON Lines: mỗi dòng là 1 JSON object
+    body = "\n".join(json.dumps(b, ensure_ascii=False) for b in bookings)
+
+    s3.put_object(
+        Bucket=BUCKET,
+        Key=key,
+        Body=body.encode('utf-8')
+    )
+    return bookings, key
+
+def main():
+    print("=" * 50)
+    print("[START] Streaming Simulator dang chay...")
+    print(f"[INFO] Target: s3://{BUCKET}/{PREFIX}/")
+    print("[INFO] Interval: 30 giay | Batch: 1-3 bookings")
+    print("[INFO] Nhan Ctrl+C de dung")
+    print("=" * 50)
+
+    batch_num = 0
+    total_uploaded = 0
+
+    while True:
+        try:
+            batch_size = random.randint(1, 3)
+            bookings, key = upload_batch(batch_size)
+            batch_num += 1
+            total_uploaded += batch_size
+
+            print(f"\n[BATCH #{batch_num}] {datetime.now().strftime('%H:%M:%S')} — Uploaded {batch_size} bookings")
+            print(f"  Key: {key}")
+            for b in bookings:
+                print(f"  Booking {b['id']}: user={b['user_id']} tour={b['tour_id']} price={b['total_price']:,.0f} status={b['status']}")
+            print(f"  Total uploaded: {total_uploaded} bookings")
+
+            time.sleep(30)
+
+        except KeyboardInterrupt:
+            print(f"\n[STOP] Dung simulator. Tong: {total_uploaded} bookings trong {batch_num} batches.")
+            break
+        except Exception as e:
+            print(f"[ERROR] {e}")
+            time.sleep(10)
 
 if __name__ == '__main__':
-    print("="*60)
-    print("🚀 TOURGO STREAMING SIMULATOR - NGÀY 2 (ĐÃ FIX LỖI LOAD ENV)")
-    print(f"   Target Bucket:              {BUCKET}")
-    print(f"   AWS Region:                 {REGION}")
-    print(f"   Trạng thái kết nối Django:  {'KẾT NỐI THẬT OK' if HAS_DJANGO else 'DÙNG DATA GIẢ LẬP'}")
-    print(f"   Số lượng Khách Hàng khả dụng: {len(SAMPLE_USER_IDS)}")
-    print(f"   Số lượng Chuyến Đi khả dụng:  {len(SAMPLE_TOUR_IDS)}")
-    print("   Nhấn tổ hợp phím Ctrl+C để dừng luồng giả lập.")
-    print("="*60)
-    
-    try:
-        while True:
-            current_batch_size = random.randint(1, 3)
-            batch = upload_batch(batch_size=current_batch_size)
-            
-            for b in batch:
-                print(f"    ↳ Đơn [{b['id']}]: User ID={b['user_id']} | Tour ID={b['tour_id']} | Giá={b['total_price']:,} VNĐ")
-            
-            time.sleep(30)
-    except KeyboardInterrupt:
-        print("\n🛑 Đã dừng tiến trình mô phỏng luồng dữ liệu Streaming thành công!")
+    main()
